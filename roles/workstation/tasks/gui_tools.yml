@@ -5,3 +5,7 @@
     packages:
     - terminator
   become: true
+
+- name: Install skype
+  become: true
+  command: snap install skype --classic creates=/snap/bin/skype
