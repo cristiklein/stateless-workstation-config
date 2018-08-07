@@ -7,3 +7,8 @@
     - mc
     - pv
     - vim
+
+- name: Configure default editor
+  template: 
+    src: selected_editor.j2
+    dest: $HOME/.selected_editor

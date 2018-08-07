@@ -14,7 +14,9 @@ if ! which ansible > /dev/null; then
     sudo apt-get install ansible
 fi
     
-env \
+sudo env \
     LANG=C.UTF-8 \
     ANSIBLE_STDOUT_CALLBACK=debug \
-    ansible-playbook $BASEDIR/site.yml --inventory localhost,
+    ANSIBLE_CONFIG=$BASEDIR/ansible.cfg \
+    ansible-playbook $BASEDIR/site.yml \
+        --inventory localhost, $*
