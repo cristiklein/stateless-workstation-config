@@ -12,3 +12,9 @@
   template: 
     src: selected_editor.j2
     dest: $HOME/.selected_editor
+
+- name: Configure .profile
+  template: 
+    src: profile.j2
+    dest: $HOME/.profile
+
