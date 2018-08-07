@@ -1,0 +1,6 @@
+- name: Install GUI tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - terminator
