@@ -1,0 +1,37 @@
+- name: Install required packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - dropbear-initramfs
+      - cryptsetup
+  become: true
+
+- name: Copy unlock hook script
+  become: true
+  template: 
+    src: crypt_unlock.sh.j2
+    dest: /etc/initramfs-tools/hooks/crypt_unlock.sh
+  notify: Update initramfs
+
+- name: Create .ssh folder
+  become: true
+  file:
+    owner: root
+    group: root
+    state: directory
+    path: /etc/initramfs-tools/root/.ssh
+    mode: 0755
+  notify: Update initramfs
+
+- name: Create authorized_keys
+  become: true
+  copy:
+    content: |
+      # DO NOT EDIT! This file is managed by Ansible.
+      {% for sshkey in sshkeys %}
+      {{ sshkey }}
+      {% endfor %}
+    dest: /etc/initramfs-tools/root/.ssh/authorized_keys
+    mode: 0644
+  notify: Update initramfs
