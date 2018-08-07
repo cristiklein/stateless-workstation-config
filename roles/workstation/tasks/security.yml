@@ -5,3 +5,19 @@
     packages:
     - keepassx
   become: true
+
+- name: Create authorized_keys
+  copy:
+    content: |
+      # DO NOT EDIT! This file is managed by Ansible.
+      {{ sshkeys | join('\n') }}
+    dest: "$HOME/.ssh/authorized_keys"
+
+- name: Setup ssh server
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - openssh-server
+    - fail2ban
+  become: true

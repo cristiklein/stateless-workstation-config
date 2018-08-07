@@ -7,5 +7,6 @@
     - inotify-tools
     - iotop
     - iperf
+    - net-tools
     - uuid
   become: true
