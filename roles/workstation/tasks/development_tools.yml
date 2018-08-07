@@ -5,4 +5,7 @@
     packages:
     - build-essential
     - git
+    - libtext-markdown-perl
+    - meld
+    - sloccount
   become: true

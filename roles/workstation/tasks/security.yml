@@ -1,0 +1,7 @@
+- name: Install security tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - keepassx
+  become: true

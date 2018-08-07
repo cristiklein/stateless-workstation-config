@@ -1,0 +1,11 @@
+- name: Install admin tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - htop
+    - inotify-tools
+    - iotop
+    - iperf
+    - uuid
+  become: true
