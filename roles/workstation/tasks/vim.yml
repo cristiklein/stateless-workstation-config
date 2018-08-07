@@ -1,0 +1,26 @@
+- name: Install vim
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - git
+    - vim
+  become: true
+
+- name: Configure default editor
+  template: 
+    src: selected_editor.j2
+    dest: $HOME/.selected_editor
+
+- name: Clone vim configuration
+  git:
+    repo: git@github.com:cristiklein/vimrc.git
+    dest: $HOME/.vim
+    depth: 1
+
+- name: Link .vimrc to $HOME
+  file:
+    src: $HOME/.vim/.vimrc
+    dest: $HOME/.vimrc
+    state: link
+

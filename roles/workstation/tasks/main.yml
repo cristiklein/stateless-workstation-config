@@ -3,3 +3,4 @@
 - import_tasks: gui_tools.yml
 - import_tasks: development_tools.yml
 - import_tasks: tex_tools.yml
+- import_tasks: vim.yml 
