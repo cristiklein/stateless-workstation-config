@@ -2,3 +2,19 @@
   template: 
     src: mimeapps.list.j2
     dest: $HOME/.mimeapps.list
+
+- name: Configure launchbar
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: >-
+      ['org.gnome.Nautilus.desktop',
+      'terminator.desktop',
+      'google-chrome.desktop',
+      'thunderbird.desktop',
+      'skype_skypeforlinux.desktop',
+      'libreoffice-writer.desktop',
+      'libreoffice-calc.desktop',
+      'libreoffice-impress.desktop',
+      'spotify_spotify.desktop',
+      'keepassx.desktop']
+    state: present

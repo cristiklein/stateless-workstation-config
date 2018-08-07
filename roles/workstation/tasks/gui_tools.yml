@@ -3,6 +3,7 @@
     name: "{{ packages }}"
   vars:
     packages:
+    - dconf-editor
     - terminator
   become: true
 
