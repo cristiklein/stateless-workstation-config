@@ -1,0 +1,11 @@
+- name: Install dictionaries
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - hunspell-de-de
+      - hunspell-en-gb
+      - hunspell-fr
+      - hunspell-ro
+      - hunspell-sv
+  become: true
