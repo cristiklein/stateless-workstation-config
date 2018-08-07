@@ -1,0 +1,6 @@
+- name: Install tex tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - texlive-full

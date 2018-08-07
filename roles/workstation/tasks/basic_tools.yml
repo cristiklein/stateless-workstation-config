@@ -1,0 +1,9 @@
+- name: Install basic tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - curl
+    - mc
+    - pv
+    - vim

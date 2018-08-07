@@ -1,0 +1,4 @@
+- import_tasks: basic_tools.yml
+- import_tasks: google_chrome_stable.yml
+- import_tasks: development_tools.yml
+- import_tasks: tex_tools.yml

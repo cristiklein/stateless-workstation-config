@@ -1,0 +1,7 @@
+- name: Install development tools
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - build-essential
+    - git
