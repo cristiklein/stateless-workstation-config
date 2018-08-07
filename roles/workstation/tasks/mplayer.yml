@@ -1,0 +1,17 @@
+- name: Install mplayer
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - mplayer
+  become: true
+
+- name: Create mplayer configuration folder
+  file:
+    path: $HOME/.mplayer
+    state: directory
+
+- name: Configure mplayer
+  template: 
+    src: mplayer_config.j2
+    dest: $HOME/.mplayer/config

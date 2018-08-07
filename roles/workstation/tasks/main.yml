@@ -7,6 +7,7 @@
 - import_tasks: google_chrome_stable.yml
 - import_tasks: gui_tools.yml
 - import_tasks: development_tools.yml
+- import_tasks: mplayer.yml
 - import_tasks: security.yml
 - import_tasks: tex_tools.yml
 - import_tasks: tmp_on_tmpfs.yml
