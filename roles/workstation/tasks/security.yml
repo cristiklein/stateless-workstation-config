@@ -10,7 +10,9 @@
   copy:
     content: |
       # DO NOT EDIT! This file is managed by Ansible.
-      {{ sshkeys | join('\n') }}
+      {% for sshkey in sshkeys %}
+      {{ sshkey }}
+      {% endfor %}
     dest: "$HOME/.ssh/authorized_keys"
 
 - name: Setup ssh server
