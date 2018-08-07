@@ -17,6 +17,7 @@
     repo: git@github.com:cristiklein/vimrc.git
     dest: $HOME/.vim
     depth: 1
+    update: no
 
 - name: Link .vimrc to $HOME
   file:
