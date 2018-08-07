@@ -1,5 +1,6 @@
 - import_tasks: admin_tools.yml
 - import_tasks: basic_tools.yml
+- import_tasks: cleanup.yml
 - import_tasks: default_apps.yml
 - import_tasks: google_chrome_stable.yml
 - import_tasks: gui_tools.yml

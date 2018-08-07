@@ -1,0 +1,9 @@
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+  become: true
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+  become: true
