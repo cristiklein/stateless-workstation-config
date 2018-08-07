@@ -12,16 +12,19 @@
   template: 
     src: crypt_unlock.sh.j2
     dest: /etc/initramfs-tools/hooks/crypt_unlock.sh
+    mode: 0755
   notify: Update initramfs
 
-- name: Create .ssh folder
+- name: Configure dropbear in initramfs
   become: true
-  file:
+  lineinfile:
+    path: /etc/dropbear-initramfs/config
+    regexp: '^DROPBEAR_OPTIONS='
+    insertafter: '^#DROPBEAR_OPTIONS='
+    line: 'DROPBEAR_OPTIONS=-p8022'
     owner: root
     group: root
-    state: directory
-    path: /etc/initramfs-tools/root/.ssh
-    mode: 0755
+    mode: 0644
   notify: Update initramfs
 
 - name: Create authorized_keys
@@ -32,6 +35,6 @@
       {% for sshkey in sshkeys %}
       {{ sshkey }}
       {% endfor %}
-    dest: /etc/initramfs-tools/root/.ssh/authorized_keys
+    dest: /etc/dropbear-initramfs/authorized_keys
     mode: 0644
   notify: Update initramfs
