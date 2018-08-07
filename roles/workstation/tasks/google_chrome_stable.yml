@@ -1,5 +1,6 @@
 - name: "apt | ensure Google linux signing key present"
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+  become: true
 
 - name: "apt | ensure Google chrome repo present"
   apt_repository:
@@ -7,8 +8,10 @@
     filename: "google-chrome"
     state: present
     update_cache: yes
+  become: true
 
 - name: "apt | ensure Google chrome present"
   apt:
     name: "google-chrome-stable"
     state: present
+  become: true

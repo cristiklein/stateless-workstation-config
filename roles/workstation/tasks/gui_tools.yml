@@ -4,3 +4,4 @@
   vars:
     packages:
     - terminator
+  become: true

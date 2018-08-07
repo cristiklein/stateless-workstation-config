@@ -14,7 +14,7 @@ if ! which ansible > /dev/null; then
     sudo apt-get install ansible
 fi
     
-sudo env \
+env \
     LANG=C.UTF-8 \
     ANSIBLE_STDOUT_CALLBACK=debug \
     ANSIBLE_CONFIG=$BASEDIR/ansible.cfg \

@@ -4,3 +4,4 @@
   vars:
     packages:
     - texlive-full
+  become: true
