@@ -8,5 +8,7 @@
     - git-crypt
     - libtext-markdown-perl
     - meld
+    - python-pip
+    - python3-pip
     - sloccount
   become: true
