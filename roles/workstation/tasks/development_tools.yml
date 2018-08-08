@@ -5,6 +5,7 @@
     packages:
     - build-essential
     - git
+    - git-crypt
     - libtext-markdown-perl
     - meld
     - sloccount
