@@ -4,6 +4,7 @@
   vars:
     packages:
     - keepassx
+    - passwordmaker-cli # legacy, new passwords are on keepassx
   become: true
 
 - name: Create authorized_keys
@@ -23,3 +24,8 @@
     - openssh-server
     - fail2ban
   become: true
+
+- name: Configure PassworkMaker CLI
+  template:
+    src: passwordmaker.rdf.j2
+    dest: $HOME/.passwordmaker.rdf
