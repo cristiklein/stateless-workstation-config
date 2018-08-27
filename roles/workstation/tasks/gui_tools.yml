@@ -14,3 +14,7 @@
 - name: Install Spotify
   become: true
   command: snap install spotify --classic creates=/snap/bin/spotify
+
+- name: Install Slack
+  become: true
+  command: snap install slack --classic creates=/snap/bin/slack
