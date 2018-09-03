@@ -1,0 +1,13 @@
+{{ ansible_managed | comment }}
+
+[user]
+{% if template_host == "blackie" %}
+	email = cristian.klein@klarna.com
+{% else %}
+	email = cristian@kleinlabs.eu
+{% endif %}
+	name = Cristian Klein
+[push]
+	default = simple
+[alias]
+	wdiff = diff --color-words
