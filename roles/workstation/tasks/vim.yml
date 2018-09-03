@@ -4,7 +4,7 @@
   vars:
     packages:
     - git
-    - vim
+    - vim-gnome
   become: true
 
 - name: Configure default editor
