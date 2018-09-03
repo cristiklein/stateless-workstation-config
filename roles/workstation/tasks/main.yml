@@ -1,6 +1,7 @@
 - import_tasks: admin_tools.yml
 - import_tasks: basic_tools.yml
 - import_tasks: cleanup.yml
+- import_tasks: cloud_tools.yml
 - import_tasks: dictionaries.yml
 - import_tasks: dropbox.yml
 - import_tasks: google_chrome_stable.yml

@@ -1,0 +1,8 @@
+- name: Install awscli
+  pip:
+    name: awscli
+
+- name: Configure aws-completer
+  lineinfile:
+    path: $HOME/.bashrc
+    line: complete -C '$HOME/.local/bin/aws_completer' aws
