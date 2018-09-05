@@ -8,6 +8,11 @@
     - pv
   become: true
 
+- name: Configure .bashrc
+  template: 
+    src: bashrc.j2
+    dest: $HOME/.bashrc
+
 - name: Configure .profile
   template: 
     src: profile.j2
