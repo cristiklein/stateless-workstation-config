@@ -14,6 +14,7 @@
     src: cryptroot-unlock-neutered-busybox-progs.patch
     basedir: /usr/share/cryptsetup/initramfs/bin/
     strip: 1
+  when: ansible_distribution_release == 'bionic'
   notify: Update initramfs
 
 - name: Configure dropbear in initramfs
