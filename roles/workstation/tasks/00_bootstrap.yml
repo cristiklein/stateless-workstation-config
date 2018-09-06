@@ -1,0 +1,22 @@
+- name: Ensure no APT pip
+  apt:
+    name: "{{ packages }}"
+    state: absent
+  vars:
+    packages:
+    - python-pip
+    - python3-pip
+  become: true
+
+- name: Install pip2
+  shell: "curl https://bootstrap.pypa.io/get-pip.py | python2 -"
+  args:
+    creates: /usr/local/bin/pip2
+  become: true
+
+- name: Install pip3
+  shell: "curl https://bootstrap.pypa.io/get-pip.py | python3 -"
+  args:
+    creates: /usr/local/bin/pip3
+  become: true
+

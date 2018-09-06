@@ -9,8 +9,6 @@
     - gitk
     - libtext-markdown-perl
     - meld
-    - python-pip
-    - python3-pip
     - sloccount
   become: true
 
@@ -18,3 +16,21 @@
   template:
     src: gitconfig.j2
     dest: $HOME/.gitconfig
+
+- name: Install pipenv
+  pip:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - pipenv
+    
+- name: Ensure $HOME/bin exists
+  file:
+    path: $HOME/bin
+    state: directory
+
+- name: Install pipenv shortcut
+  file:
+    src: $HOME/.local/bin/pipenv
+    dest: $HOME/bin/pipenv
+    state: link

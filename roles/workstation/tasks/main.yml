@@ -1,3 +1,4 @@
+- import_tasks: 00_bootstrap.yml
 - import_tasks: admin_tools.yml
 - import_tasks: basic_tools.yml
 - import_tasks: cleanup.yml
