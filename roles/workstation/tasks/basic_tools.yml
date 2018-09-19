@@ -5,6 +5,7 @@
     packages:
     - curl
     - mc
+    - moreutils
     - pv
   become: true
 
