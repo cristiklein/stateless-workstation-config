@@ -1,3 +1,4 @@
 - name: Install awscli
   pip:
     name: awscli
+    extra_args: --user

@@ -19,6 +19,12 @@
   become: true
   command: snap install slack --classic creates=/snap/bin/slack
 
+- name: Configure terminator (folder)
+  file:
+    path: $HOME/.config/terminator
+    recurse: yes
+    state: directory
+
 - name: Configure terminator
   template:
     src: terminator_config.j2
