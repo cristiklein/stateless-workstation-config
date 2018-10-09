@@ -7,6 +7,7 @@
 - import_tasks: docker.yml
 - import_tasks: dropbox.yml
 - import_tasks: google_chrome.yml
+- import_tasks: google_chrome_elastisys.yml
 - import_tasks: gui_tools.yml
 - import_tasks: development_tools.yml
 - import_tasks: mouse_config.yml

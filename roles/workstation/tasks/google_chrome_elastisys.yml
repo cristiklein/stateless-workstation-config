@@ -1,0 +1,15 @@
+- name: "Create user icons folder"
+  file:
+    path: $HOME/.local/share/icons/hicolor/scalable/apps
+    recurse: yes
+    state: directory
+
+- name: "Install Chrome Elastisys icon"
+  template:
+    src: chrome-elastisys.svg.j2
+    dest: $HOME/.local/share/icons/hicolor/scalable/apps/chrome-elastisys.svg
+
+- name: "Install Chrome Elastisys Desktop file"
+  template:
+    src: chrome-elastisys.desktop.j2
+    dest: $HOME/.local/share/applications/chrome-elastisys.desktop

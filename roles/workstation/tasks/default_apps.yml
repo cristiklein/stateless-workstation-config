@@ -15,6 +15,7 @@
       ['org.gnome.Nautilus.desktop',
       'terminator.desktop',
       'google-chrome.desktop',
+      'chrome-elastisys.desktop',
       'thunderbird.desktop',
       'skype_skypeforlinux.desktop',
       'libreoffice-writer.desktop',
