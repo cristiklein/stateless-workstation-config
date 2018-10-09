@@ -21,9 +21,9 @@
     src: ssh_config.j2
     dest: "$HOME/.ssh/config"
 
-- name: Erase old MANAGED_BY_PUPPET file
+- name: Erase old MANAGED-BYPUPPET file
   file:
-    path: "$HOME/.ssh/MANAGED_BY_PUPPET"
+    path: "$HOME/.ssh/MANAGED-BY-PUPPET"
     state: absent
 
 - name: Setup ssh server
