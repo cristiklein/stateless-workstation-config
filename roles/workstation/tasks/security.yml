@@ -16,6 +16,16 @@
       {% endfor %}
     dest: "$HOME/.ssh/authorized_keys"
 
+- name: Configure SSH client
+  template:
+    src: ssh_config.j2
+    dest: "$HOME/.ssh/config"
+
+- name: Erase old MANAGED_BY_PUPPET file
+  file:
+    path: "$HOME/.ssh/MANAGED_BY_PUPPET"
+    state: absent
+
 - name: Setup ssh server
   apt:
     name: "{{ packages }}"
