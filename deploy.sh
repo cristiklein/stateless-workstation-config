@@ -23,4 +23,11 @@ if ! env \
 then
     log "If the failure above is due to missing privilege, then re-run with:"
     log "$0 --ask-become-pass"
+    exit 1
+fi
+
+if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
+    log "Your path is correctly set"
+else
+    log "Your path is missing ~/bin, you might want to re-login now."
 fi
