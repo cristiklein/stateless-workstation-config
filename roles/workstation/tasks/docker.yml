@@ -7,8 +7,6 @@
   group:
     name: docker
     system: yes
-  notify:
-    - restart-docker
 
 - name: "Add the user {{ ansible_user_id }} to docker group"
   become: true
