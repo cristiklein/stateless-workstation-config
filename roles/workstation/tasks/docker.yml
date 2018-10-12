@@ -1,6 +1,35 @@
-- name: Install docker
+- name: Uninstall snap docker
   become: true
-  command: snap install docker creates=/snap/bin/docker
+  command: snap remove docker removes=/snap/bin/docker
+
+- name: Install docker install prerequisites
+  become: true
+  apt:
+    pkg: "{{ item }}"
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Add Docker apt-key
+  become: true
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+
+- name: Add Docker repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+    state: present
+
+- name: Install Docker
+  become: true
+  apt:
+    pkg: "{{ item }}"
+  with_items:
+    - docker-ce
+    - docker-compose
 
 - name: "Add docker group"
   become: true
@@ -20,9 +49,6 @@
 
 - name: restart-docker
   become: true
-  command: "{{ item }}"
-  with_items:
-  - "snap disable docker"
-  - "snap enable docker"
+  command: "systemctl restart docker"
   when: (not docker_sock.stat.exists) or
         (not docker_sock.stat.gr_name == 'docker')
