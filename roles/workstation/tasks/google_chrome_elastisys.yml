@@ -1,8 +1,11 @@
-- name: "Create user icons folder"
+- name: "Create user applications and icons folder"
   file:
-    path: $HOME/.local/share/icons/hicolor/scalable/apps
+    path: "{{ item }}"
     recurse: yes
     state: directory
+  with_items:
+    - "$HOME/.local/share/applications"
+    - "$HOME/.local/share/icons/hicolor/scalable/apps"
 
 - name: "Install Chrome Elastisys icon"
   template:
