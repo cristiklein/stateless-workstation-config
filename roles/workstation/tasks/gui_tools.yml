@@ -33,8 +33,7 @@
 - name: Install Thunderbird and Calendar
   become: true
   apt:
-    pkg: "{{ item }}"
-  with_items:
-    - thunderbird
-    - xul-ext-lightning
-    - xul-ext-gdata-provider
+    pkg:
+      - thunderbird
+      - xul-ext-lightning
+      - xul-ext-gdata-provider

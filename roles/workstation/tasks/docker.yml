@@ -5,12 +5,11 @@
 - name: Install docker install prerequisites
   become: true
   apt:
-    pkg: "{{ item }}"
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - software-properties-common
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
 
 - name: Add Docker apt-key
   become: true
@@ -26,10 +25,9 @@
 - name: Install Docker
   become: true
   apt:
-    pkg: "{{ item }}"
-  with_items:
-    - docker-ce
-    - docker-compose
+    pkg:
+      - docker-ce
+      - docker-compose
 
 - name: "Add docker group"
   become: true
