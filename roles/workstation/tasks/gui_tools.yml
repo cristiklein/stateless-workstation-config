@@ -29,3 +29,12 @@
   template:
     src: terminator_config.j2
     dest: $HOME/.config/terminator/config
+
+- name: Install Thunderbird and Calendar
+  become: true
+  apt:
+    pkg: "{{ item }}"
+  with_items:
+    - thunderbird
+    - xul-ext-lightning
+    - xul-ext-gdata-provider
