@@ -39,3 +39,11 @@
   template:
     src: passwordmaker.rdf.j2
     dest: $HOME/.passwordmaker.rdf
+
+- name: Do not send LANG via ssh
+  become: true
+  lineinfile:
+    path: /etc/ssh/ssh_config
+    backrefs: true
+    regexp: '(.*)SendEnv(.*)'
+    line: '#\1SendEnv\2'
