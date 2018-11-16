@@ -118,4 +118,7 @@ if ! shopt -oq posix; then
   if [ -f $HOME/.local/bin/aws_completer ]; then
     complete -C '$HOME/.local/bin/aws_completer' aws
   fi
+  if [ -f /snap/google-cloud-sdk/current/completion.bash.inc ]; then
+    . '/snap/google-cloud-sdk/current/completion.bash.inc'
+  fi
 fi
