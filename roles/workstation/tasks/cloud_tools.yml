@@ -2,3 +2,7 @@
   pip:
     name: awscli
     extra_args: --user
+
+- name: Install google-cloud-sdk
+  become: true
+  command: snap install google-cloud-sdk creates=/snap/bin/gcloud
