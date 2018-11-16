@@ -45,5 +45,5 @@
   lineinfile:
     path: /etc/ssh/ssh_config
     backrefs: true
-    regexp: '(.*)SendEnv(.*)'
+    regexp: '([^#]*)SendEnv(.*)'
     line: '#\1SendEnv\2'
