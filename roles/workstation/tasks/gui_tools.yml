@@ -37,3 +37,14 @@
       - thunderbird
       - xul-ext-lightning
       - xul-ext-gdata-provider
+
+- name: OpenSCAD PPA
+  become: true
+  apt_repository:
+    repo: ppa:openscad/releases
+
+- name: OpenSCAD
+  become: true
+  apt:
+    pkg:
+      - openscad
