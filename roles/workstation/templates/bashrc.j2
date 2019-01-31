@@ -123,7 +123,7 @@ if ! shopt -oq posix; then
   if [ -f /snap/google-cloud-sdk/current/completion.bash.inc ]; then
     . '/snap/google-cloud-sdk/current/completion.bash.inc'
   fi
-  if kubectl > /dev/null; then
+  if kubectl > /dev/null 2> /dev/null; then
     source <(kubectl completion bash)
   fi
 fi
