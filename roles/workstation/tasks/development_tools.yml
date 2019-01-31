@@ -24,14 +24,18 @@
   vars:
     packages:
     - pipenv
-    
+
 - name: Ensure $HOME/bin exists
   file:
     path: $HOME/bin
     state: directory
 
-- name: Install pipenv shortcut
+- name: Install pipenv/pip/pip2 shortcuts
   file:
-    src: $HOME/.local/bin/pipenv
-    dest: $HOME/bin/pipenv
+    src: "$HOME/.local/bin/{{ item }}"
+    dest: "$HOME/bin/{{ item }}"
     state: link
+  with_items:
+    - pip
+    - pip2
+    - pipenv
