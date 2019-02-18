@@ -4,6 +4,7 @@
   vars:
     packages:
     - curl
+    - jq
     - mc
     - moreutils
     - pv
