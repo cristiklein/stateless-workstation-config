@@ -13,4 +13,13 @@ cd stateless-workstation-config
 ./deploy.sh --ask-become-pass
 ```
 
+Usage on Ubuntu for Windows
+---------------------------
+```
+sudo apt install git ansible
+git clone git@github.com:cristiklein/stateless-workstation-config.git
+cd stateless-workstation-config
+./deploy.sh --ask-become-pass -t wsl
+```
+
 Enjoy!

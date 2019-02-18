@@ -11,11 +11,15 @@
     - meld
     - sloccount
   become: true
+  tags:
+    - wsl
 
 - name: Install gitconfig
   template:
     src: gitconfig.j2
     dest: $HOME/.gitconfig
+  tags:
+    - wsl
 
 - name: Install pipenv
   pip:
@@ -24,11 +28,15 @@
   vars:
     packages:
     - pipenv
+  tags:
+    - wsl
 
 - name: Ensure $HOME/bin exists
   file:
     path: $HOME/bin
     state: directory
+  tags:
+    - wsl
 
 - name: Install pipenv/pip/pip2 shortcuts
   file:
@@ -39,3 +47,5 @@
     - pip
     - pip2
     - pipenv
+  tags:
+    - wsl

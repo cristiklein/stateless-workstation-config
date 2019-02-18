@@ -8,14 +8,20 @@
     - moreutils
     - pv
   become: true
+  tags:
+    - wsl
 
 - name: Configure .bashrc
   template: 
     src: bashrc.j2
     dest: $HOME/.bashrc
+  tags:
+    - wsl
 
 - name: Configure .profile
   template: 
     src: profile.j2
     dest: $HOME/.profile
+  tags:
+    - wsl
 

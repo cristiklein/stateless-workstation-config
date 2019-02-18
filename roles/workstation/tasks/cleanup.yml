@@ -2,8 +2,12 @@
   apt:
     autoclean: yes
   become: true
+  tags:
+    - wsl
 
 - name: Remove dependencies that are no longer required
   apt:
     autoremove: yes
   become: true
+  tags:
+    - wsl

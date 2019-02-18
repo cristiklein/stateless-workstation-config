@@ -9,3 +9,5 @@
       - hunspell-ro
       - hunspell-sv
   become: true
+  tags:
+    - wsl

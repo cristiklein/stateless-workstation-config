@@ -6,6 +6,8 @@
     - keepassx
     - passwordmaker-cli # legacy, new passwords are on keepassx
   become: true
+  tags:
+    - wsl
 
 - name: Create authorized_keys
   copy:
@@ -15,16 +17,22 @@
       {{ sshkey }}
       {% endfor %}
     dest: "$HOME/.ssh/authorized_keys"
+  tags:
+    - wsl
 
 - name: Configure SSH client
   template:
     src: ssh_config.j2
     dest: "$HOME/.ssh/config"
+  tags:
+    - wsl
 
 - name: Erase old MANAGED-BYPUPPET file
   file:
     path: "$HOME/.ssh/MANAGED-BY-PUPPET"
     state: absent
+  tags:
+    - wsl
 
 - name: Setup ssh server
   apt:
@@ -34,11 +42,15 @@
     - openssh-server
     - fail2ban
   become: true
+  tags:
+    - wsl
 
 - name: Configure PassworkMaker CLI
   template:
     src: passwordmaker.rdf.j2
     dest: $HOME/.passwordmaker.rdf
+  tags:
+    - wsl
 
 - name: Do not send LANG via ssh
   become: true
@@ -47,3 +59,5 @@
     backrefs: true
     regexp: '([^#]*)SendEnv(.*)'
     line: '#\1SendEnv\2'
+  tags:
+    - wsl

@@ -10,3 +10,5 @@
     - net-tools
     - uuid
   become: true
+  tags:
+    - wsl
