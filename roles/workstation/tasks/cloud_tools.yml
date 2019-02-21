@@ -16,3 +16,11 @@
 - name: Install google-cloud-sdk
   become: true
   command: snap install google-cloud-sdk --classic creates=/snap/bin/gcloud
+
+- name: Install kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl
+    dest: $HOME/bin/kubectl
+    mode: 0775
+  tags:
+    - wsl
