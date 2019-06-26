@@ -127,3 +127,7 @@ if ! shopt -oq posix; then
     source <(kubectl completion bash)
   fi
 fi
+
+if [ -f ~/.nvm/nvm.sh ]; then
+  . ~/.nvm/nvm.sh
+fi
