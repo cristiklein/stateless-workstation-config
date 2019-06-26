@@ -23,11 +23,9 @@
 
 - name: Install pipenv
   pip:
-    name: "{{ packages }}"
+    name:
+      - pipenv
     extra_args: --user
-  vars:
-    packages:
-    - pipenv
   tags:
     - wsl
 
@@ -38,14 +36,12 @@
   tags:
     - wsl
 
-- name: Install pipenv/pip/pip2 shortcuts
+- name: Install pipenv shortcuts
   file:
     src: "$HOME/.local/bin/{{ item }}"
     dest: "$HOME/bin/{{ item }}"
     state: link
   with_items:
-    - pip
-    - pip2
     - pipenv
   tags:
     - wsl
