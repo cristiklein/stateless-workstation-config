@@ -6,6 +6,7 @@
     - build-essential
     - git
     - git-crypt
+    - git-lfs
     - gitk
     - libtext-markdown-perl
     - meld
