@@ -11,6 +11,7 @@
     - libtext-markdown-perl
     - meld
     - sloccount
+    - subversion
   become: true
   tags:
     - wsl
