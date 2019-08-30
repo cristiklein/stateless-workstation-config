@@ -1,7 +1,6 @@
 - import_tasks: 00_bootstrap.yml
 - import_tasks: admin_tools.yml
 - import_tasks: basic_tools.yml
-- import_tasks: cleanup.yml
 - import_tasks: cloud_tools.yml
 - import_tasks: dictionaries.yml
 - import_tasks: docker.yml
@@ -15,7 +14,10 @@
 - import_tasks: security.yml
 - import_tasks: tex_tools.yml
 - import_tasks: tmp_on_tmpfs.yml
-- import_tasks: vim.yml 
+- import_tasks: vim.yml
 
 # Must be last, so that launchbar is configured correctly
 - import_tasks: default_apps.yml
+
+# Leave as last for proper cleanup
+- import_tasks: cleanup.yml

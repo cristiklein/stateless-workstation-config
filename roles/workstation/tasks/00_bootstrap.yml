@@ -1,11 +1,8 @@
-- name: pip2/3
-  apt:
-    name: "{{ packages }}"
-    state: present
-  vars:
-    packages:
-    - python-pip
-    - python3-pip
+- name: pip3
   become: true
+  apt:
+    name:
+      - python3-pip
+    state: present
   tags:
     - wsl

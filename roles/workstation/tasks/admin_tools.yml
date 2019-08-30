@@ -1,14 +1,12 @@
 - name: Install admin tools
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - htop
-    - inotify-tools
-    - iotop
-    - iperf
-    - net-tools
-    - uuid
+    name:
+      - htop
+      - inotify-tools
+      - iotop
+      - iperf
+      - net-tools
+      - uuid
   become: true
   tags:
     - wsl

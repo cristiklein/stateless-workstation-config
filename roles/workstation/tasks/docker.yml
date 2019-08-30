@@ -1,6 +1,8 @@
 - name: Uninstall snap docker
   become: true
-  command: snap remove docker removes=/snap/bin/docker
+  snap:
+    name: docker
+    state: absent
 
 - name: Install docker install prerequisites
   become: true

@@ -1,0 +1,22 @@
+- name: Install awscli
+  pip:
+    name: awscli
+    extra_args: --user
+  tags:
+    - wsl
+
+- name: Install awscli shortcut
+  file:
+    src: "$HOME/.local/bin/aws"
+    dest: "$HOME/bin/aws"
+    state: link
+  tags:
+    - wsl
+
+- name: Install aws-iam-authenticator
+  get_url:
+    url: https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+    dest: $HOME/bin/aws-iam-authenticator
+    mode: 0755
+  tags:
+    - wsl

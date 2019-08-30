@@ -1,27 +1,25 @@
 - name: Install basic tools
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - curl
-    - jq
-    - mc
-    - moreutils
-    - pv
-    - zip
+    name:
+      - curl
+      - jq
+      - mc
+      - moreutils
+      - pv
+      - zip
   become: true
   tags:
     - wsl
 
 - name: Configure .bashrc
-  template: 
+  template:
     src: bashrc.j2
     dest: $HOME/.bashrc
   tags:
     - wsl
 
 - name: Configure .profile
-  template: 
+  template:
     src: profile.j2
     dest: $HOME/.profile
   tags:

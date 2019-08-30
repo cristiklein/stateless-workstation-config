@@ -1,38 +1,9 @@
-- name: Install awscli
-  pip:
-    name: awscli
-    extra_args: --user
-  tags:
-    - wsl
-
-- name: Install awscli shortcut
-  file:
-    src: "$HOME/.local/bin/aws"
-    dest: "$HOME/bin/aws"
-    state: link
-  tags:
-    - wsl
-
 - name: Install google-cloud-sdk
   become: true
-  command: snap install google-cloud-sdk --classic creates=/snap/bin/gcloud
+  snap:
+    name: google-cloud-sdk
+    classic: yes
 
-- name: Install kubectl
-  get_url:
-    url: https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl
-    dest: $HOME/bin/kubectl
-    mode: 0775
-  tags:
-    - wsl
-
-- name: Install aws-iam-authenticator
-  get_url:
-    url: https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
-    dest: $HOME/bin/aws-iam-authenticator
-    mode: 0755
-  tags:
-    - wsl
-
+- include_tasks: cloud_tools/aws.yml
 - include_tasks: cloud_tools/az.yml
-  tags:
-    - wsl
+- include_tasks: cloud_tools/k8s.yml
