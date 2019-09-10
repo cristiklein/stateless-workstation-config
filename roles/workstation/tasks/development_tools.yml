@@ -24,10 +24,10 @@
     - wsl
 
 - name: Install pipenv
+  become: true
   pip:
-    name:
-      - pipenv
-    extra_args: --user
+    name: pipenv
+    executable: pip3
   tags:
     - wsl
 
