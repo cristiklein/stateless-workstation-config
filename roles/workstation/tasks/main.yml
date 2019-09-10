@@ -15,6 +15,7 @@
 - import_tasks: tex_tools.yml
 - import_tasks: tmp_on_tmpfs.yml
 - import_tasks: vim.yml
+- import_tasks: vscode.yml
 
 # Must be last, so that launchbar is configured correctly
 - import_tasks: default_apps.yml
