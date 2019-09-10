@@ -1,0 +1,2 @@
+# The package name to install
+visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"

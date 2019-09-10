@@ -1,0 +1,31 @@
+---
+- name: install dependencies (apt)
+  become: yes
+  apt:
+    name:
+      - ca-certificates
+      - apt-transport-https
+      - gconf2
+      - libasound2
+      - libgtk2.0-0
+      - libxss1
+    state: present
+
+- name: install key (apt)
+  become: yes
+  apt_key:
+    url: 'https://packages.microsoft.com/keys/microsoft.asc'
+    state: present
+
+- name: install VS Code repo (apt)
+  become: yes
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    filename: vscode
+    state: present
+
+- name: install VS Code (apt)
+  become: yes
+  apt:
+    name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+    state: present
