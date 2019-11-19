@@ -6,6 +6,12 @@
   tags:
     - wsl
 
+- name: Install kubectx
+  apt:
+    deb: https://ftp.acc.umu.se/debian/pool/main/k/kubectx/kubectx_0.6.3-2_all.deb
+  tags:
+    - wsl
+
 - name: Install helm
   become: true
   snap:
