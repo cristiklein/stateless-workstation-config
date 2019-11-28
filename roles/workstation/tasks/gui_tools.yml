@@ -42,6 +42,7 @@
   become: true
   apt_repository:
     repo: ppa:openscad/releases
+    codename: bionic
 
 - name: OpenSCAD
   become: true
