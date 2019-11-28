@@ -6,3 +6,8 @@
     state: present
   tags:
     - wsl
+
+- name: Ensure $HOME/bin folder
+  file:
+    path: $HOME/bin
+    state: directory
