@@ -7,6 +7,7 @@
     - wsl
 
 - name: Install kubectx
+  become: true
   apt:
     deb: https://ftp.acc.umu.se/debian/pool/main/k/kubectx/kubectx_0.6.3-2_all.deb
   tags:
