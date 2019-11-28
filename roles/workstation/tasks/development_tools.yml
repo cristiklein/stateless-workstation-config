@@ -28,6 +28,7 @@
   pip:
     name: pipenv
     executable: pip3
+    extra_args: --user
   tags:
     - wsl
 
