@@ -22,4 +22,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/.dotnet/tools" ] ; then
+    PATH="$HOME/.dotnet/tools:$PATH"
+fi
+
 EDITOR=/usr/bin/vim
