@@ -4,6 +4,11 @@
     name: google-cloud-sdk
     classic: yes
 
+- name: Install rclone
+  become: true
+  apt:
+    name: rclone
+
 - include_tasks: cloud_tools/aws.yml
 - include_tasks: cloud_tools/az.yml
 - include_tasks: cloud_tools/k8s.yml
