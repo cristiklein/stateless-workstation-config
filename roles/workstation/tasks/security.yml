@@ -1,10 +1,14 @@
 - name: Install security tools
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
+    - gnupg2
+    - gnupg-agent
     - keepassx
     - passwordmaker-cli # legacy, new passwords are on keepassx
+    - pcscd
+    - pinentry-curses
+    - scdaemon
+    - yubikey-personalization
   become: true
   tags:
     - wsl
