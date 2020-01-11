@@ -62,6 +62,9 @@
     content: |
       # DO NOT EDIT! This file is managed by Ansible.
       use-agent
+      {% for gpgtrustedkey in gpgtrustedkeys %}
+      trusted-key {{ gpgtrustedkey }}
+      {% endfor %}
   tags:
     - gpg
 
