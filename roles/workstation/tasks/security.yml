@@ -8,6 +8,7 @@
     - pcscd
     - pinentry-curses
     - scdaemon
+    - wipe
     - yubikey-personalization
     - yubikey-personalization-gui
   become: true
