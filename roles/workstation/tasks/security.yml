@@ -28,6 +28,7 @@
   copy:
     dest: $HOME/.config/autostart/gnome-keyring-ssh.desktop
     content: |
+      # DO NOT EDIT! This file is managed by Ansible.
       [Desktop Entry]
       Type=Application
       Name=SSH Key Agent
@@ -54,10 +55,12 @@
     mode: 0700
   tags:
     - gpg
+
 - name: Configure gpg
   copy:
     dest: $HOME/.gnupg/gpg.conf
     content: |
+      # DO NOT EDIT! This file is managed by Ansible.
       use-agent
   tags:
     - gpg
@@ -66,6 +69,7 @@
   copy:
     dest: $HOME/.gnupg/gpg-agent.conf
     content: |
+      # DO NOT EDIT! This file is managed by Ansible.
       enable-ssh-support
   tags:
     - gpg
