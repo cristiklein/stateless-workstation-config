@@ -50,6 +50,7 @@
     path: $HOME/.gnupg
     state: directory
     recurse: true
+    mode: 0700
   tags:
     - gpg
 - name: Configure gpg
