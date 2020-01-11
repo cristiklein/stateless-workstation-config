@@ -9,9 +9,64 @@
     - pinentry-curses
     - scdaemon
     - yubikey-personalization
+    - yubikey-personalization-gui
   become: true
   tags:
     - wsl
+    - gpg
+
+- name: Create autostart user folder
+  file:
+    path: $HOME/.config/autostart
+    state: directory
+    recurse: true
+  tags:
+    - gpg
+
+- name: Prefer gpg-agent instead of ssh-agent
+  copy:
+    dest: $HOME/.config/autostart/gnome-keyring-ssh.desktop
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=SSH Key Agent
+      Comment=GNOME Keyring: SSH Agent
+      Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
+      OnlyShowIn=GNOME;Unity;MATE;
+      X-GNOME-Autostart-Phase=PreDisplayServer
+      X-GNOME-AutoRestart=false
+      X-GNOME-Autostart-Notify=true
+      X-GNOME-Bugzilla-Bugzilla=GNOME
+      X-GNOME-Bugzilla-Product=gnome-keyring
+      X-GNOME-Bugzilla-Component=general
+      X-GNOME-Bugzilla-Version=3.34.0
+      X-Ubuntu-Gettext-Domain=gnome-keyring
+      Hidden=true
+  tags:
+    - gpg
+
+- name: Create gpg config folder
+  file:
+    path: $HOME/.gnupg
+    state: directory
+    recurse: true
+  tags:
+    - gpg
+- name: Configure gpg
+  copy:
+    dest: $HOME/.gnupg/gpg.conf
+    content: |
+      use-agent
+  tags:
+    - gpg
+
+- name: Configure gpg-agent
+  copy:
+    dest: $HOME/.gnupg/gpg-agent.conf
+    content: |
+      enable-ssh-support
+  tags:
+    - gpg
 
 - name: Create authorized_keys
   copy:
