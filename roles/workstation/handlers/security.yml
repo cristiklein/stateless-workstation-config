@@ -1,0 +1,6 @@
+- name: import gpg keys
+  shell: |
+    set -ex
+
+    gpg --import $HOME/.gnupg/gpgkeys.txt
+    gpg --card-status

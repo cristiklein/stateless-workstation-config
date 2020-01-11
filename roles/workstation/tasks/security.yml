@@ -69,6 +69,20 @@
   tags:
     - gpg
 
+- name: Create gpg_keys
+  copy:
+    content: |
+      # DO NOT EDIT! This file is managed by Ansible.
+      {% for gpgkey in gpgkeys %}
+      {{ gpgkey }}
+      {% endfor %}
+    dest: "$HOME/.gnupg/gpgkeys.txt"
+  notify:
+    - import gpg keys
+  tags:
+    - wsl
+    - gpg
+
 - name: Create authorized_keys
   copy:
     content: |
