@@ -23,10 +23,12 @@
   tags:
     - wsl
 
-- name: Install pipenv
+- name: Install tools (via pip)
   become: true
   pip:
-    name: pipenv
+    name:
+      - pipenv
+      - pre-commit
     executable: pip3
     extra_args: --user
   tags:

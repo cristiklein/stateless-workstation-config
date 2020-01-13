@@ -24,6 +24,10 @@ if [ -f ~/.nvm/nvm.sh ]; then
   . ~/.nvm/nvm.sh
 fi
 
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Give highest priority to the user's PATH
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
