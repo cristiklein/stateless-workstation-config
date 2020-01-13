@@ -12,6 +12,6 @@
     state: directory
 
 - name: Configure mplayer
-  template: 
+  template:
     src: mplayer_config.j2
     dest: $HOME/.mplayer/config

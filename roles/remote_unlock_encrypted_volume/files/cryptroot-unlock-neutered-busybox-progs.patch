@@ -18,11 +18,11 @@ index d2b6f51..6105bdf 100755
 +		fi
  	done
  }
- 
+
 @@ -104,7 +110,7 @@ wait_for_prompt() {
  			break
  		fi
- 
+
 -		usleep 100000
 +		sleep 0.1
  		timer=$(( $timer - 1 ))
@@ -30,7 +30,7 @@ index d2b6f51..6105bdf 100755
  			echo "Error: Timeout reached while waiting for askpass." >&2
 @@ -113,14 +119,14 @@ wait_for_prompt() {
  	done
- 
+
  	# find the cryptsetup process with same $CRYPTTAB_NAME
 -	eval $(grep -Ez '^CRYPTTAB_(NAME|TRIED|SOURCE)=' "/proc/$pid/environ" | tr '\0' '\n')
 +	eval $(tr '\0' '\n' < "/proc/$pid/environ" | grep -E '^CRYPTTAB_(NAME|TRIED|SOURCE)=')
@@ -38,7 +38,7 @@ index d2b6f51..6105bdf 100755
  		echo "Error: Refusing to process unknown device $CRYPTTAB_NAME" >&2
  		exit 1
  	fi
- 
+
  	for pid in $(pgrep_exe '/sbin/cryptsetup'); do
 -		if grep -Fxqz "CRYPTTAB_NAME=$CRYPTTAB_NAME" "/proc/$pid/environ"; then
 +		if tr '\0' '\n' < "/proc/$pid/environ" | grep -Fxq "CRYPTTAB_NAME=$CRYPTTAB_NAME"; then

@@ -1,5 +1,5 @@
 - name: Configure default apps
-  template: 
+  template:
     src: mimeapps.list.j2
     dest: $HOME/.mimeapps.list
 
