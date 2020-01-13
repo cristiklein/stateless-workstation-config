@@ -57,6 +57,7 @@
     echo "GPG keys imported at $(date -Is)" > $HOME/.gnupg/gpgkeys-imported.txt
   args:
     creates: $HOME/.gnupg/gpgkeys-imported.txt
+  ignore_errors: yes
   tags:
     - gpg
 
