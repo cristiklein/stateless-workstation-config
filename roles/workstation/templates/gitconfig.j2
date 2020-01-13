@@ -1,12 +1,8 @@
 {{ ansible_managed | comment }}
 
 [user]
-{% if template_host == "blackie" %}
-	email = cristian.klein@klarna.com
-{% else %}
-	email = cristian@kleinlabs.eu
-{% endif %}
-	name = Cristian Klein
+	email = {{ email }}
+	name = {{ name }}
 [push]
 	default = simple
 [alias]

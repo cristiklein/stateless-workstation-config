@@ -18,7 +18,7 @@
 
 - name: Clone vim configuration
   git:
-    repo: git@github.com:cristiklein/vimrc.git
+    repo: '{{ repos.vimrc }}'
     dest: $HOME/.vim
     depth: 1
     update: no
