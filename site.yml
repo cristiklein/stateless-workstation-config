@@ -2,7 +2,8 @@
   hosts: localhost
   connection: local
   roles:
-    - cklein.shell
     - cklein.security
+    - cklein.shell
+    - cklein.vscode
     - workstation
     - remote_unlock_encrypted_volume
