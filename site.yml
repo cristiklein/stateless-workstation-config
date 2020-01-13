@@ -4,6 +4,9 @@
   module_defaults:
     apt:
       force_apt_get: yes
+    pip:
+      executable: pip3
+      extra_args: --user
   roles:
     # Must be first
     - cklein.00_bootstrap
