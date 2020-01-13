@@ -2,8 +2,15 @@
   hosts: localhost
   connection: local
   roles:
+    # Must be first
+    - cklein.00_bootstrap
+
+    # These roles should be independent
     - cklein.security
     - cklein.shell
     - cklein.vscode
     - workstation
     - remote_unlock_encrypted_volume
+
+    # Leave as last for proper cleanup
+    - cklein.zz_cleanup

@@ -3,11 +3,12 @@
   apt:
     name:
       - python3-pip
-    state: present
   tags:
     - wsl
 
-- name: Ensure $HOME/bin folder
+- name: Create $HOME/bin
   file:
     path: $HOME/bin
     state: directory
+  tags:
+    - wsl
