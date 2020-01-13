@@ -11,7 +11,6 @@
 - import_tasks: development_tools.yml
 - import_tasks: mouse_config.yml
 - import_tasks: mplayer.yml
-- import_tasks: security.yml
 - import_tasks: tex_tools.yml
 - import_tasks: tmp_on_tmpfs.yml
 - import_tasks: vim.yml

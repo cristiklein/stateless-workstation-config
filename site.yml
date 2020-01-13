@@ -3,6 +3,7 @@
   connection: local
   roles:
     - cklein.shell
+    - cklein.security
     - workstation
     - remote_unlock_encrypted_volume
   vars:

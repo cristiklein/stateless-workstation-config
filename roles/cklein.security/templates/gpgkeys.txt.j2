@@ -1,0 +1,4 @@
+{{ ansible_managed | comment }}
+{% for gpgkey in gpgkeys %}
+{{ gpgkey }}
+{% endfor %}

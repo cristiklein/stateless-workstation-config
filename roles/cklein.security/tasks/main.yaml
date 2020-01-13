@@ -1,0 +1,99 @@
+- name: Install security tools
+  apt:
+    name:
+    - gnupg2
+    - gnupg-agent
+    - keepassx
+    - passwordmaker-cli # legacy, new passwords are on keepassx
+    - pcscd
+    - pinentry-curses
+    - scdaemon
+    - wipe
+    - yubikey-personalization
+    - yubikey-personalization-gui
+  become: true
+  tags:
+    - wsl
+    - gpg
+
+- name: Create autostart user folder
+  file:
+    path: $HOME/.config/autostart
+    state: directory
+    recurse: true
+  tags:
+    - gpg
+
+- name: Create gpg config folder
+  file:
+    path: $HOME/.gnupg
+    state: directory
+    recurse: true
+    mode: 0700
+  tags:
+    - gpg
+
+- name: Copy configuration files
+  template:
+    src: '{{ item | basename }}.j2'
+    dest: '{{ item }}'
+  loop:
+    - $HOME/.config/autostart/gnome-keyring-ssh.desktop
+    - $HOME/.gnupg/gpg.conf
+    - $HOME/.gnupg/gpg-agent.conf
+    - $HOME/.gnupg/gpgkeys.txt
+  tags:
+    - gpg
+
+- name: Import GPG keys
+  shell: |
+    set -ex
+
+    gpg --import $HOME/.gnupg/gpgkeys.txt
+
+    echo 'Setting up GPG private keys. This requires the SmartCard to be plugged in' >&2
+    gpg --card-status
+
+    echo "GPG keys imported at $(date -Is)" > $HOME/.gnupg/gpgkeys-imported.txt
+  args:
+    creates: $HOME/.gnupg/gpgkeys-imported.txt
+  tags:
+    - gpg
+
+- name: Configure SSH client
+  template:
+    src: 'ssh/{{ item | basename }}.j2'
+    dest: '{{ item }}'
+  loop:
+    - $HOME/.ssh/authorized_keys
+    - $HOME/.ssh/config
+  tags:
+    - ssh
+
+- name: Setup ssh server
+  apt:
+    name:
+      - openssh-server
+      - fail2ban
+  become: true
+  tags:
+    - ssh
+    - wsl
+
+- name: Do not send LANG via ssh
+  become: true
+  lineinfile:
+    path: /etc/ssh/ssh_config
+    backrefs: true
+    regexp: '([^#]*)SendEnv(.*)'
+    line: '#\1SendEnv\2'
+  tags:
+    - ssh
+    - wsl
+
+- name: Configure PasswordMaker
+  template:
+    src: passwordmaker.rdf.j2
+    dest: $HOME/.passwordmaker.rdf
+  tags:
+    - wsl
