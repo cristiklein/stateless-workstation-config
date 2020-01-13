@@ -6,6 +6,7 @@
       - iotop
       - iperf
       - net-tools
+      - screen
       - uuid
   become: true
   tags:
