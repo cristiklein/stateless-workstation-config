@@ -1,19 +1,17 @@
 - name: "apt | ensure Google linux signing key present"
+  become: true
   apt_key:
     id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-  become: true
 
 - name: "apt | ensure Google chrome repo present"
+  become: true
   apt_repository:
     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
     filename: "google-chrome"
-    state: present
     update_cache: yes
-  become: true
 
 - name: "apt | ensure Google chrome present"
+  become: true
   apt:
     name: "google-chrome-stable"
-    state: present
-  become: true

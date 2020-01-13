@@ -35,3 +35,10 @@ repos:
       language: pygrep
       entry: '[$]HOME'
       files: '^roles/.*[.]ya?ml$'
+    - id: no-state-present
+      name: no-state-present
+      description: >-
+        Avoid 'state: present' as it only adds visual noise.
+      language: pygrep
+      entry: 'state: present'
+      files: '^roles/.*[.]ya?ml$'

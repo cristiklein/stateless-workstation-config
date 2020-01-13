@@ -23,4 +23,3 @@
       'libreoffice-impress.desktop',
       'spotify_spotify.desktop',
       'keepassx.desktop']
-    state: present

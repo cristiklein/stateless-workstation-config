@@ -17,7 +17,6 @@
   become: true
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-    state: present
 
 - name: Install Docker
   become: true

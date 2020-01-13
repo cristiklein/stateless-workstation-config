@@ -19,7 +19,6 @@
   become: true
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic main
-    state: present
 
 - name: Install Azure CLI
   become: true
