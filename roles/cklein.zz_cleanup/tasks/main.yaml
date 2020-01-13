@@ -1,3 +1,20 @@
+- name: Prefer binaries in $HOME/bin instead of snap packages
+  become: true
+  snap:
+    name:
+      - helm
+    state: absent
+
+- name: Prefer binaries in $HOME/bin instead of deb packages
+  become: true
+  apt:
+    name:
+      - kubectx
+    state: absent
+    purge: true
+  tags:
+    - wsl
+
 - name: Remove useless packages from the cache
   apt:
     autoclean: yes

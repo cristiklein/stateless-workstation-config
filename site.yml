@@ -6,6 +6,7 @@
     - cklein.00_bootstrap
 
     # These roles should be independent
+    - cklein.cncf
     - cklein.security
     - cklein.shell
     - cklein.vscode

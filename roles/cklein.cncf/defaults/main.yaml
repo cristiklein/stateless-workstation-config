@@ -1,0 +1,7 @@
+helm_version: v3.0.2
+
+kubectl_version: v1.13.0
+kubectx_version: v0.7.1
+kubens_version: v0.7.1
+
+terraform_version: 0.12.19

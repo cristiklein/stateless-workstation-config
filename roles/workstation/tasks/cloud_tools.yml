@@ -11,4 +11,3 @@
 
 - include_tasks: cloud_tools/aws.yml
 - include_tasks: cloud_tools/az.yml
-- include_tasks: cloud_tools/k8s.yml
