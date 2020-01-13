@@ -1,8 +1,5 @@
 - name: Install GUI tools
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
     - dconf-editor
     - terminator
   become: true
@@ -21,14 +18,14 @@
 
 - name: Configure terminator (folder)
   file:
-    path: $HOME/.config/terminator
+    path: ~/.config/terminator
     recurse: yes
     state: directory
 
 - name: Configure terminator
   template:
     src: terminator_config.j2
-    dest: $HOME/.config/terminator/config
+    dest: ~/.config/terminator/config
 
 - name: Install Thunderbird and Calendar
   become: true

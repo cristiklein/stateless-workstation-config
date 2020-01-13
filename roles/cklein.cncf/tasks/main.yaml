@@ -1,7 +1,7 @@
 - name: Install binaries
   get_url:
     url: '{{ item }}'
-    dest: '$HOME/bin/{{ item | basename }}'
+    dest: '~/bin/{{ item | basename }}'
     mode: 0755
   loop:
     - https://raw.githubusercontent.com/ahmetb/kubectx/{{ kubectx_version }}/kubectx
@@ -13,8 +13,8 @@
 - name: Install helm
   unarchive:
     src: https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz
-    dest: $HOME/bin
-    creates: $HOME/bin/helm
+    dest: ~/bin
+    creates: ~/bin/helm
     remote_src: yes
     extra_opts:
       - --strip-components=1
@@ -26,8 +26,8 @@
 - name: Install terraform
   unarchive:
     src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
-    dest: $HOME/bin
-    creates: $HOME/bin/terraform
+    dest: ~/bin
+    creates: ~/bin/terraform
     remote_src: yes
   tags:
     - wsl

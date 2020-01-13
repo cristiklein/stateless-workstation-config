@@ -27,3 +27,11 @@ repos:
       language: pygrep
       entry: '[Kk]lein'
       files: '^roles/.*$'
+    - id: no-dollar-home
+      name: no-dollar-home
+      description: >-
+        Prefer tilde (~) to $HOME. E.g., unarchive's create does not handle $HOME.
+        https://github.com/ansible/ansible/pull/27018
+      language: pygrep
+      entry: '[$]HOME'
+      files: '^roles/.*[.]ya?ml$'

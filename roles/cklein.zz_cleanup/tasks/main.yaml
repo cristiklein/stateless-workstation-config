@@ -1,11 +1,11 @@
-- name: Prefer binaries in $HOME/bin instead of snap packages
+- name: Prefer binaries in ~/bin instead of snap packages
   become: true
   snap:
     name:
       - helm
     state: absent
 
-- name: Prefer binaries in $HOME/bin instead of deb packages
+- name: Prefer binaries in ~/bin instead of deb packages
   become: true
   apt:
     name:

@@ -6,9 +6,9 @@
   tags:
     - wsl
 
-- name: Create $HOME/bin
+- name: Create ~/bin
   file:
-    path: $HOME/bin
+    path: ~/bin
     state: directory
   tags:
     - wsl

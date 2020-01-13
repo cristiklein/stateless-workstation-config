@@ -1,7 +1,7 @@
 - name: Configure default apps
   template:
     src: mimeapps.list.j2
-    dest: $HOME/.mimeapps.list
+    dest: ~/.mimeapps.list
 
 - name: Install python-psutil
   become: true

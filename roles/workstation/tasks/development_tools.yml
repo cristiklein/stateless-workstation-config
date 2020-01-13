@@ -19,7 +19,7 @@
 - name: Install gitconfig
   template:
     src: gitconfig.j2
-    dest: $HOME/.gitconfig
+    dest: ~/.gitconfig
   tags:
     - wsl
 
@@ -38,21 +38,4 @@
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
   args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-
-- name: Ensure $HOME/bin exists
-  file:
-    path: $HOME/bin
-    state: directory
-  tags:
-    - wsl
-
-- name: Install pipenv shortcuts
-  file:
-    src: "$HOME/.local/bin/{{ item }}"
-    dest: "$HOME/bin/{{ item }}"
-    state: link
-  with_items:
-    - pipenv
-  tags:
-    - wsl
+    creates: ~/.nvm/nvm.sh

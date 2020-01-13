@@ -18,7 +18,7 @@
 
 - name: Create autostart user folder
   file:
-    path: $HOME/.config/autostart
+    path: ~/.config/autostart
     state: directory
     recurse: true
   tags:
@@ -26,7 +26,7 @@
 
 - name: Create gpg config folder
   file:
-    path: $HOME/.gnupg
+    path: ~/.gnupg
     state: directory
     recurse: true
     mode: 0700
@@ -38,10 +38,10 @@
     src: '{{ item | basename }}.j2'
     dest: '{{ item }}'
   loop:
-    - $HOME/.config/autostart/gnome-keyring-ssh.desktop
-    - $HOME/.gnupg/gpg.conf
-    - $HOME/.gnupg/gpg-agent.conf
-    - $HOME/.gnupg/gpgkeys.txt
+    - ~/.config/autostart/gnome-keyring-ssh.desktop
+    - ~/.gnupg/gpg.conf
+    - ~/.gnupg/gpg-agent.conf
+    - ~/.gnupg/gpgkeys.txt
   tags:
     - gpg
 
@@ -49,14 +49,14 @@
   shell: |
     set -ex
 
-    gpg --import $HOME/.gnupg/gpgkeys.txt
+    gpg --import ~/.gnupg/gpgkeys.txt
 
     echo 'Setting up GPG private keys. This requires the SmartCard to be plugged in' >&2
     gpg --card-status
 
-    echo "GPG keys imported at $(date -Is)" > $HOME/.gnupg/gpgkeys-imported.txt
+    echo "GPG keys imported at $(date -Is)" > ~/.gnupg/gpgkeys-imported.txt
   args:
-    creates: $HOME/.gnupg/gpgkeys-imported.txt
+    creates: ~/.gnupg/gpgkeys-imported.txt
   ignore_errors: yes
   tags:
     - gpg
@@ -66,8 +66,8 @@
     src: 'ssh/{{ item | basename }}.j2'
     dest: '{{ item }}'
   loop:
-    - $HOME/.ssh/authorized_keys
-    - $HOME/.ssh/config
+    - ~/.ssh/authorized_keys
+    - ~/.ssh/config
   tags:
     - ssh
 
@@ -95,6 +95,6 @@
 - name: Configure PasswordMaker
   template:
     src: passwordmaker.rdf.j2
-    dest: $HOME/.passwordmaker.rdf
+    dest: ~/.passwordmaker.rdf
   tags:
     - wsl

@@ -12,23 +12,23 @@
 - name: Configure default editor
   template:
     src: selected_editor.j2
-    dest: $HOME/.selected_editor
+    dest: ~/.selected_editor
   tags:
     - wsl
 
 - name: Clone vim configuration
   git:
     repo: '{{ repos.vimrc }}'
-    dest: $HOME/.vim
+    dest: ~/.vim
     depth: 1
     update: no
   tags:
     - wsl
 
-- name: Link .vimrc to $HOME
+- name: Link .vimrc to ~
   file:
-    src: $HOME/.vim/.vimrc
-    dest: $HOME/.vimrc
+    src: ~/.vim/.vimrc
+    dest: ~/.vimrc
     state: link
   tags:
     - wsl

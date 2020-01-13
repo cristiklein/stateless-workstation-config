@@ -8,10 +8,10 @@
 
 - name: Create mplayer configuration folder
   file:
-    path: $HOME/.mplayer
+    path: ~/.mplayer
     state: directory
 
 - name: Configure mplayer
   template:
     src: mplayer_config.j2
-    dest: $HOME/.mplayer/config
+    dest: ~/.mplayer/config

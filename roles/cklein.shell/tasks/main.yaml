@@ -1,7 +1,7 @@
 - name: Copy shell configuration files
   template:
     src: "{{ item }}.j2"
-    dest: "$HOME/.{{ item }}"
+    dest: "~/.{{ item }}"
   with_list:
     - bashrc
     - bash_aliases
@@ -12,7 +12,7 @@
 
 - name: Remove unnecessary shell configuration files
   file:
-    path: '$HOME/.{{ item }}'
+    path: '~/.{{ item }}'
     state: absent
   with_list:
     - bash_profile

@@ -4,15 +4,15 @@
     recurse: yes
     state: directory
   with_items:
-    - "$HOME/.local/share/applications"
-    - "$HOME/.local/share/icons/hicolor/scalable/apps"
+    - "~/.local/share/applications"
+    - "~/.local/share/icons/hicolor/scalable/apps"
 
 - name: "Install Chrome Elastisys icon"
   template:
     src: chrome-elastisys.svg.j2
-    dest: $HOME/.local/share/icons/hicolor/scalable/apps/chrome-elastisys.svg
+    dest: ~/.local/share/icons/hicolor/scalable/apps/chrome-elastisys.svg
 
 - name: "Install Chrome Elastisys Desktop file"
   template:
     src: chrome-elastisys.desktop.j2
-    dest: $HOME/.local/share/applications/chrome-elastisys.desktop
+    dest: ~/.local/share/applications/chrome-elastisys.desktop
