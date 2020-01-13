@@ -1,6 +1,9 @@
 - name: set up localhost as workstation
   hosts: localhost
   connection: local
+  module_defaults:
+    apt:
+      force_apt_get: yes
   roles:
     # Must be first
     - cklein.00_bootstrap
