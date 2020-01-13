@@ -1,7 +1,8 @@
 - name: Install GUI tools
   apt:
-    - dconf-editor
-    - terminator
+    name:
+      - dconf-editor
+      - terminator
   become: true
 
 - name: Install skype
