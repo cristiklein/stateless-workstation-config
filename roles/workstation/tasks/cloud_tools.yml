@@ -1,8 +1,6 @@
 - name: Install google-cloud-sdk
   become: true
-  snap:
-    name: google-cloud-sdk
-    classic: yes
+  command: snap install google-cloud-sdk --classic creates=/snap/bin/gcloud
 
 - name: Install rclone
   become: true
