@@ -10,24 +10,3 @@
   become: true
   tags:
     - wsl
-
-- name: Copy shell configuration files
-  template:
-    src: "{{ item }}.j2"
-    dest: "$HOME/.{{ item }}"
-  with_list:
-    - bashrc
-    - bash_aliases
-    - bash_logout
-    - profile
-  tags:
-    - wsl
-
-- name: Remove unnecessary shell configuration files
-  file:
-    path: '$HOME/.{{ item }}'
-    state: absent
-  with_list:
-    - bash_profile
-  tags:
-    - wsl

@@ -2,6 +2,7 @@
   hosts: localhost
   connection: local
   roles:
+    - cklein.shell
     - workstation
     - remote_unlock_encrypted_volume
   vars:
