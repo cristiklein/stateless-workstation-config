@@ -1,8 +1,6 @@
 - name: Install required packages
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
       - dropbear-initramfs
       - cryptsetup
   become: true
@@ -31,12 +29,8 @@
 
 - name: Create authorized_keys
   become: true
-  copy:
-    content: |
-      # DO NOT EDIT! This file is managed by Ansible.
-      {% for sshkey in sshkeys %}
-      {{ sshkey }}
-      {% endfor %}
+  template:
+    src: 'ssh/authorized_keys.j2'
     dest: /etc/dropbear-initramfs/authorized_keys
     mode: 0644
   notify: Update initramfs

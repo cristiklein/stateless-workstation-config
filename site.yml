@@ -10,11 +10,11 @@
 
     # These roles should be independent
     - cklein.cncf
+    - cklein.remote_unlock_encrypted_volume
     - cklein.security
     - cklein.shell
     - cklein.vscode
     - workstation
-    - remote_unlock_encrypted_volume
 
     # Leave as last for proper cleanup
     - cklein.zz_cleanup

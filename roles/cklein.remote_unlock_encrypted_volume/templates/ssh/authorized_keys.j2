@@ -1,0 +1,4 @@
+{{ ansible_managed | comment }}
+{% for sshkey in sshkeys %}
+{{ sshkey }}
+{% endfor %}
