@@ -61,6 +61,15 @@
   tags:
     - gpg
 
+- name: Create SSH config folder
+  file:
+    path: ~/.ssh
+    state: directory
+    recurse: true
+    mode: 0700
+  tags:
+    - ssh
+
 - name: Configure SSH client
   template:
     src: 'ssh/{{ item | basename }}.j2'
