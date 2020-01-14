@@ -25,4 +25,4 @@ docker run \
     -ti \
     -v $(pwd):$(pwd):ro \
     -w $(pwd) \
-    $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags snap,systemd
+    $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags mount,snap,systemd

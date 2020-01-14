@@ -6,3 +6,5 @@
     opts: defaults,noatime,size=25%,mode=1777
     state: mounted
   become: true
+  tags:
+    - mount
