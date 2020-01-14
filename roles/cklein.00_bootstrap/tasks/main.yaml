@@ -3,6 +3,7 @@
   apt:
     name:
       - python3-pip
+      - unzip
   tags:
     - wsl
 
