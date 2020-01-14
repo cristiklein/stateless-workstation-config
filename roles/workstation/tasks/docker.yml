@@ -46,3 +46,5 @@
   command: "systemctl restart docker"
   when: (not docker_sock.stat.exists) or
         (not docker_sock.stat.gr_name == 'docker')
+  tags:
+    - systemd

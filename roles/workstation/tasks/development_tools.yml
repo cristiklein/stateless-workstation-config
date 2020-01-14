@@ -1,8 +1,6 @@
 - name: Install development tools
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
     - build-essential
     - git
     - git-crypt
@@ -13,23 +11,17 @@
     - sloccount
     - subversion
   become: true
-  tags:
-    - wsl
 
 - name: Install gitconfig
   template:
     src: gitconfig.j2
     dest: ~/.gitconfig
-  tags:
-    - wsl
 
 - name: Install tools (via pip)
   pip:
     name:
       - pipenv
       - pre-commit
-  tags:
-    - wsl
 
 - name: Install nvm
   shell: >

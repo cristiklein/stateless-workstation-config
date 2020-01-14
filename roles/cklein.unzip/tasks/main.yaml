@@ -3,5 +3,3 @@
   apt:
     name:
       - unzip
-  tags:
-    - wsl

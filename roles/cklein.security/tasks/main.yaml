@@ -13,7 +13,6 @@
     - yubikey-personalization-gui
   become: true
   tags:
-    - wsl
     - gpg
 
 - name: Create autostart user folder
@@ -88,7 +87,6 @@
   become: true
   tags:
     - ssh
-    - wsl
 
 - name: Do not send LANG via ssh
   become: true
@@ -99,11 +97,8 @@
     line: '#\1SendEnv\2'
   tags:
     - ssh
-    - wsl
 
 - name: Configure PasswordMaker
   template:
     src: passwordmaker.rdf.j2
     dest: ~/.passwordmaker.rdf
-  tags:
-    - wsl

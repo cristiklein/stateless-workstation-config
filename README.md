@@ -7,7 +7,7 @@ Usage
 After installing a fresh Ubuntu 19.10:
 
 ```
-sudo apt install git ansible
+sudo apt install git
 git clone https://github.com/cristiklein/stateless-workstation-config.git
 cd stateless-workstation-config
 ./deploy.sh --ask-become-pass
@@ -16,10 +16,10 @@ cd stateless-workstation-config
 Usage on Ubuntu for Windows
 ---------------------------
 ```
-sudo apt install git ansible
+sudo apt install git
 git clone https://github.com/cristiklein/stateless-workstation-config.git
 cd stateless-workstation-config
-./deploy.sh --ask-become-pass -t wsl
+./deploy.sh --ask-become-pass -t snap,systemd
 ```
 
 Enjoy!

@@ -9,5 +9,3 @@
       - screen
       - uuid
   become: true
-  tags:
-    - wsl

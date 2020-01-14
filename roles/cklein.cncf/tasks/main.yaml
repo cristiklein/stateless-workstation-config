@@ -7,8 +7,6 @@
     - https://raw.githubusercontent.com/ahmetb/kubectx/{{ kubectx_version }}/kubectx
     - https://raw.githubusercontent.com/ahmetb/kubectx/{{ kubens_version }}/kubens
     - https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
-  tags:
-    - wsl
 
 - name: Install helm
   unarchive:
@@ -20,8 +18,6 @@
       - --strip-components=1
       - --wildcards
       - '*/helm'
-  tags:
-    - wsl
 
 - name: Install terraform
   unarchive:
@@ -29,5 +25,3 @@
     dest: ~/bin
     creates: ~/bin/terraform
     remote_src: yes
-  tags:
-    - wsl

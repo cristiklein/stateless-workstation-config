@@ -1,20 +1,14 @@
 - name: Install vim
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - git
-    - vim-gtk3
   become: true
-  tags:
-    - wsl
+  apt:
+    name:
+      - git
+      - vim-gtk3
 
 - name: Configure default editor
   template:
     src: selected_editor.j2
     dest: ~/.selected_editor
-  tags:
-    - wsl
 
 - name: Clone vim configuration
   git:
@@ -22,13 +16,9 @@
     dest: ~/.vim
     depth: 1
     update: no
-  tags:
-    - wsl
 
 - name: Link .vimrc to ~
   file:
     src: ~/.vim/.vimrc
     dest: ~/.vimrc
     state: link
-  tags:
-    - wsl

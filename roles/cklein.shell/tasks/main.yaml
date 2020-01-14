@@ -7,8 +7,6 @@
     - bash_aliases
     - bash_logout
     - profile
-  tags:
-    - wsl
 
 - name: Remove unnecessary shell configuration files
   file:
@@ -16,5 +14,3 @@
     state: absent
   with_list:
     - bash_profile
-  tags:
-    - wsl

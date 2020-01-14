@@ -8,5 +8,3 @@
       - pv
       - zip
   become: true
-  tags:
-    - wsl

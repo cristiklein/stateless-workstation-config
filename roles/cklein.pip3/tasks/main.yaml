@@ -3,5 +3,3 @@
   apt:
     name:
       - python3-pip
-  tags:
-    - wsl
