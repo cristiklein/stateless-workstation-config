@@ -8,14 +8,20 @@
 - name: Install skype
   become: true
   command: snap install skype --classic creates=/snap/bin/skype
+  tags:
+    - snap
 
 - name: Install Spotify
   become: true
   command: snap install spotify --classic creates=/snap/bin/spotify
+  tags:
+    - snap
 
 - name: Install Slack
   become: true
   command: snap install slack --classic creates=/snap/bin/slack
+  tags:
+    - snap
 
 - name: Configure terminator (folder)
   file:
