@@ -8,10 +8,10 @@ BASEDIR=$(dirname $(readlink -f "$0"))
 if ! which ansible > /dev/null; then
     log "Ansible not found; trying to install"
     sudo apt-get update
-    sudo apt-get install software-properties-common
-    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-get install -yyq software-properties-common
+    sudo apt-add-repository --yes ppa:ansible/ansible
     sudo apt-get update
-    sudo apt-get install ansible
+    sudo apt-get install -yyq ansible
 fi
 
 if ! env \
