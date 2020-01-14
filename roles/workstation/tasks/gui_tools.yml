@@ -54,6 +54,12 @@
     pkg:
       - openscad
 
+- name: Install ImageMagick
+  become: true
+  apt:
+    pkg:
+      - imagemagick
+
 - name: Allow ImageMagick to rasterize PDFs
   become: true
   lineinfile:
