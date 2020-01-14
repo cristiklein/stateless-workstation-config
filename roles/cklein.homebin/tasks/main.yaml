@@ -1,0 +1,6 @@
+- name: Create ~/bin
+  file:
+    path: ~/bin
+    state: directory
+  tags:
+    - wsl

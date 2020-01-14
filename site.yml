@@ -8,9 +8,6 @@
       executable: pip3
       extra_args: --user
   roles:
-    # Must be first
-    - cklein.00_bootstrap
-
     # These roles should be independent
     - cklein.cncf
     - cklein.remote_unlock_encrypted_volume

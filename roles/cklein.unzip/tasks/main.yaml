@@ -1,0 +1,7 @@
+- name: Install unzip
+  become: true
+  apt:
+    name:
+      - unzip
+  tags:
+    - wsl
