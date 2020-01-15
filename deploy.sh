@@ -2,8 +2,8 @@
 set -e
 
 BASEDIR=$(dirname $(readlink -f "$0"))
-: ${ANSIBLE_CONFIG:-$BASEDIR/ansible.cfg}
-: ${ANSIBLE_PLAYBOOK:-$BASEDIR/site.yml}
+: ${ANSIBLE_CONFIG:=$BASEDIR/ansible.cfg}
+: ${ANSIBLE_PLAYBOOK:=$BASEDIR/site.yml}
 
 . "$BASEDIR/functions.sh"
 
