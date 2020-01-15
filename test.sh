@@ -3,6 +3,7 @@
 set -e
 
 : ${BASE_DOCKER_IMAGE:=ubuntu:19.10}
+: ${ANSIBLE_PLAYBOOK:=site.yml}
 
 DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-minimal
 
@@ -27,4 +28,5 @@ docker run \
     -ti \
     -v $(pwd):$(pwd):ro \
     -w $(pwd) \
+    -e ANSIBLE_PLAYBOOK=$ANSIBLE_PLAYBOOK \
     $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags mount,snap,systemd

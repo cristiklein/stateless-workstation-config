@@ -4,9 +4,12 @@ services:
   - docker
 
 env:
-  - BASE_IMAGE=ubuntu:19.04
-  - BASE_IMAGE=ubuntu:19.10
+  - ANSIBLE_PLAYBOOK=site.yml
+  - ANSIBLE_PLAYBOOK=test/cklein.cncf.yaml
+  - ANSIBLE_PLAYBOOK=test/cklein.git.yaml
+  - ANSIBLE_PLAYBOOK=test/cklein.security.yaml
+  - ANSIBLE_PLAYBOOK=test/cklein.shell.yaml
+  - ANSIBLE_PLAYBOOK=test/workstation.yaml
 
 script:
-  - ./test-each-role.sh
   - ./test.sh
