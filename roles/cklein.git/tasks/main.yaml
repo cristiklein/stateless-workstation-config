@@ -12,6 +12,11 @@
     path: ~/.gitconfig
     state: absent
 
+- name: Create git config folder
+  file:
+    path: ~/.config/git
+    state: directory
+
 - name: Configure git
   template:
     src: gitconfig.j2
