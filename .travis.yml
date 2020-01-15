@@ -4,12 +4,13 @@ services:
   - docker
 
 env:
-  - ANSIBLE_PLAYBOOK=site.yml
-  - ANSIBLE_PLAYBOOK=test/cklein.cncf.yaml
-  - ANSIBLE_PLAYBOOK=test/cklein.git.yaml
-  - ANSIBLE_PLAYBOOK=test/cklein.security.yaml
-  - ANSIBLE_PLAYBOOK=test/cklein.shell.yaml
-  - ANSIBLE_PLAYBOOK=test/workstation.yaml
+  - ROLE=
+  - ROLE=cklein.cncf
+  - ROLE=cklein.git
+  - ROLE=cklein.security
+  - ROLE=cklein.shell
+  - ROLE=cklein.workstation
 
 script:
+  - ./scripts/generate-site-yml-for-role.sh
   - ./test.sh

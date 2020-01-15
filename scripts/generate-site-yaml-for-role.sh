@@ -1,3 +1,11 @@
+#!/bin/bash
+
+if [ -z "$ROLE" ]; then
+    echo "No ROLE environment variable; exiting"
+    exit 0
+fi
+
+tee ./site.yml <<EOF
 - name: set up localhost as workstation
   hosts: localhost
   connection: local
@@ -8,4 +16,5 @@
       executable: pip3
       extra_args: --user
   roles:
-    - cklein.zz_cleanup
+    - $ROLE
+EOF
