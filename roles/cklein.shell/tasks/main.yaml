@@ -5,6 +5,7 @@
   with_list:
     - bashrc
     - bash_aliases
+    - bash_completion
     - bash_logout
     - profile
 
