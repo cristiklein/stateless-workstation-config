@@ -8,4 +8,5 @@ env:
   - BASE_IMAGE=ubuntu:19.10
 
 script:
+  - ./test-each-role.sh
   - ./test.sh
