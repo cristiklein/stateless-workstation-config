@@ -1,3 +1,4 @@
 dependencies:
+  - role: cklein.curl
   - role: cklein.homebin
   - role: cklein.unzip
