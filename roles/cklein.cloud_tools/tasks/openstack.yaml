@@ -1,0 +1,4 @@
+- name: Install openstackclient
+  pip:
+    name:
+      - openstackclient

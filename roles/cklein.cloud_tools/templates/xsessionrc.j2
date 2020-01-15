@@ -1,0 +1,8 @@
+#!/bin/sh
+{{ ansible_managed | comment }}
+
+# Make mouse a bit slower
+xinput --set-prop "Microsoft Sculpt Comfort Mouse" "Device Accel Velocity Scaling" 5 2>/dev/null
+
+# Use wheel left/right for navigate back and forward
+xinput --set-button-map "Microsoft Sculpt Comfort Mouse" 1 2 3 4 5 8 9 2>/dev/null

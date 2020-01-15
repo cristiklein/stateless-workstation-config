@@ -1,6 +1,8 @@
-- name: Install awscli
+- name: Install awscli and s3cmd
   pip:
-    name: awscli
+    name:
+      - awscli
+      - s3cmd
 
 - name: Install aws-iam-authenticator
   get_url:

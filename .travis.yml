@@ -5,6 +5,7 @@ services:
 
 env:
   - ROLE=
+  - ROLE=cklein.cloud_tools
   - ROLE=cklein.cncf
   - ROLE=cklein.git
   - ROLE=cklein.security

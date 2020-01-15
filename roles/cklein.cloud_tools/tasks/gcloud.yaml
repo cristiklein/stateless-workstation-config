@@ -3,11 +3,3 @@
   command: snap install google-cloud-sdk --classic creates=/snap/bin/gcloud
   tags:
     - snap
-
-- name: Install rclone
-  become: true
-  apt:
-    name: rclone
-
-- include_tasks: cloud_tools/aws.yml
-- include_tasks: cloud_tools/az.yml

@@ -1,0 +1,4 @@
+- name: Install rclone
+  become: true
+  apt:
+    name: rclone

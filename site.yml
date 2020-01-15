@@ -9,6 +9,7 @@
       extra_args: --user
   roles:
     - cklein.admin_tools
+    - cklein.cloud_tools
     - cklein.cncf
     - cklein.git
     - cklein.remote_unlock_encrypted_volume

@@ -1,4 +1,3 @@
-- import_tasks: cloud_tools.yml
 - import_tasks: dictionaries.yml
 - import_tasks: docker.yml
 - import_tasks: dropbox.yml
