@@ -96,5 +96,3 @@ gpgkeys:
     D9lL4IsRqwJIOXo=
     =TqQP
     -----END PGP PUBLIC KEY BLOCK-----
-repos:
-  vimrc: https://github.com/cristiklein/vimrc.git
