@@ -2,10 +2,12 @@
 
 set -e
 
-DOCKER_IMAGE=ubuntu-minimal
+: ${BASE_DOCKER_IMAGE:=ubuntu:19.10}
+
+DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-minimal
 
 docker build -t $DOCKER_IMAGE - <<EOF
-FROM ubuntu:19.10
+FROM ${BASE_DOCKER_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN \
