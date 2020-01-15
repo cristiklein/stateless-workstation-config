@@ -1,0 +1,23 @@
+- name: Install git and tools
+  apt:
+    name:
+      - git
+      - git-crypt
+      - git-lfs
+      - gitk
+  become: true
+
+- name: Remove ~/.gitconfig
+  file:
+    path: ~/.gitconfig
+    state: absent
+
+- name: Configure git
+  template:
+    src: gitconfig.j2
+    dest: ~/.config/git/config
+
+- name: Install pre-commit
+  pip:
+    name:
+      - pre-commit

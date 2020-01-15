@@ -8,8 +8,8 @@
       executable: pip3
       extra_args: --user
   roles:
-    # These roles should be independent
     - cklein.cncf
+    - cklein.git
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
     - cklein.shell

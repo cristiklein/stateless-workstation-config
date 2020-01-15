@@ -2,26 +2,16 @@
   apt:
     name:
     - build-essential
-    - git
-    - git-crypt
-    - git-lfs
-    - gitk
     - libtext-markdown-perl
     - meld
     - sloccount
     - subversion
   become: true
 
-- name: Install gitconfig
-  template:
-    src: gitconfig.j2
-    dest: ~/.gitconfig
-
 - name: Install tools (via pip)
   pip:
     name:
       - pipenv
-      - pre-commit
 
 - name: Install nvm
   shell: >
