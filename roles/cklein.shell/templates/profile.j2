@@ -24,6 +24,10 @@ if [ -f ~/.nvm/nvm.sh ]; then
   . ~/.nvm/nvm.sh
 fi
 
+if [ -d "$HOME/.krew/bin" ] ; then
+    PATH="$HOME/.krew/bin:$PATH"
+fi
+
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
