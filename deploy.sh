@@ -2,6 +2,8 @@
 set -e
 
 BASEDIR=$(dirname $(readlink -f "$0"))
+: ${ANSIBLE_CONFIG:-$BASEDIR/ansible.cfg}
+: ${ANSIBLE_PLAYBOOK:-$BASEDIR/site.yml}
 
 . "$BASEDIR/functions.sh"
 
@@ -17,8 +19,7 @@ fi
 if ! env \
     LANG=C.UTF-8 \
     ANSIBLE_STDOUT_CALLBACK=debug \
-    ANSIBLE_CONFIG=$BASEDIR/ansible.cfg \
-    ansible-playbook $BASEDIR/site.yml \
+    ansible-playbook $ANSIBLE_PLAYBOOK \
         --inventory localhost, $*
 then
     log "If the failure above is due to missing privilege, then re-run with:"
