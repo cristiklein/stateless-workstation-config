@@ -1,5 +1,3 @@
-- import_tasks: admin_tools.yml
-- import_tasks: basic_tools.yml
 - import_tasks: cloud_tools.yml
 - import_tasks: dictionaries.yml
 - import_tasks: docker.yml
