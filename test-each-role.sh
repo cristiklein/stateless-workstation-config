@@ -33,7 +33,8 @@ USER blah:blah
 EOF
 
 for ROLE in $(ls -1 roles); do
-    tee site.test.yaml <<EOF
+    ANSIBLE_PLAYBOOK=/tmp/$ROLE.test.yaml \
+    tee $ANSIBLE_PLAYBOOK <<EOF
 - name: set up localhost as workstation
   hosts: localhost
   connection: local
@@ -49,7 +50,7 @@ EOF
 
     docker run \
         -ti \
-        -e ANSIBLE_PLAYBOOK=site.test.yaml \
+        -e ANSIBLE_PLAYBOOK=$ANSIBLE_PLAYBOOK \
         -v $(pwd):$(pwd):ro \
         -w $(pwd) \
         $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags mount,snap,systemd
