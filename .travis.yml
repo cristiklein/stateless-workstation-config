@@ -9,7 +9,7 @@ env:
   - ROLE=cklein.git
   - ROLE=cklein.security
   - ROLE=cklein.shell
-  - ROLE=cklein.workstation
+  - ROLE=workstation
 
 script:
   - ./scripts/generate-site-yml-for-role.sh
