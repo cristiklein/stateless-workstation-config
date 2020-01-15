@@ -22,7 +22,7 @@ Usage on Ubuntu for Windows
 sudo apt install git
 git clone https://github.com/cristiklein/stateless-workstation-config.git
 cd stateless-workstation-config
-./deploy.sh --ask-become-pass -t snap,systemd
+./deploy.sh --ask-become-pass --skip-tags snap,systemd
 ```
 
 Enjoy!
