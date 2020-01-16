@@ -1,0 +1,2 @@
+go_version: 1.13.6
+golangci_lint_version: v1.22.2

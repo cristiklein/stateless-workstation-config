@@ -1,0 +1,13 @@
+- name: Install Go
+  become: true
+  unarchive:
+    remote_src: yes
+    src: https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz
+    dest: /usr/local
+  tags: go
+
+- name: Install golangci-lint
+  shell: |
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin {{ golangci_lint_version }}
+  args:
+    creates: ~/go/bin/golangci-lint

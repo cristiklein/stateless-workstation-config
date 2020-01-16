@@ -12,6 +12,7 @@
     - cklein.cloud_tools
     - cklein.cncf
     - cklein.git
+    - cklein.go
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
     - cklein.shell

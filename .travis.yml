@@ -8,6 +8,7 @@ env:
   - ROLE=cklein.cloud_tools
   - ROLE=cklein.cncf
   - ROLE=cklein.git
+  - ROLE=cklein.go
   - ROLE=cklein.security
   - ROLE=cklein.shell
   - ROLE=workstation
