@@ -12,6 +12,15 @@ env:
   - ROLE=cklein.shell
   - ROLE=workstation
 
-script:
-  - ./scripts/generate-site-yml-for-role.sh
-  - ./test.sh
+stages:
+  - lint
+  - test
+
+jobs:
+  include:
+    - script: ./lint.sh
+      stage: lint
+      env: # no matrix expansion
+    - script:
+        - ./scripts/generate-site-yml-for-role.sh
+        - ./test.sh
