@@ -17,13 +17,13 @@ stages:
   - lint
   - test
 
+script:
+  - ./scripts/generate-site-yml-for-role.sh
+  - ./test.sh
+
 jobs:
   include:
     - script: ./lint.sh
       stage: lint
-      env:
-        # no matrix expansion
-        - ROLE=
-    - script:
-        - ./scripts/generate-site-yml-for-role.sh
-        - ./test.sh
+      # no matrix expansion
+      env: ROLE=
