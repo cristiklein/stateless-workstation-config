@@ -1,4 +1,0 @@
-- name: Configure xsessionrc
-  template:
-    src: xsessionrc.j2
-    dest: ~/.xsessionrc

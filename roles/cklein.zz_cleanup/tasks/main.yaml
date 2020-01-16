@@ -6,6 +6,14 @@
     state: absent
     purge: true
 
+- name: Remove deprecated files
+  file:
+    path: '{{ item }}'
+    state: absent
+  loop:
+    - ~/.xsessionrc
+  tags: test
+
 - name: Update apt package
   become: true
   apt:
