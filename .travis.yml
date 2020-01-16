@@ -20,7 +20,9 @@ jobs:
   include:
     - script: ./lint.sh
       stage: lint
-      env: # no matrix expansion
+      env:
+        # no matrix expansion
+        - ROLE=
     - script:
         - ./scripts/generate-site-yml-for-role.sh
         - ./test.sh
