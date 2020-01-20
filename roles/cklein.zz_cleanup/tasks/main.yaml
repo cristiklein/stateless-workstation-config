@@ -18,7 +18,7 @@
   become: true
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: safe
   tags: update
 
 - name: Update pip3 user packages
