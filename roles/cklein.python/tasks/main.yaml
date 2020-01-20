@@ -1,0 +1,10 @@
+- name: Install python3 development tools (via apt)
+  become: true
+  apt:
+    name:
+      - python3-venv
+
+- name: Install python3 development tools (via pip)
+  pip:
+    name:
+      - pylint
