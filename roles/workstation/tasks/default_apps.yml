@@ -2,22 +2,3 @@
   template:
     src: mimeapps.list.j2
     dest: ~/.mimeapps.list
-
-- name: Install python-psutil
-  become: true
-  apt:
-    pkg: python-psutil
-
-- name: Configure launchbar
-  dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    value: >-
-      ['org.gnome.Nautilus.desktop',
-      'terminator.desktop',
-      'google-chrome.desktop',
-      'chrome-elastisys.desktop',
-      'libreoffice-writer.desktop',
-      'libreoffice-calc.desktop',
-      'libreoffice-impress.desktop',
-      'spotify_spotify.desktop',
-      'keepassx.desktop']

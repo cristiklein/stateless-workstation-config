@@ -20,6 +20,8 @@
     - cklein.vscode
     - cklein.vim
     - workstation
+    # Best to run after all favorite apps are installed
+    - cklein.gnome_favorite_apps
 
     # Leave as last for proper cleanup
     - cklein.zz_cleanup

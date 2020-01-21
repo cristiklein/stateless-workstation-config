@@ -1,0 +1,9 @@
+- name: Install python-psutil
+  become: true
+  apt:
+    pkg: python-psutil
+
+- name: Configure launchbar
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['{{ gnome_favorite_apps | join(\"', '\") | string }}']"

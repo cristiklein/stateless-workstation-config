@@ -1,3 +1,4 @@
+- import_tasks: default_apps.yml
 - import_tasks: dictionaries.yml
 - import_tasks: docker.yml
 - import_tasks: dropbox.yml
@@ -7,6 +8,3 @@
 - import_tasks: development_tools.yml
 - import_tasks: mplayer.yml
 - import_tasks: tmp_on_tmpfs.yml
-
-# Must be last, so that launchbar is configured correctly
-- import_tasks: default_apps.yml
