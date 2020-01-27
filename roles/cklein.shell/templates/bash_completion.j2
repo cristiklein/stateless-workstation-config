@@ -21,3 +21,16 @@ _kube_namespaces()
 }
 
 complete -F _kube_namespaces kubens kns
+
+#
+# More tools
+#
+if [ -f $HOME/.local/bin/aws_completer ]; then
+  complete -C '$HOME/.local/bin/aws_completer' aws
+fi
+if [ -f /snap/google-cloud-sdk/current/completion.bash.inc ]; then
+  . '/snap/google-cloud-sdk/current/completion.bash.inc'
+fi
+if kubectl > /dev/null 2> /dev/null; then
+  source <(kubectl completion bash)
+fi
