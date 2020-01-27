@@ -34,3 +34,6 @@ fi
 if kubectl > /dev/null 2> /dev/null; then
   source <(kubectl completion bash)
 fi
+if minikube > /dev/null 2> /dev/null; then
+  source <(minikube completion bash)
+fi
