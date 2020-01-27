@@ -1,0 +1,21 @@
+- name: Install kvm
+  become: true
+  apt:
+    pkg:
+      - bridge-utils
+      - libvirt-clients
+      - libvirt-daemon-system
+      - qemu-kvm
+
+- name: Add {{ ansible_user_id }} to libvirt group
+  become: true
+  user:
+    name: '{{ ansible_user_id }}'
+    groups: libvirt
+    append: yes
+
+- name: Install minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: ~/bin/minikube
+    mode: 0755

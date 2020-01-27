@@ -13,6 +13,7 @@
     - cklein.cncf
     - cklein.git
     - cklein.go
+    - cklein.minikube
     - cklein.python
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
