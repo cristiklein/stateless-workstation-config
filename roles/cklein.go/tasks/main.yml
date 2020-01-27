@@ -4,6 +4,7 @@
     remote_src: yes
     src: https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz
     dest: /usr/local
+    creates: /usr/local/go/bin/go
   tags: go
 
 - name: Install golangci-lint
