@@ -3,7 +3,7 @@
     name:
     - gnupg2
     - gnupg-agent
-    - keepassx
+    - keepassxc
     - passwordmaker-cli # legacy, new passwords are on keepassx
     - pcscd
     - pinentry-curses
