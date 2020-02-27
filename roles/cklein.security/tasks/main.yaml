@@ -76,6 +76,7 @@
   loop:
     - ~/.ssh/authorized_keys
     - ~/.ssh/config
+    - ~/.ssh/id_rsa.pub
   tags:
     - ssh
 
