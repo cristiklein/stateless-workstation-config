@@ -4,6 +4,7 @@
     recurse: yes
     state: directory
   with_items:
+    - "~/.config/google-chrome-elastisys/NativeMessagingHosts"
     - "~/.local/share/applications"
     - "~/.local/share/icons/hicolor/scalable/apps"
 
