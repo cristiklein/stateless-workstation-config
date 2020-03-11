@@ -16,3 +16,9 @@
   template:
     src: chrome-elastisys.desktop.j2
     dest: ~/.local/share/applications/chrome-elastisys.desktop
+
+- name: "Fix native integration for KeePassXC-browser"
+  file:
+    src: ~/.config/google-chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
+    dest: ~/.config/google-chrome-elastisys/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
+    state: link
