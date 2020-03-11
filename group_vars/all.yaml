@@ -96,3 +96,4 @@ gpgkeys:
     D9lL4IsRqwJIOXo=
     =TqQP
     -----END PGP PUBLIC KEY BLOCK-----
+ansible_python_interpreter: /usr/bin/python3
