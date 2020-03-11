@@ -22,3 +22,4 @@
     src: ~/.config/google-chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
     dest: ~/.config/google-chrome-elastisys/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
     state: link
+    force: yes
