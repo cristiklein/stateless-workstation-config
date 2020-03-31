@@ -11,6 +11,7 @@
     - cklein.admin_tools
     - cklein.cloud_tools
     - cklein.cncf
+    - cklein.dotnet
     - cklein.git
     - cklein.go
     - cklein.minikube
