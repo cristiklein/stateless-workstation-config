@@ -97,3 +97,10 @@ gpgkeys:
     =TqQP
     -----END PGP PUBLIC KEY BLOCK-----
 ansible_python_interpreter: /usr/bin/python3
+gnome_favorite_apps:
+  - org.gnome.Nautilus.desktop
+  - terminator.desktop
+  - google-chrome.desktop
+  - chrome-elastisys.desktop
+  - spotify_spotify.desktop
+  - org.keepassxc.KeePassXC.desktop

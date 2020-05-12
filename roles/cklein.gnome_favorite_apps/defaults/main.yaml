@@ -1,10 +1,2 @@
 gnome_favorite_apps:
   - org.gnome.Nautilus.desktop
-  - terminator.desktop
-  - google-chrome.desktop
-  - chrome-elastisys.desktop
-  - libreoffice-writer.desktop
-  - libreoffice-calc.desktop
-  - libreoffice-impress.desktop
-  - spotify_spotify.desktop
-  - org.keepassxc.KeePassXC.desktop
