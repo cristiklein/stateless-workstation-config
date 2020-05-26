@@ -7,6 +7,8 @@ BASEDIR=$(dirname $(readlink -f "$0"))
 
 . "$BASEDIR/functions.sh"
 
+sudo true # Ensure ansible gets sudo access
+
 if ! which ansible > /dev/null; then
     log "Ansible not found; trying to install"
     sudo apt-get update
@@ -22,8 +24,6 @@ if ! env \
     ansible-playbook $ANSIBLE_PLAYBOOK \
         --inventory localhost, $*
 then
-    log "If the failure above is due to missing privilege, then re-run with:"
-    log "$0 --ask-become-pass"
     exit 1
 fi
 
