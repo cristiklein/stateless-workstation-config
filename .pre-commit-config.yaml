@@ -42,3 +42,10 @@ repos:
       language: pygrep
       entry: 'state: present'
       files: '^roles/.*[.]ya?ml$'
+    - id: no-static-distribution
+      name: no-static-distribution
+      description: >-
+        Avoid hard-coding distribution name.
+      language: pygrep
+      entry: '(bionic|eoan)'
+      files: '^roles/.*[.]ya?ml$'

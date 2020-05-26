@@ -18,7 +18,7 @@
 - name: Add Microsoft repository
   become: true
   apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ bionic main
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main
 
 - name: Install Azure CLI
   become: true

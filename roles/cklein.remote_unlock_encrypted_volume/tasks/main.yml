@@ -5,16 +5,6 @@
       - cryptsetup
   become: true
 
-# Ugly: https://bugs.launchpad.net/ubuntu/+source/busybox/+bug/1651818/comments/11
-- name: Patch cryptsetup
-  become: true
-  patch:
-    src: cryptroot-unlock-neutered-busybox-progs.patch
-    basedir: /usr/share/cryptsetup/initramfs/bin/
-    strip: 1
-  when: ansible_distribution_release == 'bionic'
-  notify: Update initramfs
-
 - name: Configure dropbear in initramfs
   become: true
   lineinfile:

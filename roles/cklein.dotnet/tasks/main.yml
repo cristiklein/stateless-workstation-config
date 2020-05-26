@@ -13,7 +13,7 @@
 - name: Add Microsoft repository
   become: true
   apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/19.10/prod eoan main
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod {{ ansible_distribution_release }} main
 
 - name: Install .NET packages
   become: true

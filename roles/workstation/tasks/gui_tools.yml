@@ -46,7 +46,7 @@
   become: true
   apt_repository:
     repo: ppa:openscad/releases
-    codename: bionic
+    codename: '{{ ansible_distribution_release }}'
 
 - name: OpenSCAD
   become: true
