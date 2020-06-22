@@ -21,6 +21,7 @@
     - cklein.shell
     - cklein.vscode
     - cklein.vim
+    - cklein.zoom
     - workstation
     # Best to run after all favorite apps are installed
     - cklein.gnome_favorite_apps
