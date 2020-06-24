@@ -2,6 +2,7 @@
   apt:
     name:
     - build-essential
+    - ccache
     - libtext-markdown-perl
     - meld
     - sloccount

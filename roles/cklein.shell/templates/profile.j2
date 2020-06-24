@@ -36,6 +36,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "/usr/lib/ccache" ]; then
+    PATH="/usr/lib/ccache:$PATH"
+fi
+
 # Give highest priority to the user's PATH
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
