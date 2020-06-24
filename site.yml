@@ -9,6 +9,7 @@
       extra_args: --user
   roles:
     - cklein.admin_tools
+    - cklein.c
     - cklein.cloud_tools
     - cklein.cncf
     - cklein.dotnet
@@ -16,6 +17,7 @@
     - cklein.go
     - cklein.minikube
     - cklein.mutt
+    - cklein.nodejs
     - cklein.python
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
