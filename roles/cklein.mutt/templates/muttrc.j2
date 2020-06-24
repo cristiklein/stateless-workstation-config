@@ -1,0 +1,31 @@
+set realname = "{{ name }}"
+set from = "{{ email }}"
+
+#
+# Incoming
+#
+set imap_user = "{{ email }}"
+set imap_pass = `keyring get mutt-email {{ email }}`
+
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set mbox="+[Gmail]/All Mail"
+
+#
+# Outgoing
+#
+set smtp_url = "smtps://{{ email }}@smtp.gmail.com/"
+set smtp_pass = $imap_pass
+set ssl_force_tls = yes # Require encrypted connection
+set record = ""
+
+#
+# Composition
+#
+set editor = "vi"
+set edit_headers = yes  # See the headers when editing
+set charset = "utf-8"
+unset use_domain        # because joe@localhost is just embarrassing
+
+bind index G imap-fetch-mail

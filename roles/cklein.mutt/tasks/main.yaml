@@ -1,0 +1,26 @@
+- name: Install mutt
+  become: true
+  apt:
+    name:
+      - mutt
+      - python3-keyring # for securely storing passwords
+  tags:
+    - mutt
+
+- name: Create mutt config folder
+  file:
+    path: ~/.config/mutt
+    state: directory
+    recurse: true
+  tags:
+    - mutt
+
+- name: Copy configuration files
+  template:
+    src: '{{ item | basename | regex_replace("^[.]") }}.j2'
+    dest: '{{ item }}'
+  loop:
+    - ~/.config/mutt/muttrc
+    - ~/.signature
+  tags:
+    - mutt
