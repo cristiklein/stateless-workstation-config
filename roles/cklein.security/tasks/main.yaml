@@ -108,3 +108,11 @@
   template:
     src: passwordmaker.rdf.j2
     dest: ~/.passwordmaker.rdf
+
+- name: Make home folder private for multi-user workstations
+  file:
+    path: ~/
+    state: directory
+    mode: 0700
+  tags:
+    - privacy
