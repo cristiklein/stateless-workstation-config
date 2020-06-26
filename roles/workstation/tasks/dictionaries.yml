@@ -1,9 +1,0 @@
-- name: Install dictionaries
-  apt:
-    name:
-      - hunspell-de-de
-      - hunspell-en-gb
-      - hunspell-fr
-      - hunspell-ro
-      - hunspell-sv
-  become: true

@@ -1,0 +1,6 @@
+- name: Install dictionaries
+  become: true
+  apt:
+    name: '{{ dictionaries }}'
+  tags:
+    - dictionaries
