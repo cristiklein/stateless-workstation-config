@@ -1,0 +1,4 @@
+- name: Install dropbox
+  become: true
+  apt:
+    name: nautilus-dropbox

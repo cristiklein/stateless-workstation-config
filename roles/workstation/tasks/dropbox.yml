@@ -1,7 +1,0 @@
-- name: Install dropbox
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-      - nautilus-dropbox
-  become: true

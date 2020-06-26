@@ -14,6 +14,7 @@
     - cklein.cncf
     - cklein.docker
     - cklein.dotnet
+    - cklein.dropbox
     - cklein.git
     - cklein.go
     - cklein.minikube
