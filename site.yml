@@ -12,6 +12,7 @@
     - cklein.c
     - cklein.cloud_tools
     - cklein.cncf
+    - cklein.docker
     - cklein.dotnet
     - cklein.git
     - cklein.go
