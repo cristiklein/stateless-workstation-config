@@ -15,6 +15,7 @@
     - cklein.c
     - cklein.cloud_tools
     - cklein.cncf
+    - cklein.default_apps
     - cklein.dictionaries
     - cklein.docker
     - cklein.dotnet

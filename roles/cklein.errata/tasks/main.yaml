@@ -17,4 +17,5 @@
     path: '{{ item }}'
     state: absent
   loop:
+    - ~/.mimeapps.list
     - ~/.xsessionrc
