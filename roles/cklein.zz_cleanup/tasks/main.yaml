@@ -8,7 +8,7 @@
 
 - name: Remove Skype
   become: true
-  command: snap uninstall skype removes=/snap/bin/skype
+  command: snap remove skype removes=/snap/bin/skype
   tags:
     - snap
 
