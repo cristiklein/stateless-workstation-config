@@ -6,6 +6,12 @@
     state: absent
     purge: true
 
+- name: Remove Skype
+  become: true
+  command: snap uninstall skype removes=/snap/bin/skype
+  tags:
+    - snap
+
 - name: Remove deprecated files
   file:
     path: '{{ item }}'

@@ -5,12 +5,6 @@
       - terminator
   become: true
 
-- name: Install skype
-  become: true
-  command: snap install skype --classic creates=/snap/bin/skype
-  tags:
-    - snap
-
 - name: Install Spotify
   become: true
   command: snap install spotify --classic creates=/snap/bin/spotify
