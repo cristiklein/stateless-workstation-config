@@ -8,6 +8,9 @@
       executable: pip3
       extra_args: --user
   roles:
+    # Prefer first to trigger changes in case of incorrect errata
+    - cklein.errata
+
     - cklein.admin_tools
     - cklein.c
     - cklein.cloud_tools

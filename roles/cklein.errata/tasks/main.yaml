@@ -1,0 +1,20 @@
+- name: Prefer binaries in ~/bin instead of deb packages
+  become: true
+  apt:
+    name:
+      - kubectx
+    state: absent
+    purge: true
+
+- name: Remove Skype
+  become: true
+  command: snap remove skype removes=/snap/bin/skype
+  tags:
+    - snap
+
+- name: Remove deprecated files
+  file:
+    path: '{{ item }}'
+    state: absent
+  loop:
+    - ~/.xsessionrc
