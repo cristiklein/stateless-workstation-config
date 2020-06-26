@@ -2,7 +2,6 @@
   apt:
     name:
       - dconf-editor
-      - terminator
   become: true
 
 - name: Install Spotify
@@ -16,17 +15,6 @@
   command: snap install slack --classic creates=/snap/bin/slack
   tags:
     - snap
-
-- name: Configure terminator (folder)
-  file:
-    path: ~/.config/terminator
-    recurse: yes
-    state: directory
-
-- name: Configure terminator
-  template:
-    src: terminator_config.j2
-    dest: ~/.config/terminator/config
 
 - name: Install Thunderbird and Calendar
   become: true
