@@ -1,3 +1,9 @@
+- name: Ensure /usr/local exists
+  become: true
+  file:
+    path: /usr/local
+    state: directory
+
 - name: Install Go
   become: true
   unarchive:
