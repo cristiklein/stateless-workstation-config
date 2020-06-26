@@ -1,10 +1,7 @@
 - name: Install mplayer
-  apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - mplayer
   become: true
+  apt:
+    name: mplayer
 
 - name: Create mplayer configuration folder
   file:
