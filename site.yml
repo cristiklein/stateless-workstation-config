@@ -29,6 +29,7 @@
     - cklein.terminator
     - cklein.vscode
     - cklein.vim
+    - cklein.tmp_on_tmpfs
     - cklein.zoom
     - workstation
     # Best to run after all favorite apps are installed
