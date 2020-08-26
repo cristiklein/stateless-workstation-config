@@ -24,12 +24,6 @@
       - xul-ext-lightning
       - xul-ext-gdata-provider
 
-- name: OpenSCAD PPA
-  become: true
-  apt_repository:
-    repo: ppa:openscad/releases
-    codename: '{{ ansible_distribution_release }}'
-
 - name: OpenSCAD
   become: true
   apt:
