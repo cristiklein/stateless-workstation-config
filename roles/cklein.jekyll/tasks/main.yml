@@ -1,0 +1,16 @@
+- name: Install prerequisites
+  become: true
+  apt:
+    name:
+      - ruby-full
+      - build-essential
+      - zlib1g-dev
+
+- name: Install Jekyll
+  gem:
+    install_dir: "~/gems"
+    user_install: false
+    name: "{{ item }}"
+  loop:
+    - jekyll
+    - bundler

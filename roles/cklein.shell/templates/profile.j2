@@ -40,6 +40,9 @@ if [ -d "/usr/lib/ccache" ]; then
     PATH="/usr/lib/ccache:$PATH"
 fi
 
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
 # Give highest priority to the user's PATH
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
