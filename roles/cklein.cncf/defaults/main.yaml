@@ -6,3 +6,5 @@ kubens_version: v0.7.1
 krew_version: v0.3.3
 
 terraform_version: 0.12.19
+
+sops_version: 3.6.1
