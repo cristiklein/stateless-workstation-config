@@ -4,15 +4,15 @@
     dest: '~/bin/{{ item | basename }}'
     mode: 0755
   loop:
-    - https://raw.githubusercontent.com/ahmetb/kubectx/{{ kubectx_version }}/kubectx
-    - https://raw.githubusercontent.com/ahmetb/kubectx/{{ kubens_version }}/kubens
-    - https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
+    - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubectx_version }}/kubectx
+    - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubens_version }}/kubens
+    - https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
 
 - name: Install krew
   shell: |
     (
       set -x; cd "$(mktemp -d)" &&
-      curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/{{ krew_version }}/krew.{tar.gz,yaml}" &&
+      curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v{{ krew_version }}/krew.{tar.gz,yaml}" &&
       tar zxvf krew.tar.gz &&
       KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
       "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
@@ -23,7 +23,7 @@
 
 - name: Install helm
   unarchive:
-    src: https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz
+    src: https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz
     dest: ~/bin
     creates: ~/bin/helm
     remote_src: yes
