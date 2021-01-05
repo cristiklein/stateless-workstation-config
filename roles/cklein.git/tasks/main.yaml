@@ -25,4 +25,5 @@
 - name: Install pre-commit
   pip:
     name:
-      - pre-commit
+      - pre-commit ~= 2.9
+    state: latest

@@ -5,19 +5,6 @@
     upgrade: safe
   tags: update
 
-- name: Update pip3 user packages
-  shell: |
-    #!/bin/bash
-    OUTDATED_PACKAGES=$(pip3 list --outdated --user --format=freeze | sed -ne 's/==.*//p')
-    if [ -z "$OUTDATED_PACKAGES" ]; then
-      echo "No outdated packages"
-    else
-      echo $OUTDATED_PACKAGES | xargs pip3 install --user --upgrade --
-    fi
-  register: pip3_update
-  changed_when: '"No outdated packages" not in pip3_update.stdout'
-  tags: update
-
 - name: Remove useless packages from the cache
   apt:
     autoclean: yes

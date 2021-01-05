@@ -7,4 +7,5 @@
 - name: Install python3 development tools (via pip)
   pip:
     name:
-      - pylint
+      - pylint ~= 2.6
+    state: latest
