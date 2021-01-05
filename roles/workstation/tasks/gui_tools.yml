@@ -29,16 +29,3 @@
   apt:
     pkg:
       - openscad
-
-- name: Install ImageMagick
-  become: true
-  apt:
-    pkg:
-      - imagemagick
-
-- name: Allow ImageMagick to rasterize PDFs
-  become: true
-  lineinfile:
-    path: /etc/ImageMagick-6/policy.xml
-    regex: domain.*coder.*pattern.*PDF
-    line: '  <policy domain="coder" rights="read | write" pattern="PDF" />'
