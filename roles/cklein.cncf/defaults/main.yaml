@@ -5,6 +5,6 @@ kubectx_version: 0.7.1
 kubens_version: 0.7.1
 krew_version: 0.3.3
 
-terraform_version: 0.13.5
+terraform_version: 0.14.3
 
 sops_version: 3.6.1
