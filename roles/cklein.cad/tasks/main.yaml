@@ -1,0 +1,8 @@
+- name: FreeCAD / OpenSCAD
+  become: true
+  apt:
+    pkg:
+      - freecad
+      - openscad
+  tags:
+    - cad

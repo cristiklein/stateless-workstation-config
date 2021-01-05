@@ -23,9 +23,3 @@
       - thunderbird
       - xul-ext-lightning
       - xul-ext-gdata-provider
-
-- name: OpenSCAD
-  become: true
-  apt:
-    pkg:
-      - openscad
