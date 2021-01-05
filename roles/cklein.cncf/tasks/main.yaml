@@ -39,7 +39,13 @@
     creates: ~/bin/terraform
     remote_src: yes
 
+- name: Download sops.deb
+  get_url:
+    url: https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops_{{ sops_version }}_amd64.deb
+    dest: /tmp/sops_{{ sops_version }}_amd64.deb
+    mode: 0600
+
 - name: Install sops
   become: true
   apt:
-    deb: https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops_{{ sops_version }}_amd64.deb
+    deb: /tmp/sops_{{ sops_version }}_amd64.deb
