@@ -1,11 +1,12 @@
 - name: Install awscli and s3cmd
   pip:
     name:
-      - awscli
-      - s3cmd
+      - awscli ~= 1.18
+      - s3cmd ~= 2.1
+    state: latest
 
 - name: Install aws-iam-authenticator
   get_url:
-    url: https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
+    url: https://amazon-eks.s3-us-west-2.amazonaws.com/{{ aws_iam_authenticator_version }}/bin/linux/amd64/aws-iam-authenticator
     dest: ~/bin/aws-iam-authenticator
     mode: 0755
