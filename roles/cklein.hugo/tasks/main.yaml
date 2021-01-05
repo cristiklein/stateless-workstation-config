@@ -1,4 +1,10 @@
+- name: Get hugo.deb
+  get_url:
+    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.deb
+    dest: /tmp/hugo_{{ hugo_version }}.deb
+    mode: 0600
+
 - name: Install hugo
   become: true
   apt:
-    deb: https://github.com/gohugoio/hugo/releases/download/v0.75.1/hugo_0.75.1_Linux-64bit.deb
+    deb: /tmp/hugo_{{ hugo_version }}.deb
