@@ -13,7 +13,7 @@ After installing a fresh Ubuntu 19.10:
 sudo apt install git
 git clone https://github.com/cristiklein/stateless-workstation-config.git
 cd stateless-workstation-config
-./deploy.sh --ask-become-pass
+./deploy.sh
 ```
 
 Usage on Ubuntu for Windows
@@ -22,7 +22,7 @@ Usage on Ubuntu for Windows
 sudo apt install git
 git clone https://github.com/cristiklein/stateless-workstation-config.git
 cd stateless-workstation-config
-./deploy.sh --ask-become-pass --skip-tags snap,systemd
+./deploy.sh --skip-tags snap,systemd
 ```
 
 Enjoy!
