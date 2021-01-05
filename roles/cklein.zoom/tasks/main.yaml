@@ -1,4 +1,9 @@
+- name: Download zoom.deb
+  get_url:
+    url: https://zoom.us/client/latest/zoom_amd64.deb
+    dest: /tmp/zoom.deb
+
 - name: Install Zoom
   become: yes
   apt:
-    deb: "https://zoom.us/client/latest/zoom_amd64.deb"
+    deb: /tmp/zoom.deb
