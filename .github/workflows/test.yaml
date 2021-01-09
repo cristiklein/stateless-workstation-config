@@ -1,0 +1,32 @@
+name: Test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        role:
+          - ''
+          - cklein.cloud_tools
+          - cklein.cncf
+          - cklein.git
+          - cklein.go
+          - cklein.security
+          - cklein.shell
+          - workstation
+
+    env:
+      ROLE: ${{ matrix.ROLE }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate Site YAML for Role
+        run:
+          - ./scripts/generate-site-yml-for-role.sh
+          - echo site.yml
+
+      - name: Test Role
+        run: ./test.sh
