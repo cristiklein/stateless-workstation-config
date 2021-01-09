@@ -12,8 +12,13 @@ FROM ${BASE_DOCKER_IMAGE}
 RUN pip3 install pre-commit
 EOF
 
+USE_TTY=
+if [ -t 1 ]; then
+    USE_TTY="-ti"
+fi
+
 docker run \
-    -ti \
+    $USE_TTY \
     -u $(id -u):$(id -g) \
     -v $HOME:$HOME \
     -v /etc/passwd:/etc/passwd:ro \
