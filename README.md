@@ -7,7 +7,7 @@ This is how I configure a fresh Ubuntu installation for serving me as a workstat
 
 Usage
 -----
-After installing a fresh Ubuntu 19.10:
+After installing a fresh Ubuntu 20.04:
 
 ```
 sudo apt install git
