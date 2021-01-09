@@ -24,9 +24,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generate Site YAML for Role
-        run:
-          - ./scripts/generate-site-yml-for-role.sh
-          - echo site.yml
+        run: |
+          ./scripts/generate-site-yml-for-role.sh
+          cat site.yml
 
       - name: Test Role
         run: ./test.sh
