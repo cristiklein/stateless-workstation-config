@@ -18,12 +18,15 @@ stages:
   - test
 
 script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - ./scripts/generate-site-yml-for-role.sh
   - ./test.sh
 
 jobs:
   include:
-    - script: ./lint.sh
+    - script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - ./lint.sh
       stage: lint
       # no matrix expansion
       env: ROLE=
