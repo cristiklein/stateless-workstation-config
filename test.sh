@@ -24,8 +24,13 @@ RUN useradd \
 USER blah:blah
 EOF
 
+USE_TTY=
+if [ -t 1 ]; then
+    USE_TTY="-ti"
+fi
+
 docker run \
-    -ti \
+    $USE_TTY \
     -v $(pwd):$(pwd):ro \
     -w $(pwd) \
     -e ANSIBLE_PLAYBOOK=$ANSIBLE_PLAYBOOK \
