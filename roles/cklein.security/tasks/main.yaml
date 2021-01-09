@@ -1,14 +1,8 @@
-- name: Install KeePassXC PPA
-  become: true
-  apt_repository:
-    repo: ppa:phoerious/keepassxc
-
 - name: Install security tools
   apt:
     name:
     - gnupg2
     - gnupg-agent
-    - keepassxc
     - passwordmaker-cli # legacy, new passwords are on keepassx
     - pcscd
     - pinentry-curses
@@ -19,6 +13,21 @@
   become: true
   tags:
     - gpg
+
+- name: Install KeePassXC PPA
+  become: true
+  apt_repository:
+    repo: ppa:phoerious/keepassxc
+  tags:
+    - keepassxc
+
+- name: Install KeePassXC
+  apt:
+    name:
+    - keepassxc
+  become: true
+  tags:
+    - keepassxc
 
 - name: Create autostart user folder
   file:
