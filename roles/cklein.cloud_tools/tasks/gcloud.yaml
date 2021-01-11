@@ -1,5 +1,7 @@
 - name: Install google-cloud-sdk
   become: true
-  command: snap install google-cloud-sdk --classic creates=/snap/bin/gcloud
+  snap:
+    name: google-cloud-sdk
+    classic: yes
   tags:
     - snap
