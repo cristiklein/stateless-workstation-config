@@ -1,0 +1,7 @@
+- name: Install Slack
+  become: true
+  snap:
+    name: slack
+    classic: yes
+  tags:
+    - snap

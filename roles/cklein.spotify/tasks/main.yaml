@@ -1,0 +1,6 @@
+- name: Install Spotify
+  become: true
+  snap:
+    name: spotify
+  tags:
+    - snap

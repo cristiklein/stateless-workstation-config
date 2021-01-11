@@ -33,6 +33,8 @@
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
     - cklein.shell
+    - cklein.slack
+    - cklein.spotify
     - cklein.terminator
     - cklein.vscode
     - cklein.vim

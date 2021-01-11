@@ -1,3 +1,0 @@
-dependencies:
-  - role: cklein.homebin
-  - role: cklein.pip3
