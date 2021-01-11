@@ -15,11 +15,3 @@
   command: snap install slack --classic creates=/snap/bin/slack
   tags:
     - snap
-
-- name: Install Thunderbird and Calendar
-  become: true
-  apt:
-    pkg:
-      - thunderbird
-      - xul-ext-lightning
-      - xul-ext-gdata-provider
