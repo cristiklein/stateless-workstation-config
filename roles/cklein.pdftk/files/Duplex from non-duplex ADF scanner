@@ -1,0 +1,64 @@
+#!/bin/bash
+
+"""
+MIT License
+
+Copyright (c) 2021 Cristian Klein <cristian@kleinlabs.eu>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
+# Duplex two ADF-scanned input PDFs into a single output PDF.
+#
+# The input PDFs are expected to be the result of passing the same paper twice
+# through a scanner with Auto Document Feeder (ADF). The script assumes that
+# the user did not physicall rotate the sheets for the second pass.
+# Hence, the first PDF will contain the "up" side of all sheets. The second PDF
+# will contain the "down" size of all sheets, rotated 180° in reverse order.
+#
+# Tested with Canon i-SENSYS MF742Cdw
+
+if [ $# -ne 2 ]; then
+    zenity --error --no-wrap --text "Expected exactly 2 files. Got $#.\n\n$*\n\nPlease select only 2 PDFs, i.e., from the first ADF scanner pass and the second ADF scanner pass."
+    exit 1
+fi
+
+if ! which pdftk; then
+    zenity --error --no-wrap --text "Could not find pdftk. Please run:\n\nsudo apt install pdftk"
+    exit 1
+fi
+
+OUTPUT_FILENAME="$(basename $1)-deplexed.pdf"
+LOG_FILENAME="$(basename $1)-deplexed.log"
+
+if pdftk \
+    "A=$1" "B=$2" \
+    shuffle A1-end Bend-1down \
+    output "$OUTPUT_FILENAME" \
+    verbose dont_ask &> $LOG_FILENAME
+then
+    echo "pdftk succeeded! Output written to: $OUTPUT_FILENAME" \
+        | zenity --text-info --title="Duplex Success"
+else
+    (
+        echo "pdftk failed. Please review the output below.";
+        echo;
+        cat $LOG_FILENAME;
+    ) | zenity --text-info --title="Duplex Failure"
+fi

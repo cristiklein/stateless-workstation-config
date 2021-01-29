@@ -1,0 +1,15 @@
+- name: Install pdftk
+  become: true
+  apt:
+    pkg:
+      - pdftk
+  tags:
+    - pdftk
+
+- name: Install Duplex script
+  copy:
+    src: "Duplex from non-duplex ADF scanner"
+    dest: ~/.local/share/nautilus/scripts/
+    mode: 0777
+  tags:
+    - pdftk

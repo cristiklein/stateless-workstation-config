@@ -26,7 +26,11 @@ repos:
       language: pygrep
       entry: '[Kk]lein'
       files: '^roles/.*$'
-      exclude: '^roles/.*/(meta|defaults)/main.yaml$'
+      exclude: |
+        (?x)(
+          ^roles/.*/(meta|defaults)/main.yaml$|
+          ^roles/cklein.pdftk/files/
+        )
     - id: no-dollar-home
       name: no-dollar-home
       description: >-
