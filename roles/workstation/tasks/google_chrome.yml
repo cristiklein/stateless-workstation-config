@@ -1,3 +1,8 @@
+- name: "Ensure GPG is present"
+  become: true
+  apt:
+    name: "gnupg2"
+
 - name: "apt | ensure Google linux signing key present"
   become: true
   apt_key:
