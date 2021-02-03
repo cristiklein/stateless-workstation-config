@@ -8,4 +8,5 @@
   pip:
     name:
       - pylint ~= 2.6
+      - pipfile
     state: latest
