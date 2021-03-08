@@ -15,7 +15,6 @@ jobs:
           - cklein.go
           - cklein.security
           - cklein.shell
-          - workstation
 
     env:
       ROLE: ${{ matrix.ROLE }}

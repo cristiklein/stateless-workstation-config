@@ -11,7 +11,6 @@ env:
   - ROLE=cklein.go
   - ROLE=cklein.security
   - ROLE=cklein.shell
-  - ROLE=workstation
 
 stages:
   - lint
