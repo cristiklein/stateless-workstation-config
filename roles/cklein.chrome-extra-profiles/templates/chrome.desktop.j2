@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+{{ ansible_managed | comment }}
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Chrome {{ profile_name }}
+Exec=sh -c '/opt/google/chrome/google-chrome --user-data-dir=$HOME/.config/google-chrome-{{ profile_name }} --class=chrome-{{ profile_name }}'
+Icon=chrome-{{ profile_name }}
+StartupWMClass=chrome-{{ profile_name }}

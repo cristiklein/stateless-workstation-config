@@ -16,6 +16,13 @@
     - cklein.cad
     - cklein.cloud_tools
     - cklein.cncf
+    - cklein.chrome
+    - role: cklein.chrome-extra-profiles
+      tags: chrome-extra-profiles
+      vars:
+        profile_names:
+          - elastisys
+          - le-staging
     - cklein.default_apps
     - cklein.dictionaries
     - cklein.docker
@@ -41,7 +48,6 @@
     - cklein.vim
     - cklein.tmp_on_tmpfs
     - cklein.zoom
-    - workstation
     # Best to run after all favorite apps are installed
     - cklein.gnome_favorite_apps
 

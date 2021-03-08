@@ -1,0 +1,41 @@
+- name: "Check parameters"
+  assert:
+    that: "profile_names is iterable"
+
+- name: "Create user applications and icons folder"
+  file:
+    path: "{{ item }}"
+    recurse: yes
+    state: directory
+  loop:
+    - "~/.local/share/applications"
+    - "~/.local/share/icons/hicolor/scalable/apps"
+
+- name: "Create profiles folder"
+  file:
+    path: "~/.config/google-chrome-{{ item }}/NativeMessagingHosts"
+    recurse: yes
+    state: directory
+  loop: "{{ profile_names }}"
+
+- name: "Install icons"
+  copy:
+    src: chrome-{{ item }}.svg
+    dest: ~/.local/share/icons/hicolor/scalable/apps/chrome-{{ item }}.svg
+  loop: "{{ profile_names }}"
+
+- name: "Install desktop files"
+  template:
+    src: chrome.desktop.j2
+    dest: ~/.local/share/applications/chrome-{{ item }}.desktop
+  vars:
+    profile_name: "{{ item }}"
+  loop: "{{ profile_names }}"
+
+- name: "Fix native integration for KeePassXC-browser"
+  file:
+    src: ~/.config/google-chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
+    dest: ~/.config/google-chrome-{{ item }}/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
+    state: link
+    force: yes
+  loop: "{{ profile_names }}"
