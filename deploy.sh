@@ -11,10 +11,9 @@ sudo true # Ensure ansible gets sudo access
 
 if ! which ansible > /dev/null; then
     log "Ansible not found; trying to install"
-    # Disabled for now; Ubuntu 20.04 has a recent enough ansible version.
-    #sudo apt-get update
-    #sudo apt-get install -yyq software-properties-common
-    #sudo apt-add-repository --yes ppa:ansible/ansible
+    sudo apt-get update
+    sudo apt-get install -yyq software-properties-common
+    sudo apt-add-repository --yes ppa:ansible/ansible
     sudo apt-get update
     sudo apt-get install -yyq ansible
 fi
