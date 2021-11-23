@@ -1,0 +1,14 @@
+{{ ansible_managed | comment }}
+
+# Up and down arrows to search through history with the prefix of whatever
+# has already been typed at the prompt.
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+set completion-ignore-case on
+set bell-style visible
+set mark-symlinked-directories on
+set mark-directories on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set visible-stats on
