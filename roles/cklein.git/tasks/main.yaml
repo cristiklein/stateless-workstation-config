@@ -25,5 +25,5 @@
 - name: Install pre-commit
   pip:
     name:
-      - pre-commit ~= 2.9
+      - pre-commit ~= {{ precommit_version_match }}
     state: latest
