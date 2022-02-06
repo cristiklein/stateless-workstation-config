@@ -1,1 +1,4 @@
-aws_iam_authenticator_version: 1.18.9/2020-11-02
+aws_iam_authenticator_version: 1.21.2/2021-07-05
+awscli_version_match: 1.22
+openstackclient_version_match: 5.7
+s3cmd_version_match: 2.2

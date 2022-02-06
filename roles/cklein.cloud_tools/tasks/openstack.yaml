@@ -1,5 +1,5 @@
 - name: Install openstackclient
   pip:
     name:
-      - openstackclient ~= 4.0
+      - python-openstackclient ~= {{ openstackclient_version_match }}
     state: latest

@@ -1,8 +1,8 @@
 - name: Install awscli and s3cmd
   pip:
     name:
-      - awscli ~= 1.18
-      - s3cmd ~= 2.1
+      - awscli ~= {{ awscli_version_match }}
+      - s3cmd ~= {{ s3cmd_version_match }}
     state: latest
 
 - name: Install aws-iam-authenticator
