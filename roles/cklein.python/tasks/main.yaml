@@ -7,6 +7,6 @@
 - name: Install python3 development tools (via pip)
   pip:
     name:
-      - pylint ~= 2.6
+      - pylint ~= {{ pylint_version_match }}
       - pipfile
     state: latest
