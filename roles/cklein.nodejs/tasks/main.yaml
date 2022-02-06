@@ -1,6 +1,6 @@
 - name: Install Node Version Manager (nvm)
   shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
   args:
     creates: ~/.nvm/nvm.sh
   tags:
