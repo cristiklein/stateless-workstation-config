@@ -19,6 +19,13 @@
   become: true
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main
+  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
+
+- name: Add Microsoft repository
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ focal main
+  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int > 20
 
 - name: Install Azure CLI
   become: true
