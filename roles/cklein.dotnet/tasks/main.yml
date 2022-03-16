@@ -15,6 +15,13 @@
   become: true
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod {{ ansible_distribution_release }} main
+  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
+
+- name: Add Microsoft repository
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/20.04/prod focal main
+  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int > 20
 
 - name: Install .NET packages
   become: true
