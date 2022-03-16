@@ -30,14 +30,6 @@
   tags:
     - keepassxc
 
-- name: Create autostart user folder
-  file:
-    path: ~/.config/autostart
-    state: directory
-    recurse: true
-  tags:
-    - gpg
-
 - name: Create gpg config folder
   file:
     path: ~/.gnupg
@@ -52,7 +44,6 @@
     src: '{{ item | basename }}.j2'
     dest: '{{ item }}'
   loop:
-    - ~/.config/autostart/gnome-keyring-ssh.desktop
     - ~/.gnupg/gpg.conf
     - ~/.gnupg/gpg-agent.conf
     - ~/.gnupg/gpgkeys.txt
