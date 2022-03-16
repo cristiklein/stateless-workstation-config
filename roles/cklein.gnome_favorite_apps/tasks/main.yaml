@@ -2,6 +2,7 @@
   become: true
   apt:
     pkg: python-psutil
+  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
 
 - name: Configure launchbar
   dconf:
