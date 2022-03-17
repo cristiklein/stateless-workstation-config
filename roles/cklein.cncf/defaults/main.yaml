@@ -10,4 +10,5 @@ terraform_version: 1.1.4
 sops_version: 3.7.1
 
 krew_plugins:
-  - oidc-login
+  - name: oidc-login
+    creates: ~/.krew/bin/kubectl-oidc_login
