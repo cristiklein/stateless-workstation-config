@@ -22,6 +22,11 @@
   args:
     creates: ~/.krew/bin
 
+- name: Install krew plugins
+  shell: |
+    kubectl krew install {{ item }}
+  loop: '{{ krew_plugins }}'
+
 - name: Install helm
   unarchive:
     src: https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz

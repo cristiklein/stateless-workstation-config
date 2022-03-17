@@ -8,3 +8,6 @@ krew_version: 0.4.3
 terraform_version: 1.1.4
 
 sops_version: 3.7.1
+
+krew_plugins:
+  - oidc-login
