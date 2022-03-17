@@ -24,7 +24,7 @@
 
 - name: Install krew plugins
   shell: |
-    PATH="$HOME/bin:$PATH"
+    PATH="$HOME/bin:$HOME/.krew/bin:$PATH"
     kubectl krew install {{ item.name }}
   args:
     creates: '{{ item.creates }}'
