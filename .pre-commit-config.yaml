@@ -36,8 +36,13 @@ repos:
       description: >-
         Prefer tilde (~) to $HOME. E.g., unarchive's create does not handle $HOME.
         https://github.com/ansible/ansible/pull/27018
+
+        However, allow $HOME in certain shell snippets. So:
+        - `PATH="$HOME/bin:$HOME/.krew/bin:$PATH"` -- okay
+        - `creates: $HOME/hello` -- okay
+        - `creates: ~/home` -- not okay
       language: pygrep
-      entry: '[$]HOME'
+      entry: '^(?!\W+\w+=).*[$]HOME'
       files: '^roles/.*[.]ya?ml$'
     - id: no-state-present
       name: no-state-present
