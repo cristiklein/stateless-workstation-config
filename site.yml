@@ -32,7 +32,7 @@
     - cklein.go
     - cklein.hugo
     - cklein.imagemagick
-    - cklein.minikube
+    #- cklein.minikube
     - cklein.mutt
     - cklein.mplayer
     - cklein.nodejs
