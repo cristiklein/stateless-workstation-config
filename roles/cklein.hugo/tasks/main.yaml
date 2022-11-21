@@ -1,6 +1,6 @@
 - name: Get hugo.deb
   get_url:
-    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-64bit.deb
+    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_extended_{{ hugo_version }}_linux-amd64.deb
     dest: /tmp/hugo_{{ hugo_version }}.deb
     mode: 0600
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
