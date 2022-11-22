@@ -16,10 +16,9 @@ RUN \
     && apt-get install -yyq ubuntu-minimal \
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'blah ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/no-passwd-blah
 RUN useradd \
     --create-home \
-    --groups sudo \
     blah
 USER blah:blah
 EOF
