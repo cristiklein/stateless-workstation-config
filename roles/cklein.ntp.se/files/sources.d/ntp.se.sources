@@ -1,4 +1,3 @@
-# https://www.netnod.se/blog/best-practices-connecting-ntp-servers
 pool gbg1.ntp.netnod.se iburst
 
 pool gbg2.ntp.netnod.se iburst
