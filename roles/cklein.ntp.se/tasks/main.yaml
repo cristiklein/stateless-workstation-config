@@ -1,0 +1,18 @@
+- name: Install chrony
+  become: true
+  apt:
+    name:
+      # Should remove systemd-timesyncd
+      - chrony
+  tags:
+    - ntp.se
+
+- name: Setup ntp.se sources
+  become: true
+  copy:
+    src: sources.d/
+    dest: /etc/chrony/sources.d/
+  notify:
+    - chrony reload sources
+  tags:
+    - ntp.se

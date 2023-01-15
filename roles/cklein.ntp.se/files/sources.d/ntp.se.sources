@@ -1,0 +1,24 @@
+# https://www.netnod.se/blog/best-practices-connecting-ntp-servers
+pool gbg1.ntp.netnod.se iburst
+
+pool gbg2.ntp.netnod.se iburst
+
+pool lul1.ntp.netnod.se iburst
+
+pool lul2.ntp.netnod.se iburst
+
+pool mmo1.ntp.netnod.se iburst
+
+pool mmo2.ntp.netnod.se iburst
+
+pool sth1.ntp.netnod.se iburst
+
+pool sth2.ntp.netnod.se iburst
+
+pool sth3.ntp.netnod.se iburst
+
+pool sth4.ntp.netnod.se iburst
+
+pool svl1.ntp.netnod.se iburst
+
+pool svl2.ntp.netnod.se iburst

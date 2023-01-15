@@ -36,6 +36,7 @@
     - cklein.mutt
     - cklein.mplayer
     - cklein.nodejs
+    - cklein.ntp.se
     - cklein.pdftk
     - cklein.python
     - cklein.remote_unlock_encrypted_volume
