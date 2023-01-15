@@ -2,7 +2,7 @@
 
 set -e
 
-: ${BASE_DOCKER_IMAGE:=ubuntu:20.04}
+: ${BASE_DOCKER_IMAGE:=ubuntu:22.04}
 : ${ANSIBLE_PLAYBOOK:=site.yml}
 
 DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-minimal
