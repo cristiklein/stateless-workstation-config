@@ -12,12 +12,12 @@
   apt_key:
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
     url: "https://download.docker.com/linux/ubuntu/gpg"
-    keyring: /etc/apt/trusted.gpg.d/docker.gpg
+    keyring: /etc/apt/keyrings/docker.gpg
 
 - name: Add Docker repository
   become: true
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
 - name: Install Docker
   become: true
