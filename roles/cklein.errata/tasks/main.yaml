@@ -22,6 +22,9 @@
 
 # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
 - name: Remove certs in /etc/apt/trusted.gpg.d
+  become: true
   file:
-    path: '/etc/apt/trusted.gpg.d/*'
+    path: "{{ item }}"
     state: absent
+  with_fileglob:
+    - "/etc/apt/trusted.gpg.d/*"
