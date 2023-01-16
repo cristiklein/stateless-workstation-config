@@ -1,2 +1,2 @@
 dotnet_pkgs:
-  - dotnet-sdk-3.1
+  - dotnet-sdk-7.0
