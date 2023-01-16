@@ -2,3 +2,5 @@
 - name: chrony reload sources
   become: true
   shell: chronyc reload sources
+  tags:
+    - systemd
