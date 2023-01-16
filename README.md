@@ -1,13 +1,11 @@
 Stateless Workstation Configuration
 ===================================
 
-[![Build Status](https://travis-ci.org/cristiklein/stateless-workstation-config.svg?branch=master)](https://travis-ci.org/cristiklein/stateless-workstation-config)
-
 This is how I configure a fresh Ubuntu installation for serving me as a workstation.
 
 Usage
 -----
-After installing a fresh Ubuntu 20.04:
+After installing a fresh Ubuntu 22.04:
 
 ```
 sudo apt install git
