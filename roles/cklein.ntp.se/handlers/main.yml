@@ -2,5 +2,6 @@
 - name: chrony reload sources
   become: true
   shell: chronyc reload sources
+  ignore_errors: yes
   tags:
     - systemd
