@@ -1,3 +1,4 @@
 dependencies:
   - role: cklein.homebin
+  - role: cklein.microsoft_key
   - role: cklein.pip3

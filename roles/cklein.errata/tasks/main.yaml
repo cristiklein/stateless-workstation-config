@@ -19,3 +19,9 @@
   loop:
     - ~/.mimeapps.list
     - ~/.xsessionrc
+
+# https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
+- name: Remove certs in /etc/apt/trusted.gpg.d
+  file:
+    path: '/etc/apt/trusted.gpg.d/*'
+    state: absent

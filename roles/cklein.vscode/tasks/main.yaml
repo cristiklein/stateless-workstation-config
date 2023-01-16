@@ -10,17 +10,10 @@
       - libgtk2.0-0
       - libxss1
 
-- name: install key (apt)
-  become: yes
-  apt_key:
-    id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
-    url: 'https://packages.microsoft.com/keys/microsoft.asc'
-    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
-
 - name: install VS Code repo (apt)
   become: yes
   apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
 
 - name: install VS Code (apt)
