@@ -1,19 +1,7 @@
-- name: "Ensure GPG is present"
-  become: true
-  apt:
-    name: "gnupg2"
-
-- name: "apt | ensure Google linux signing key present"
-  become: true
-  apt_key:
-    id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
-    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-    keyring: /etc/apt/trusted.gpg.d/google.gpg
-
 - name: "apt | ensure Google chrome repo present"
   become: true
   apt_repository:
-    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] http://dl.google.com/linux/chrome/deb/ stable main"
     filename: "google-chrome"
     update_cache: yes
 
