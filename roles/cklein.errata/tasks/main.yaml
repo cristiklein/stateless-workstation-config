@@ -27,4 +27,14 @@
     path: "{{ item }}"
     state: absent
   with_fileglob:
-    - "/etc/apt/trusted.gpg.d/*"
+    - "/etc/apt/trusted.gpg.d/docker*"
+    - "/etc/apt/trusted.gpg.d/google*"
+    - "/etc/apt/trusted.gpg.d/microsoft*"
+
+- name: Remove unneeded APT sources
+  become: true
+  file:
+    path: "/etc/apt/sources.list.d/{{ item }}"
+    state: absent
+  with_items:
+    - "download_docker_com_linux_ubuntu.list"
