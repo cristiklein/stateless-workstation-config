@@ -1,0 +1,18 @@
+- name: Create folder for fonts
+  file:
+    path: '~/.local/share/fonts/{{ item }}'
+    state: directory
+  with_items: '{{ fonts_google_families }}'
+  tags:
+    - fonts
+
+- name: Install Google Fonts
+  ansible.builtin.unarchive:
+    src: 'https://fonts.google.com/download?family={{ item }}'
+    dest: '~/.local/share/fonts/{{ item }}'
+    remote_src: yes
+  with_items: '{{ fonts_google_families }}'
+  tags:
+    - fonts
+  notify:
+    - Reset font cache
