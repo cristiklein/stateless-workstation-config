@@ -1,0 +1,9 @@
+- name: Disable webcam microphone
+  become: true
+  copy:
+    src: rules.d/
+    dest: /etc/udev/rules.d/
+  notify:
+    - udev reload rules
+  tags:
+    - udev

@@ -1,0 +1,6 @@
+- name: udev reload rules
+  become: true
+  shell: udevadm control --reload-rules
+  ignore_errors: yes
+  tags:
+    - udev
