@@ -50,8 +50,8 @@
 
 - name: Download sops.deb
   get_url:
-    url: https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops_{{ sops_version }}_amd64.deb
-    dest: /tmp/sops_{{ sops_version }}_amd64.deb
+    url: https://github.com/getsops/sops/releases/download/v{{ sops_version }}/sops_{{ sops_version }}_amd64.deb
+    dest: /tmp/
     mode: 0600
 
 - name: Install sops
