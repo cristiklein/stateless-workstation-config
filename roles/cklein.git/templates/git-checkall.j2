@@ -1,0 +1,39 @@
+#!/bin/bash
+{{ ansible_managed | comment }}
+
+#
+# Check if there is any data inside a Git repository which may get lost.
+#
+
+IFS=
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+NC=$(tput sgr0)
+
+find $HOME \
+    -name .git \
+    -not -path "$HOME/.cache/*" \
+    -not -path "$HOME/.local/*" \
+    -print0 \
+| while read -r -d '' dot_git_folder; do
+    (
+        GIT_WORKTREE=$(dirname $dot_git_folder)
+
+        cd $GIT_WORKTREE
+        GIT_STATUS=$(git status --porcelain)
+        GIT_UNPUSHED=$(git log --branches --not --remotes --no-walk --decorate --oneline)
+
+        if [ -n "$GIT_STATUS" ]; then
+            echo "🧼 ${RED}${GIT_WORKTREE}${NC} is dirty"
+            echo $GIT_STATUS
+            echo
+        fi
+
+        if [ -n "$GIT_UNPUSHED" ]; then
+            echo "🧼 ${RED}${GIT_WORKTREE}${NC} contains unpushed commits"
+            echo $GIT_UNPUSHED
+            echo
+	fi
+    )
+done

@@ -27,3 +27,8 @@
     name:
       - pre-commit ~= {{ precommit_version_match }}
     state: latest
+
+- name: Install git-checkall
+  template:
+    src: git-checkall.j2
+    dest: ~/bin/git-checkall
