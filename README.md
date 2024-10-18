@@ -5,7 +5,7 @@ This is how I configure a fresh Ubuntu installation for serving me as a workstat
 
 Usage
 -----
-After installing a fresh Ubuntu 22.04:
+After installing a fresh Ubuntu 24.04:
 
 ```
 sudo apt install git

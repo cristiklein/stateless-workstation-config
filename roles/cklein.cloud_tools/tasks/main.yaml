@@ -1,5 +1,5 @@
-- include_tasks: aws.yaml
+#- include_tasks: aws.yaml
 - include_tasks: azure.yaml
 - include_tasks: gcloud.yaml
-- include_tasks: openstack.yaml
+#- include_tasks: openstack.yaml
 - include_tasks: multi_cloud.yaml

@@ -27,7 +27,7 @@
     - cklein.docker
     - cklein.dotnet
     - cklein.dropbox
-    - cklein.fonts
+    #- cklein.fonts
     - cklein.git
     - cklein.go
     - cklein.hugo
@@ -45,7 +45,7 @@
     - cklein.slack
     - cklein.spotify
     - cklein.terminator
-    - cklein.vscode
+    #- cklein.vscode
     - cklein.vim
     - cklein.wallpapers
     - cklein.webcam_fix
