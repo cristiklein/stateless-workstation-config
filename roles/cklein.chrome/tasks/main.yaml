@@ -1,4 +1,10 @@
+- name: Add Google Chrome repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main"
+
 - name: "Install Google Chrome"
   become: true
-  ansible.builtin.apt:
-    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  apt:
+    name:
+      - google-chrome-stable
