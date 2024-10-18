@@ -3,6 +3,12 @@
   apt_repository:
     repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main"
 
+- name: Prevent the Google Chrome Deb from installing its own repository
+  become: true
+  copy:
+    src: etc/default/google-chrome
+    dest: /etc/default/google-chrome
+
 - name: "Install Google Chrome"
   become: true
   apt:
