@@ -4,9 +4,6 @@
   module_defaults:
     apt:
       force_apt_get: yes
-    pip:
-      executable: pip3
-      extra_args: --user
   roles:
     # Prefer first to trigger changes in case of incorrect errata
     - cklein.errata
