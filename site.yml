@@ -27,7 +27,7 @@
     - cklein.docker
     - cklein.dotnet
     - cklein.dropbox
-    #- cklein.fonts
+    - cklein.fonts
     - cklein.git
     - cklein.go
     - cklein.hugo
