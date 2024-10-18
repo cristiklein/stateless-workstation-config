@@ -9,7 +9,6 @@
     - scdaemon
     - wipe
     - yubikey-personalization
-    - yubikey-personalization-gui
   become: true
   tags:
     - gpg
