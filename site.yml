@@ -45,7 +45,7 @@
     - cklein.slack
     - cklein.spotify
     - cklein.terminator
-    #- cklein.vscode
+    - cklein.vscode
     - cklein.vim
     - cklein.wallpapers
     - cklein.webcam_fix
