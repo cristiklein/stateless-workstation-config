@@ -14,13 +14,4 @@ cd stateless-workstation-config
 ./deploy.sh
 ```
 
-Usage on Ubuntu for Windows
----------------------------
-```
-sudo apt install git
-git clone https://github.com/cristiklein/stateless-workstation-config.git
-cd stateless-workstation-config
-./deploy.sh --skip-tags snap,systemd
-```
-
 Enjoy!
