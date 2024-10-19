@@ -1,10 +1,5 @@
-- name: Install python-psutil
-  become: true
-  apt:
-    pkg: python-psutil
-  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
-
+---
 - name: Configure launchbar
-  dconf:
+  community.general.dconf:
     key: "/org/gnome/shell/favorite-apps"
     value: "['{{ gnome_favorite_apps | join(\"', '\") | string }}']"
