@@ -34,7 +34,6 @@
   ansible.builtin.file:
     path: ~/.gnupg
     state: directory
-    recurse: true
     mode: '0700'
   tags:
     - gpg
@@ -72,7 +71,6 @@
   ansible.builtin.file:
     path: ~/.ssh
     state: directory
-    recurse: true
     mode: '0700'
   tags:
     - ssh
