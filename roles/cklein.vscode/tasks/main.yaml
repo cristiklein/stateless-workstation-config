@@ -1,10 +1,11 @@
-- name: install VS Code repo (apt)
-  become: yes
-  apt_repository:
+---
+- name: Install VS Code repo (apt)
+  become: true
+  ansible.builtin.apt_repository:
     repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
 
-- name: install VS Code (apt)
-  become: yes
-  apt:
+- name: Install VS Code (apt)
+  become: true
+  ansible.builtin.apt:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"

@@ -1,12 +1,15 @@
+---
 - name: Create wallpapers folder
-  file:
+  ansible.builtin.file:
     name: ~/Pictures/Wallpapers
     state: directory
+    mode: '0755'
 
 - name: Copy wallpapers
-  copy:
+  ansible.builtin.copy:
     src: .
     dest: ~/Pictures/Wallpapers
+    mode: '0644'
 
 - name: Get path to wallpaper
   ansible.builtin.set_fact:

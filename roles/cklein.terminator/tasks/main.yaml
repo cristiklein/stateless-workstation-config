@@ -1,16 +1,19 @@
+---
 - name: Install GUI tools
-  apt:
+  ansible.builtin.apt:
     name:
       - terminator
   become: true
 
 - name: Configure terminator (folder)
-  file:
+  ansible.builtin.file:
     path: ~/.config/terminator
-    recurse: yes
+    recurse: true
     state: directory
+    mode: '0644'
 
 - name: Configure terminator
-  template:
+  ansible.builtin.template:
     src: terminator_config.j2
     dest: ~/.config/terminator/config
+    mode: '0644'

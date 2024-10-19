@@ -1,7 +1,8 @@
+---
 - name: Install Slack
   become: true
-  snap:
+  community.general.snap:
     name: slack
-    classic: yes
+    classic: true
   tags:
     - snap

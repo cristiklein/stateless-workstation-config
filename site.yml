@@ -1,9 +1,10 @@
-- name: set up localhost as workstation
+---
+- name: Set up localhost as workstation
   hosts: localhost
   connection: local
   module_defaults:
     apt:
-      force_apt_get: yes
+      force_apt_get: true
   roles:
     # Prefer first to trigger changes in case of incorrect errata
     - cklein.errata
@@ -29,7 +30,6 @@
     - cklein.go
     - cklein.hugo
     - cklein.imagemagick
-    #- cklein.minikube
     - cklein.mutt
     - cklein.mplayer
     - cklein.nodejs

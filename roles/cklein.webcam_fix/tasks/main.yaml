@@ -1,9 +1,9 @@
+---
 - name: Disable webcam microphone
   become: true
-  copy:
+  ansible.builtin.copy:
     src: rules.d/
     dest: /etc/udev/rules.d/
+    mode: '0644'
   notify:
-    - udev reload rules
-  tags:
-    - udev
+    - Reload udev rules

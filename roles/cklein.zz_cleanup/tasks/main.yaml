@@ -1,16 +1,17 @@
+---
 - name: Update apt package
   become: true
-  apt:
-    update_cache: yes
+  ansible.builtin.apt:
+    update_cache: true
     upgrade: safe
   tags: update
 
 - name: Remove useless packages from the cache
-  apt:
-    autoclean: yes
+  ansible.builtin.apt:
+    autoclean: true
   become: true
 
 - name: Remove dependencies that are no longer required
-  apt:
-    autoremove: yes
+  ansible.builtin.apt:
+    autoremove: true
   become: true

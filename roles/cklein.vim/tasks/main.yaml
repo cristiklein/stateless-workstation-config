@@ -1,26 +1,28 @@
 ---
 - name: Install vim
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - ansible-lint
       - git
       - vim-gtk3
 
 - name: Configure default editor
-  template:
+  ansible.builtin.template:
     src: selected_editor.j2
     dest: ~/.selected_editor
+    mode: '0644'
 
 - name: Clone vim configuration
-  git:
+  ansible.builtin.git:
     repo: '{{ repos.vimrc }}'
     dest: ~/.vim
     depth: 1
-    update: no
+    update: false
+    version: master
 
 - name: Link .vimrc to ~
-  file:
+  ansible.builtin.file:
     src: ~/.vim/.vimrc
     dest: ~/.vimrc
     state: link

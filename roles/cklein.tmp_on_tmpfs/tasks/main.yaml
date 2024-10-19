@@ -1,5 +1,6 @@
-- name: mount tmpfs as /tmp
-  mount:
+---
+- name: Mount tmpfs as /tmp
+  ansible.posix.mount:
     path: /tmp
     src: tmpfs
     fstype: tmpfs

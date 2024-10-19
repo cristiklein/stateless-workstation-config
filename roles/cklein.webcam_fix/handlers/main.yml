@@ -1,6 +1,9 @@
-- name: udev reload rules
+---
+- name: Reload udev rules
   become: true
-  shell: udevadm control --reload-rules
-  ignore_errors: yes
-  tags:
-    - udev
+  ansible.builtin.command:
+    argv:
+      - udevadm
+      - control
+      - --reload-rules
+  changed_when: true
