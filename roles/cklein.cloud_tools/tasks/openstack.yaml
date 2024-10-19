@@ -1,5 +1,6 @@
+---
 - name: Install openstackclient
-  pip:
+  become: true
+  ansible.builtin.apt:
     name:
-      - python-openstackclient ~= {{ openstackclient_version_match }}
-    state: latest
+      - python3-openstackclient

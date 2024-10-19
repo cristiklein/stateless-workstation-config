@@ -1,5 +1,9 @@
 ---
-- include_tasks: azure.yaml
-- include_tasks: gcloud.yaml
-#- include_tasks: openstack.yaml
-- include_tasks: multi_cloud.yaml
+- name: Include Azure
+  ansible.builtin.include_tasks: azure.yaml
+- name: Include Google Cloud
+  ansible.builtin.include_tasks: gcloud.yaml
+- name: Include OpenStack
+  ansible.builtin.include_tasks: openstack.yaml
+- name: Include tools for multiple clouds
+  ansible.builtin.include_tasks: multi_cloud.yaml

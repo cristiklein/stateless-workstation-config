@@ -1,7 +1,8 @@
+---
 - name: Install google-cloud-sdk
   become: true
-  snap:
+  community.general.snap:
     name: google-cloud-sdk
-    classic: yes
+    classic: true
   tags:
     - snap

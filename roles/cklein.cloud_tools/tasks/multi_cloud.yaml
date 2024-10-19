@@ -1,7 +1,7 @@
 ---
 - name: Install useful multi-cloud tools
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - rclone
       - s3cmd

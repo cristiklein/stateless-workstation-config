@@ -1,17 +1,18 @@
+---
 - name: Gather needed facts
-  setup:
+  ansible.builtin.setup:
     gather_subset:
-        - "distribution"
-        - "!min"
+      - "distribution"
+      - "!min"
   when: ansible_distribution_release is not defined
 
 - name: Add Microsoft repository
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main
 
 - name: Install Azure CLI
   become: true
-  apt:
+  ansible.builtin.apt:
     pkg:
       - azure-cli

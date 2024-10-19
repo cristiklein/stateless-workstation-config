@@ -1,4 +1,6 @@
+---
 - name: Configure default apps
   template:
     src: mimeapps.list.j2
     dest: ~/.config/mimeapps.list
+    mode: '0644'
