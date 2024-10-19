@@ -13,7 +13,9 @@ FROM ${BASE_DOCKER_IMAGE}
 ENV DEBIAN_FRONTEND=noninteractive
 RUN \
     apt-get update \
-    && apt-get install -yyq ubuntu-standard \
+    && apt-get install -yyq \
+      ubuntu-minimal \
+      ubuntu-standard \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo 'blah ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/no-passwd-blah
