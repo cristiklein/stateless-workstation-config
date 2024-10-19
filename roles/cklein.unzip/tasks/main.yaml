@@ -1,5 +1,6 @@
+---
 - name: Install unzip
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - unzip

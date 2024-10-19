@@ -1,5 +1,6 @@
+---
 - name: Install curl
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - curl

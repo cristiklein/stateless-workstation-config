@@ -1,60 +1,64 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
+---
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
-    -   id: check-added-large-files
-    -   id: check-merge-conflict
-    -   id: check-yaml
-    -   id: detect-private-key
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
-- repo: https://github.com/ansible/ansible-lint.git
-  rev: v4.2.0
-  hooks:
-    - id: ansible-lint
-      files: \.(yaml|yml)$
-- repo: local
-  hooks:
-    - id: generic-roles
-      name: generic-roles
-      description: >-
-        Prevents accidentally leaving my name, username or email in any role,
-        preventing them from being generic.
-      language: pygrep
-      entry: '[Kk]lein'
-      files: '^roles/.*$'
-      exclude: |
-        (?x)(
-          ^roles/.*/(meta|defaults)/main.yaml$|
-          ^roles/cklein.pdftk/files/
-        )
-    - id: no-dollar-home
-      name: no-dollar-home
-      description: >-
-        Prefer tilde (~) to $HOME. E.g., unarchive's create does not handle $HOME.
-        https://github.com/ansible/ansible/pull/27018
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/ansible/ansible-lint.git
+    rev: v24.9.2
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
+        additional_dependencies:
+          - ansible
+  - repo: local
+    hooks:
+      - id: generic-roles
+        name: generic-roles
+        description: >-
+          Prevents accidentally leaving my name, username or email in any role,
+          preventing them from being generic.
+        language: pygrep
+        entry: '[Kk]lein'
+        files: '^roles/.*$'
+        exclude: |
+          (?x)(
+            ^roles/.*/(meta|defaults)/main.yaml$|
+            ^roles/cklein.pdftk/files/
+          )
+      - id: no-dollar-home
+        name: no-dollar-home
+        description: >-
+          Prefer tilde (~) to $HOME. E.g., unarchive's create does not handle
+          $HOME.
+          https://github.com/ansible/ansible/pull/27018
 
-        However, allow $HOME in certain shell snippets. So:
-        - `PATH="$HOME/bin:$HOME/.krew/bin:$PATH"` -- okay
-        - `creates: $HOME/hello` -- okay
-        - `creates: ~/home` -- not okay
-      language: pygrep
-      entry: '^(?!\W+\w+=).*[$]HOME'
-      files: '^roles/.*[.]ya?ml$'
-    - id: no-state-present
-      name: no-state-present
-      description: >-
-        Avoid 'state: present' as it only adds visual noise.
-      language: pygrep
-      entry: 'state: present'
-      files: '^roles/.*[.]ya?ml$'
-    - id: no-static-distribution
-      name: no-static-distribution
-      description: >-
-        Avoid hard-coding distribution name.
-      language: pygrep
-      entry: '(bionic|eoan)'
-      files: '^roles/.*[.]ya?ml$'
+          However, allow $HOME in certain shell snippets. So:
+          - `PATH="$HOME/bin:$HOME/.krew/bin:$PATH"` -- okay
+          - `creates: $HOME/hello` -- okay
+          - `creates: ~/home` -- not okay
+        language: pygrep
+        entry: '^(?!\W+\w+=).*[$]HOME'
+        files: '^roles/.*[.]ya?ml$'
+      - id: no-state-present
+        name: no-state-present
+        description: >-
+          Avoid 'state: present' as it only adds visual noise.
+        language: pygrep
+        entry: 'state: present'
+        files: '^roles/.*[.]ya?ml$'
+      - id: no-static-distribution
+        name: no-static-distribution
+        description: >-
+          Avoid hard-coding distribution name.
+        language: pygrep
+        entry: '(bionic|eoan)'
+        files: '^roles/.*[.]ya?ml$'

@@ -2,14 +2,17 @@
 
 set -e
 
-: ${BASE_DOCKER_IMAGE:=python:3.7}
+: ${BASE_DOCKER_IMAGE:=ubuntu:24.04}
 
 DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-precommit
 
 docker build -t $DOCKER_IMAGE - <<EOF
 FROM ${BASE_DOCKER_IMAGE}
 
-RUN pip3 install pre-commit
+RUN apt-get update && apt-get -y install \
+  ansible \
+  git \
+  pre-commit
 EOF
 
 USE_TTY=

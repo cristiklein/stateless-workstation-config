@@ -1,0 +1,3 @@
+---
+skip_list:
+  - role-name  # We have a different convention than ansible-lint

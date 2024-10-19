@@ -1,6 +1,7 @@
-- name: "apt | ensure Google linux signing key present"
+---
+- name: "Add Google Linux signing key"
   become: true
-  apt_key:
+  ansible.builtin.apt_key:
     id: 4CCA1EAF950CEE4AB83976DCA040830F7FAC5991
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
     keyring: /etc/apt/keyrings/google.gpg

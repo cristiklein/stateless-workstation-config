@@ -1,4 +1,6 @@
+---
 - name: Create ~/bin
-  file:
+  ansible.builtin.file:
     path: ~/bin
     state: directory
+    mode: '0755'

@@ -14,14 +14,6 @@
   tags:
     - gpg
 
-- name: Install KeePassXC PPA
-  become: true
-  ansible.builtin.apt_repository:
-    repo: ppa:phoerious/keepassxc
-  tags:
-    - keepassxc
-  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
-
 - name: Install KeePassXC
   ansible.builtin.apt:
     name:
@@ -63,7 +55,9 @@
     echo "GPG keys imported at $(date -Is)" > ~/.gnupg/gpgkeys-imported.txt
   args:
     creates: ~/.gnupg/gpgkeys-imported.txt
-  ignore_errors: true
+  # Ideally, we would want this to show as failed, and continue with the rest
+  # of the playbook, but Ansible doesn't seem to support this.
+  ignore_errors: true  # noqa ignore-errors
   tags:
     - gpg
 

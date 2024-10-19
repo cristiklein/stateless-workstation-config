@@ -8,6 +8,13 @@
       - curl
       - software-properties-common
 
+- name: Gather needed facts
+  ansible.builtin.setup:
+    gather_subset:
+      - "distribution"
+      - "!min"
+  when: ansible_distribution_release is not defined
+
 - name: Add Docker apt-key
   become: true
   ansible.builtin.apt_key:
