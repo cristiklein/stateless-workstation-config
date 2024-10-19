@@ -1,5 +1,0 @@
-- name: Install pip3
-  become: true
-  apt:
-    name:
-      - python3-pip
