@@ -3,5 +3,7 @@
   become: true
   ansible.builtin.command: chronyc reload sources
   changed_when: true
+  # https://stackoverflow.com/a/75510129
+  when: "'systemd' not in ansible_skip_tags"
   tags:
     - systemd
