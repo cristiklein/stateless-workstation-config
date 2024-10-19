@@ -1,15 +1,16 @@
+---
 - name: Install binaries
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ item }}'
     dest: '~/bin/{{ item | basename }}'
-    mode: 0755
+    mode: '0755'
   loop:
     - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubectx_version }}/kubectx
     - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubens_version }}/kubens
     - https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
 
 - name: Install krew
-  shell: |
+  ansible.builtin.shell: |
     (
       set -x; cd "$(mktemp -d)" &&
       OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
@@ -23,7 +24,7 @@
     creates: ~/.krew/bin
 
 - name: Install krew plugins
-  shell: |
+  ansible.builtin.shell: |
     PATH="$HOME/bin:$HOME/.krew/bin:$PATH"
     kubectl krew install {{ item.name }}
   args:
@@ -31,7 +32,7 @@
   loop: '{{ krew_plugins }}'
 
 - name: Install helm
-  unarchive:
+  ansible.builtin.unarchive:
     src: https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz
     dest: ~/bin
     creates: ~/bin/helm
@@ -42,19 +43,19 @@
       - '*/helm'
 
 - name: Install terraform
-  unarchive:
+  ansible.builtin.unarchive:
     src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
     dest: ~/bin
     creates: ~/bin/terraform
     remote_src: yes
 
 - name: Download sops.deb
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/getsops/sops/releases/download/v{{ sops_version }}/sops_{{ sops_version }}_amd64.deb
     dest: /tmp/
     mode: 0600
 
 - name: Install sops
   become: true
-  apt:
+  ansible.builtin.apt:
     deb: /tmp/sops_{{ sops_version }}_amd64.deb

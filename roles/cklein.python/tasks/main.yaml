@@ -1,6 +1,7 @@
+---
 - name: Install python3 development tools (via apt)
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - pylint
       - python3-venv

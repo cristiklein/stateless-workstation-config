@@ -1,4 +1,5 @@
 ---
 - name: Update initramfs
-  command: update-initramfs -u
+  ansible.builtin.command: update-initramfs -u
+  changed_when: true
   become: true

@@ -1,6 +1,7 @@
+---
 - name: Install admin tools
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - curl
       - htop

@@ -1,18 +1,17 @@
+---
 - name: Install chrony
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       # Should remove systemd-timesyncd
       - chrony
-  tags:
-    - ntp.se
 
 - name: Setup ntp.se sources
   become: true
-  copy:
+  ansible.builtin.copy:
     src: sources.d/
     dest: /etc/chrony/sources.d/
+    directory_mode: '0755'
+    mode: '0644'
   notify:
-    - chrony reload sources
-  tags:
-    - ntp.se
+    - Reload chrony sources

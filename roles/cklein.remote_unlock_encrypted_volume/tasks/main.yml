@@ -1,5 +1,6 @@
+---
 - name: Install required packages
-  apt:
+  ansible.builtin.apt:
     name:
       - dropbear-initramfs
       - cryptsetup
@@ -7,44 +8,44 @@
 
 - name: Configure dropbear in initramfs
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/dropbear-initramfs/config
     regexp: '^DROPBEAR_OPTIONS='
     insertafter: '^#DROPBEAR_OPTIONS='
     line: 'DROPBEAR_OPTIONS=-p8022'
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   notify: Update initramfs
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
 
 - name: Create authorized_keys
   become: true
-  template:
+  ansible.builtin.template:
     src: 'ssh/authorized_keys.j2'
     dest: /etc/dropbear-initramfs/authorized_keys
-    mode: 0644
+    mode: '0644'
   notify: Update initramfs
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
 
 - name: Configure dropbear in initramfs
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/dropbear/initramfs/dropbear.conf
     regexp: '^DROPBEAR_OPTIONS='
     insertafter: '^#DROPBEAR_OPTIONS='
     line: 'DROPBEAR_OPTIONS=-p8022'
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
   notify: Update initramfs
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int > 20
 
 - name: Create authorized_keys
   become: true
-  template:
+  ansible.builtin.template:
     src: 'ssh/authorized_keys.j2'
     dest: /etc/dropbear/initramfs/authorized_keys
-    mode: 0644
+    mode: '0644'
   notify: Update initramfs
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int > 20

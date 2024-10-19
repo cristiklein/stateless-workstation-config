@@ -1,41 +1,47 @@
+---
 - name: "Check parameters"
-  assert:
+  ansible.builtin.assert:
     that: "profile_names is iterable"
 
 - name: "Create user applications and icons folder"
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
-    recurse: yes
+    recurse: true
     state: directory
+    mode: '0755'
   loop:
     - "~/.local/share/applications"
     - "~/.local/share/icons/hicolor/scalable/apps"
 
 - name: "Create profiles folder"
-  file:
+  ansible.builtin.file:
     path: "~/.config/google-chrome-{{ item }}/NativeMessagingHosts"
-    recurse: yes
+    recurse: true
     state: directory
+    mode: '0755'
   loop: "{{ profile_names }}"
 
 - name: "Install icons"
-  copy:
+  ansible.builtin.copy:
     src: chrome-{{ item }}.svg
     dest: ~/.local/share/icons/hicolor/scalable/apps/chrome-{{ item }}.svg
+    mode: '0644'
   loop: "{{ profile_names }}"
 
 - name: "Install desktop files"
-  template:
+  ansible.builtin.template:
     src: chrome.desktop.j2
     dest: ~/.local/share/applications/chrome-{{ item }}.desktop
+    mode: '0644'
   vars:
     profile_name: "{{ item }}"
   loop: "{{ profile_names }}"
 
 - name: "Fix native integration for KeePassXC-browser"
-  file:
+  ansible.builtin.file:
     src: ~/.config/google-chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
     dest: ~/.config/google-chrome-{{ item }}/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json
     state: link
-    force: yes
+    force: true
+    mode: '0644'
   loop: "{{ profile_names }}"

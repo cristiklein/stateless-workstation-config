@@ -1,15 +1,12 @@
+---
 - name: Install pdftk
   become: true
-  apt:
-    pkg:
+  ansible.builtin.apt:
+    name:
       - pdftk
-  tags:
-    - pdftk
 
 - name: Install Duplex script
-  copy:
+  ansible.builtin.copy:
     src: "Duplex from non-duplex ADF scanner"
     dest: ~/.local/share/nautilus/scripts/
-    mode: 0777
-  tags:
-    - pdftk
+    mode: '0755'
