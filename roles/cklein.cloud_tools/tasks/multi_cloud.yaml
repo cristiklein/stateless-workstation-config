@@ -4,3 +4,4 @@
   apt:
     name:
       - rclone
+      - s3cmd
