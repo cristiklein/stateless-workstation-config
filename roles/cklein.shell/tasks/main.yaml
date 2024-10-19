@@ -1,7 +1,9 @@
+---
 - name: Copy shell configuration files
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "~/.{{ item }}"
+    mode: '0644'
   with_list:
     - bashrc
     - bash_aliases
@@ -11,8 +13,9 @@
     - profile
 
 - name: Remove unnecessary shell configuration files
-  file:
+  ansible.builtin.file:
     path: '~/.{{ item }}'
     state: absent
+    mode: '0644'
   with_list:
     - bash_profile

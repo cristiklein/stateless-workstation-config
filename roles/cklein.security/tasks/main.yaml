@@ -1,47 +1,49 @@
+---
 - name: Install security tools
-  apt:
+  ansible.builtin.apt:
     name:
-    - gnupg2
-    - gnupg-agent
-    - passwordmaker-cli # legacy, new passwords are on keepassx
-    - pcscd
-    - pinentry-curses
-    - scdaemon
-    - wipe
-    - yubikey-personalization
+      - gnupg2
+      - gnupg-agent
+      - passwordmaker-cli  # legacy, new passwords are on keepassx
+      - pcscd
+      - pinentry-curses
+      - scdaemon
+      - wipe
+      - yubikey-personalization
   become: true
   tags:
     - gpg
 
 - name: Install KeePassXC PPA
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: ppa:phoerious/keepassxc
   tags:
     - keepassxc
   when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
 
 - name: Install KeePassXC
-  apt:
+  ansible.builtin.apt:
     name:
-    - keepassxc
+      - keepassxc
   become: true
   tags:
     - keepassxc
 
 - name: Create gpg config folder
-  file:
+  ansible.builtin.file:
     path: ~/.gnupg
     state: directory
     recurse: true
-    mode: 0700
+    mode: '0700'
   tags:
     - gpg
 
 - name: Copy configuration files
-  template:
+  ansible.builtin.template:
     src: '{{ item | basename }}.j2'
     dest: '{{ item }}'
+    mode: '0600'
   loop:
     - ~/.gnupg/gpg.conf
     - ~/.gnupg/gpg-agent.conf
@@ -50,34 +52,36 @@
     - gpg
 
 - name: Import GPG keys
-  shell: |
+  ansible.builtin.shell: |
     set -ex
 
     gpg --import ~/.gnupg/gpgkeys.txt
 
-    echo 'Setting up GPG private keys. This requires the SmartCard to be plugged in' >&2
+    echo 'Setting up GPG private keys.' >&2
+    echo 'This requires the SmartCard to be plugged in' >&2
     gpg --card-status
 
     echo "GPG keys imported at $(date -Is)" > ~/.gnupg/gpgkeys-imported.txt
   args:
     creates: ~/.gnupg/gpgkeys-imported.txt
-  ignore_errors: yes
+  ignore_errors: true
   tags:
     - gpg
 
 - name: Create SSH config folder
-  file:
+  ansible.builtin.file:
     path: ~/.ssh
     state: directory
     recurse: true
-    mode: 0700
+    mode: '0700'
   tags:
     - ssh
 
 - name: Configure SSH client
-  template:
+  ansible.builtin.template:
     src: 'ssh/{{ item | basename }}.j2'
     dest: '{{ item }}'
+    mode: '0600'
   loop:
     - ~/.ssh/authorized_keys
     - ~/.ssh/config
@@ -86,7 +90,7 @@
     - ssh
 
 - name: Setup ssh server
-  apt:
+  ansible.builtin.apt:
     name:
       - openssh-server
       - fail2ban
@@ -96,23 +100,22 @@
 
 - name: Do not send LANG via ssh
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ssh/ssh_config
     backrefs: true
     regexp: '([^#]*)SendEnv(.*)'
     line: '#\1SendEnv\2'
-  tags:
-    - ssh
 
 - name: Configure PasswordMaker
-  template:
+  ansible.builtin.template:
     src: passwordmaker.rdf.j2
     dest: ~/.passwordmaker.rdf
+    mode: '0600'
 
 - name: Make home folder private for multi-user workstations
-  file:
+  ansible.builtin.file:
     path: ~/
     state: directory
-    mode: 0700
+    mode: '0700'
   tags:
     - privacy
