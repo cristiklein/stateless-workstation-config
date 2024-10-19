@@ -6,3 +6,4 @@
     depth: 1
     update: false
     version: "v{{ nvm_version }}"
+    recursive: false  # avoid pulling in test fixtures
