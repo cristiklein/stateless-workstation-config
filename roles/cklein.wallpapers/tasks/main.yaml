@@ -19,3 +19,5 @@
   community.general.dconf:
     key: "/org/gnome/desktop/background/picture-uri"
     value: "{{ wallpaper_path | expanduser | tojson }}"
+  tags:
+    - dconf
