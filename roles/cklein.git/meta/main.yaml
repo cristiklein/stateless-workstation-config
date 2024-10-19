@@ -1,3 +1,2 @@
 dependencies:
   - role: cklein.homebin
-  - role: cklein.pip3  # for pre-commit
