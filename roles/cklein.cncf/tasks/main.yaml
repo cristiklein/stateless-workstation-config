@@ -8,6 +8,13 @@
     - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubectx_version }}/kubectx
     - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubens_version }}/kubens
     - https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
+    - https://github.com/getsops/sops/releases/download/v{{ sops_version }}/sops-v{{ sops_version }}.linux.amd64
+
+- name: Setup symlink to sops
+  ansible.builtin.file:
+    src: sops-v{{ sops_version }}.linux.amd64
+    dest: ~/bin/sops
+    state: link
 
 - name: Install krew
   ansible.builtin.shell: |
@@ -49,8 +56,3 @@
     dest: ~/bin
     creates: ~/bin/terraform
     remote_src: true
-
-- name: Install sops
-  become: true
-  ansible.builtin.apt:
-    name: sops
