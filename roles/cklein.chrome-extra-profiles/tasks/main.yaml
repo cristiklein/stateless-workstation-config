@@ -6,7 +6,6 @@
 - name: "Create user applications and icons folder"
   ansible.builtin.file:
     path: "{{ item }}"
-    recurse: true
     state: directory
     mode: '0755'
   loop:
@@ -16,7 +15,6 @@
 - name: "Create profiles folder"
   ansible.builtin.file:
     path: "~/.config/google-chrome-{{ item }}/NativeMessagingHosts"
-    recurse: true
     state: directory
     mode: '0755'
   loop: "{{ profile_names }}"
