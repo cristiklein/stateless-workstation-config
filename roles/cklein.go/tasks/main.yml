@@ -1,21 +1,26 @@
+---
 - name: Ensure /usr/local exists
   become: true
-  file:
+  ansible.builtin.file:
     path: /usr/local
     state: directory
+    mode: '0755'
 
 - name: Install Go
   become: true
-  unarchive:
-    remote_src: yes
+  ansible.builtin.unarchive:
+    remote_src: true
     src: https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz
     dest: /usr/local
     creates: /usr/local/go/bin/go
   tags: go
 
 - name: Install golangci-lint
-  shell: |
+  ansible.builtin.shell: |
+    set -exo pipefail
+
     export PATH=/usr/local/go/bin:$PATH
     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin {{ golangci_lint_version }}
   args:
     creates: ~/go/bin/golangci-lint
+    executable: /bin/bash
