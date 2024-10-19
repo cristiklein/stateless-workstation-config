@@ -3,8 +3,6 @@
   apt:
     pkg:
       - imagemagick
-  tags:
-    - imagemagick
 
 - name: Allow ImageMagick to rasterize PDFs
   become: true
@@ -13,5 +11,3 @@
     regex: domain.*coder.*pattern.*PDF
     line: '  <policy domain="coder" rights="read | write" pattern="PDF" />'
   when: imagemagick_allow_rasterize_any_pdf | bool
-  tags:
-    - imagemagick
