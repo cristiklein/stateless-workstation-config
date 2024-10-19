@@ -14,7 +14,6 @@
   ansible.builtin.file:
     path: ~/.ccache
     state: directory
-    recurse: true
     mode: '0700'
 
 - name: Copy configuration files
