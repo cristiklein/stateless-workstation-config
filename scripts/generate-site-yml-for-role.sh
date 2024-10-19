@@ -12,9 +12,6 @@ tee ./site.yml <<EOF
   module_defaults:
     apt:
       force_apt_get: yes
-    pip:
-      executable: pip3
-      extra_args: --user
   roles:
     - $ROLE
 EOF
