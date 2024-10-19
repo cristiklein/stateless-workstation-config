@@ -1,2 +1,4 @@
+---
 - name: Reset font cache
-  shell: fc-cache --really-force --verbose
+  ansible.builtin.command: fc-cache --really-force --verbose
+  changed_when: true
