@@ -1,13 +1,4 @@
 ---
-- name: Install docker install prerequisites
-  become: true
-  ansible.builtin.apt:
-    pkg:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-
 - name: Gather needed facts
   ansible.builtin.setup:
     gather_subset:
@@ -25,7 +16,12 @@
 - name: Add Docker repository
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    repo: >
+      deb
+      [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg]
+      https://download.docker.com/linux/ubuntu
+      {{ ansible_distribution_release }}
+      stable
 
 - name: Install Docker
   become: true
