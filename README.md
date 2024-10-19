@@ -1,6 +1,9 @@
 Stateless Workstation Configuration
 ===================================
 
+[![Lint](https://github.com/cristiklein/stateless-workstation-config/actions/workflows/lint.yaml/badge.svg)](https://github.com/cristiklein/stateless-workstation-config/actions/workflows/lint.yaml)
+[![Test](https://github.com/cristiklein/stateless-workstation-config/actions/workflows/test.yaml/badge.svg)](https://github.com/cristiklein/stateless-workstation-config/actions/workflows/test.yaml)
+
 This is how I configure a fresh Ubuntu installation for serving me as a workstation.
 
 Usage
