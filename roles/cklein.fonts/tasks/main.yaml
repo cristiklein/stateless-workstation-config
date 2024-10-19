@@ -1,15 +1,5 @@
-- name: Create folder for fonts
-  file:
-    path: '~/.local/share/fonts/'
-    state: directory
-  tags:
-    - fonts
-
-- name: Install Fonts
-  copy:
+---
+- name: Install fonts
+  ansible.posix.synchronize:
     src: '.'
     dest: '~/.local/share/fonts/'
-  tags:
-    - fonts
-  notify:
-    - Reset font cache
