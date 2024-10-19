@@ -15,3 +15,11 @@ cd stateless-workstation-config
 ```
 
 Enjoy!
+
+Development
+-----------
+To work on a single role:
+
+```
+ansible localhost --module-name include_role --args name=cklein.wallpapers
+```
