@@ -1,3 +1,10 @@
+- name: Gather needed facts
+  setup:
+    gather_subset:
+        - "distribution"
+        - "!min"
+  when: ansible_distribution_release is not defined
+
 - name: Add Microsoft repository
   become: true
   apt_repository:
