@@ -1,7 +1,7 @@
 ---
 - name: Reload chrony sources
   become: true
-  shell: chronyc reload sources
-  ignore_errors: true
+  ansible.builtin.command: chronyc reload sources
+  changed_when: true
   tags:
     - systemd
