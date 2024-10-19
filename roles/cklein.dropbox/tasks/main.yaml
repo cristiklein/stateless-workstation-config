@@ -1,4 +1,5 @@
+---
 - name: Install dropbox
   become: true
-  apt:
+  ansible.builtin.apt:
     name: nautilus-dropbox
