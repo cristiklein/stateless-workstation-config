@@ -23,3 +23,14 @@ To work on a single role:
 ```
 ansible localhost --module-name include_role --args name=cklein.wallpapers
 ```
+
+Out of scope
+------------
+To avoid putting credentials in this repo, this script currently doesn't configure:
+
+- Dropbox username and password;
+- Chrome username, password and sync passphrase;
+- Slack workspaces;
+- Wireless networks;
+- VPNs;
+- Printers.
