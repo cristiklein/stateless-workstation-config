@@ -1,6 +1,7 @@
+---
 - name: Prefer binaries in ~/bin instead of deb packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - kubectx
     state: absent
@@ -8,12 +9,12 @@
 
 - name: Remove Skype
   become: true
-  command: snap remove skype removes=/snap/bin/skype
+  ansible.builtin.command: snap remove skype removes=/snap/bin/skype
   tags:
     - snap
 
 - name: Remove deprecated files
-  file:
+  ansible.builtin.file:
     path: '{{ item }}'
     state: absent
   loop:
@@ -23,7 +24,7 @@
 # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
 - name: Remove certs in /etc/apt/trusted.gpg.d
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   with_fileglob:
