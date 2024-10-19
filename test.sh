@@ -5,7 +5,7 @@ set -e
 : ${BASE_DOCKER_IMAGE:=ubuntu:24.04}
 : ${ANSIBLE_PLAYBOOK:=site.yml}
 
-DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-minimal
+DOCKER_IMAGE=${BASE_DOCKER_IMAGE}-standard
 
 docker build -t $DOCKER_IMAGE - <<EOF
 FROM ${BASE_DOCKER_IMAGE}
@@ -13,7 +13,7 @@ FROM ${BASE_DOCKER_IMAGE}
 ENV DEBIAN_FRONTEND=noninteractive
 RUN \
     apt-get update \
-    && apt-get install -yyq ubuntu-minimal \
+    && apt-get install -yyq ubuntu-standard \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo 'blah ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/no-passwd-blah
