@@ -10,7 +10,7 @@
     path: ~/.config/terminator
     recurse: true
     state: directory
-    mode: '0644'
+    mode: '0755'
 
 - name: Configure terminator
   ansible.builtin.template:
