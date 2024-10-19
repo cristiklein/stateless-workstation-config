@@ -1,14 +1,17 @@
+---
 - name: Install mplayer
   become: true
-  apt:
+  ansible.builtin.apt:
     name: mplayer
 
 - name: Create mplayer configuration folder
-  file:
+  ansible.builtin.file:
     path: ~/.mplayer
     state: directory
+    mode: '0755'
 
 - name: Configure mplayer
-  template:
+  ansible.builtin.template:
     src: mplayer_config.j2
     dest: ~/.mplayer/config
+    mode: '0644'

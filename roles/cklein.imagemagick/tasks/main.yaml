@@ -1,12 +1,13 @@
+---
 - name: Install ImageMagick
   become: true
-  apt:
+  ansible.builtin.apt:
     pkg:
       - imagemagick
 
 - name: Allow ImageMagick to rasterize PDFs
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ImageMagick-6/policy.xml
     regex: domain.*coder.*pattern.*PDF
     line: '  <policy domain="coder" rights="read | write" pattern="PDF" />'
