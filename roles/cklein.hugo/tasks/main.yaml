@@ -1,18 +1,5 @@
-- name: Get hugo.deb
-  get_url:
-    url: https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_extended_{{ hugo_version }}_linux-amd64.deb
-    dest: /tmp/hugo_{{ hugo_version }}.deb
-    mode: 0600
-  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
-
+---
 - name: Install hugo
   become: true
-  apt:
-    deb: /tmp/hugo_{{ hugo_version }}.deb
-  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int <= 20
-
-- name: Install hugo
-  become: true
-  apt:
+  ansible.builtin.apt:
     pkg: hugo
-  when: ansible_lsb.id == "Ubuntu" and ansible_lsb.major_release|int > 20
