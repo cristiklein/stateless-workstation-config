@@ -7,3 +7,5 @@
     mode: '0644'
   notify:
     - Reload udev rules
+  tags:
+    - udev
