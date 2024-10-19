@@ -1,7 +1,9 @@
+---
 - name: Install vim
   become: true
   apt:
     name:
+      - ansible-lint
       - git
       - vim-gtk3
 
