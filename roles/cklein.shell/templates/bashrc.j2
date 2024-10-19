@@ -104,3 +104,7 @@ if [ -S "$GPG_SSH_AUTH_SOCK" ]; then
   export SSH_AGENT_LAUNCHER=overridden-from-dot-profile
   export SSH_AUTH_SOCK="$GPG_SSH_AUTH_SOCK"
 fi
+
+# Node Version Manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
