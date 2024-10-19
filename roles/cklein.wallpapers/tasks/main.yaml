@@ -2,12 +2,13 @@
   file:
     name: ~/Pictures/Wallpapers
     state: directory
-  tags:
-    - wallpapers
 
 - name: Copy wallpapers
   copy:
     src: .
     dest: ~/Pictures/Wallpapers
-  tags:
-    - wallpapers
+
+- name: Set GNOME Wallpaper
+  community.general.dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: '"$HOME/Pictures/Wallpapers/{{ wallpaper }}"'
