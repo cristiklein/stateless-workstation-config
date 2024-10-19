@@ -1,5 +1,6 @@
+---
 - name: Install git and tools
-  apt:
+  ansible.builtin.apt:
     name:
       - git
       - git-crypt
@@ -9,21 +10,24 @@
   become: true
 
 - name: Remove ~/.gitconfig
-  file:
+  ansible.builtin.file:
     path: ~/.gitconfig
     state: absent
 
 - name: Create git config folder
-  file:
+  ansible.builtin.file:
     path: ~/.config/git
     state: directory
+    mode: '0755'
 
 - name: Configure git
-  template:
+  ansible.builtin.template:
     src: gitconfig.j2
     dest: ~/.config/git/config
+    mode: '0644'
 
 - name: Install git-checkall
-  template:
+  ansible.builtin.template:
     src: git-checkall.j2
     dest: ~/bin/git-checkall
+    mode: '0755'
