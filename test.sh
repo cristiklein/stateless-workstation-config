@@ -33,4 +33,4 @@ docker run \
     -v $(pwd):$(pwd):ro \
     -w $(pwd) \
     -e ANSIBLE_PLAYBOOK=$ANSIBLE_PLAYBOOK \
-    $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags dconf,mount,snap,systemd
+    $DOCKER_IMAGE bash --login ./deploy.sh --skip-tags dconf,mount,snap,systemd,udev

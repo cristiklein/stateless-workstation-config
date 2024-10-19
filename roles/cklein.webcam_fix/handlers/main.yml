@@ -7,3 +7,5 @@
       - control
       - --reload-rules
   changed_when: true
+  tags:
+    - udev
