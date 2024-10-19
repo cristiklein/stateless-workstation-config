@@ -1,6 +1,6 @@
 ---
 - name: Configure default apps
-  template:
+  ansible.builtin.template:
     src: mimeapps.list.j2
     dest: ~/.config/mimeapps.list
     mode: '0644'

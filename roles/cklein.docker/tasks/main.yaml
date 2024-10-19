@@ -1,6 +1,7 @@
+---
 - name: Install docker install prerequisites
   become: true
-  apt:
+  ansible.builtin.apt:
     pkg:
       - apt-transport-https
       - ca-certificates
@@ -9,42 +10,47 @@
 
 - name: Add Docker apt-key
   become: true
-  apt_key:
+  ansible.builtin.apt_key:
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
     url: "https://download.docker.com/linux/ubuntu/gpg"
     keyring: /etc/apt/keyrings/docker.gpg
 
 - name: Add Docker repository
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
 - name: Install Docker
   become: true
-  apt:
+  ansible.builtin.apt:
     pkg:
       - docker-ce
       - docker-compose
 
 - name: "Add docker group"
   become: true
-  group:
+  ansible.builtin.group:
     name: docker
-    system: yes
+    system: true
 
-- name: "Add the user {{ ansible_user_id }} to docker group"
+- name: "Add the current user to the docker group"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     groups: docker
-    append: yes
+    append: true
 
-- stat: path=/var/run/docker.sock
+- name: Stat the docker daemon socket
+  ansible.builtin.stat:
+    path: /var/run/docker.sock
   register: docker_sock
 
-- name: restart-docker
+- name: Restart docker service
   become: true
-  command: "systemctl restart docker"
+  ansible.builtin.systemd_service:
+    name: docker
+    state: restarted
+    daemon_reload: true
   when: (not docker_sock.stat.exists) or
         (not docker_sock.stat.gr_name == 'docker')
   tags:

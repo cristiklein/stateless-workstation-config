@@ -1,9 +1,22 @@
+---
+- name: Gather needed facts
+  ansible.builtin.setup:
+    gather_subset:
+      - "distribution"
+      - "!min"
+  when: ansible_distribution_release is not defined
+
 - name: Add Microsoft repository
   become: true
-  apt_repository:
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod {{ ansible_distribution_release }} main
+  ansible.builtin.apt_repository:
+    repo: >
+      deb
+      [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg]
+      https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod
+      {{ ansible_distribution_release }}
+      main
 
 - name: Install .NET packages
   become: true
-  apt:
+  ansible.builtin.apt:
     pkg: '{{ dotnet_pkgs }}'

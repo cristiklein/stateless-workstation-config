@@ -1,6 +1,7 @@
+---
 - name: Install dictionaries
   become: true
-  apt:
+  ansible.builtin.apt:
     name: '{{ dictionaries }}'
   tags:
     - dictionaries
