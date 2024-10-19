@@ -8,7 +8,11 @@
     src: .
     dest: ~/Pictures/Wallpapers
 
+- name: Get path to wallpaper
+  ansible.builtin.set_fact:
+    wallpaper_path: ~/Pictures/Wallpapers/{{ wallpaper }}
+
 - name: Set GNOME Wallpaper
   community.general.dconf:
     key: "/org/gnome/desktop/background/picture-uri"
-    value: '"$HOME/Pictures/Wallpapers/{{ wallpaper }}"'
+    value: "{{ wallpaper_path | expanduser | tojson }}"
