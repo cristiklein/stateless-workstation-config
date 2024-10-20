@@ -14,6 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN \
     apt-get update \
     && apt-get install -yyq \
+      ubuntu-desktop-minimal \
       ubuntu-minimal \
       ubuntu-standard \
     && rm -rf /var/lib/apt/lists/*
