@@ -21,7 +21,7 @@ jobs:
     name: Build images which emulate a freshly installed Ubuntu Desktop
     runs-on: ubuntu-latest
     needs:
-      - prepare-matrix-ubuntu
+      - prepare-matrix
 
     strategy:
       matrix:
