@@ -12,4 +12,9 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: cache pre-commit deps
+        id: cache_pre_commit
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
       - run: pre-commit run --all
