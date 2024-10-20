@@ -1,7 +1,38 @@
+---
 name: Test
-on: push
+'on': push
+
+env:
+  DOCKER_IMAGE: "cristiklein/stateless-workstation-config/ubuntu-desktop"
+  UBUNTU_VERSIONS: '["24.04", "24.10"]'
 
 jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      matrix:
+        ubuntu_version: ${{ fromJson(env.UBUNTU_VERSIONS) }}
+
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and export
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          tags: "${DOCKER_IMAGE}:${UBUNTU_VERSION}"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          outputs: type=docker,dest=/tmp/ubuntu-desktop-${UBUNTU_VERSION}.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${DOCKER_IMAGE}:${UBUNTU_VERSION}"
+          path: /tmp/ubuntu-desktop-${UBUNTU_VERSION}.tar
+
   test:
     runs-on: ubuntu-24.04
 
@@ -15,9 +46,11 @@ jobs:
           - cklein.go
           - cklein.security
           - cklein.shell
+        ubuntu_version: $${ fromJson(env.UBUNTU_VERSIONS} }}
 
     env:
       ROLE: ${{ matrix.ROLE }}
+      UBUNTU_VERSION: ${{ matrix.UBUNTU_VERSION }}
 
     steps:
       - uses: actions/checkout@v4
