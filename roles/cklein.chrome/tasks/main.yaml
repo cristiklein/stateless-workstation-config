@@ -2,7 +2,12 @@
 - name: Add Google Chrome repository
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main"
+    repo: >
+      deb
+      [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg]
+      https://dl.google.com/linux/chrome/deb/
+      stable
+      main
 
 - name: Prevent the Google Chrome Deb from installing its own repository
   become: true

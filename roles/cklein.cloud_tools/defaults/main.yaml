@@ -1,3 +1,4 @@
+---
 aws_iam_authenticator_version: 1.21.2/2021-07-05
 awscli_version_match: 1.22
 openstackclient_version_match: 5.7
