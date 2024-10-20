@@ -3,7 +3,7 @@
 set -e
 
 : ${UBUNTU_VERSION:=24.04}
-: ${DOCKER_IMAGE:=cristiklein/stateless-workstation-config/ubuntu-desktop:${UBUNTU_VERSION}}
+: ${DOCKER_IMAGE:=cristiklein/stateless-workstation-config/ubuntu-desktop}
 : ${ANSIBLE_PLAYBOOK:=site.yml}
 
 USE_TTY=
@@ -16,5 +16,5 @@ docker run \
     -v $(pwd):$(pwd):ro \
     -w $(pwd) \
     -e ANSIBLE_PLAYBOOK=$ANSIBLE_PLAYBOOK \
-    $DOCKER_IMAGE \
+    $DOCKER_IMAGE:$UBUNTU_VERSION \
     bash --login ./deploy.sh --skip-tags dconf,mount,snap,systemd,udev
