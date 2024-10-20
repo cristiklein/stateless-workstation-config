@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        ubuntu_version: ${{ fromJson(env.UBUNTU_VERSIONS) }}
+        ubuntu_version: "${{ fromJson(env.UBUNTU_VERSIONS) }}"
 
     steps:
       - name: Set up Docker Buildx
