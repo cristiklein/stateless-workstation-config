@@ -25,6 +25,7 @@ jobs:
 
     strategy:
       matrix:
+        # yamllint disable-line rule:line-length
         ubuntu_version: "${{ fromJson(needs.prepare-matrix.outputs.UBUNTU_VERSIONS) }}"
 
     steps:
@@ -40,15 +41,17 @@ jobs:
           tags: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          # yamllint disable-line rule:line-length
           outputs: type=docker,dest=/tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
+          name: "ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}"
           path: /tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
 
   test:
+    name: Test roles
     runs-on: ubuntu-latest
     needs:
       - prepare-matrix
@@ -64,6 +67,7 @@ jobs:
           - cklein.go
           - cklein.security
           - cklein.shell
+        # yamllint disable-line rule:line-length
         ubuntu_version: "${{ fromJson(needs.prepare-matrix.outputs.UBUNTU_VERSIONS) }}"
 
     env:
