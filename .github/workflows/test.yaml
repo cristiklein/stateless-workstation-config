@@ -35,16 +35,16 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          tags: "${DOCKER_IMAGE}:${UBUNTU_VERSION}"
+          tags: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          outputs: type=docker,dest=/tmp/ubuntu-desktop-${UBUNTU_VERSION}.tar
+          outputs: type=docker,dest=/tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${DOCKER_IMAGE}:${UBUNTU_VERSION}"
-          path: /tmp/ubuntu-desktop-${UBUNTU_VERSION}.tar
+          name: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
+          path: /tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
 
   test:
     runs-on: ubuntu-latest
