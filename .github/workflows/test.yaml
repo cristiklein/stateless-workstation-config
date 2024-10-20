@@ -81,7 +81,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: "ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}"
-          path: /tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
+          path: /tmp
 
       - name: Load image
         run: |
