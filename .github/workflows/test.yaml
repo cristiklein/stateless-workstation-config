@@ -4,58 +4,11 @@ name: Test
 
 env:
   DOCKER_IMAGE: "cristiklein/stateless-workstation-config/ubuntu-desktop"
-  UBUNTU_VERSIONS: '[\"24.04\", \"24.10\"]'
 
 jobs:
-  prepare-matrix:
-    name: Prepare the matrix
-    runs-on: ubuntu-latest
-    outputs:
-      UBUNTU_VERSIONS: ${{ steps.step1.outputs.UBUNTU_VERSIONS }}
-    steps:
-      - name: Create UBUNTU_VERSIONS variable
-        id: step1
-        run: echo "UBUNTU_VERSIONS=${{env.UBUNTU_VERSIONS}}" >> $GITHUB_OUTPUT
-
-  build:
-    name: Build Ubuntu Desktop images
-    runs-on: ubuntu-latest
-    needs:
-      - prepare-matrix
-
-    strategy:
-      matrix:
-        # yamllint disable-line rule:line-length
-        ubuntu_version: "${{ fromJson(needs.prepare-matrix.outputs.UBUNTU_VERSIONS) }}"
-
-    steps:
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - uses: actions/checkout@v4
-
-      - name: Build and export
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          tags: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          # yamllint disable-line rule:line-length
-          outputs: type=docker,dest=/tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: "ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}"
-          path: /tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
-
   test:
     name: Test roles
     runs-on: ubuntu-latest
-    needs:
-      - prepare-matrix
-      - build
 
     strategy:
       matrix:
@@ -67,27 +20,31 @@ jobs:
           - cklein.go
           - cklein.security
           - cklein.shell
-        # yamllint disable-line rule:line-length
-        ubuntu_version: "${{ fromJson(needs.prepare-matrix.outputs.UBUNTU_VERSIONS) }}"
+        ubuntu_version:
+          - '24.04'
+          - '24.10'
 
     env:
       ROLE: ${{ matrix.ROLE }}
       UBUNTU_VERSION: ${{ matrix.UBUNTU_VERSION }}
 
     steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - uses: actions/checkout@v4
 
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - name: Build and export
+        uses: docker/build-push-action@v6
         with:
-          name: "ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}"
-          path: /tmp
-
-      - name: Load image
-        run: |
-          docker load --input \
-            /tmp/ubuntu-desktop-${{ matrix.UBUNTU_VERSION }}.tar
-          docker image ls -a
+          # This should be equivalent to ./build.sh, but levarage GitHub Actions
+          # Cache.
+          context: .
+          tags: "${{ env.DOCKER_IMAGE }}:${{ matrix.UBUNTU_VERSION }}"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # yamllint disable-line rule:line-length
+          outputs: type=docker
 
       - name: Generate Site YAML for Role
         run: |
