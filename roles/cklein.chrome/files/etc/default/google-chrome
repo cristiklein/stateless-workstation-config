@@ -1,2 +1,8 @@
-repo_add_once="false"
-repo_reenable_on_distupgrade="false"
+cat << EOF
+We really don't want the google-chrome package to create a file
+in /etc/apt/trusted.gpg.d.
+
+Exiting immediately.
+EOF
+
+exit 0
