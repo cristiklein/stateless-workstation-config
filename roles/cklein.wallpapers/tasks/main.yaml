@@ -1,7 +1,7 @@
 ---
-- name: Create wallpapers folder
+- name: Create ~/Pictures folder
   ansible.builtin.file:
-    name: ~/Pictures/Wallpapers
+    name: ~/Pictures
     state: directory
     mode: '0755'
 
