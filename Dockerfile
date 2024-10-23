@@ -10,6 +10,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update \
   && apt-get install -yyq \
+    git \
     ubuntu-desktop-minimal \
     ubuntu-minimal \
     ubuntu-standard
