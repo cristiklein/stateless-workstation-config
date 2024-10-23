@@ -22,6 +22,7 @@
     - 'inputrc'
     - 'profile'
     - 'selected_editor'
+    - 'signature'
 
 - name: Remove unneeded dotfiles
   ansible.builtin.file:
