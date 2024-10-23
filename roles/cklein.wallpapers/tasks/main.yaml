@@ -1,15 +1,8 @@
 ---
-- name: Create wallpapers folder
-  ansible.builtin.file:
-    name: ~/Pictures/Wallpapers
-    state: directory
-    mode: '0755'
-
 - name: Copy wallpapers
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: .
     dest: ~/Pictures/Wallpapers
-    mode: '0644'
 
 - name: Get path to wallpaper
   ansible.builtin.set_fact:
