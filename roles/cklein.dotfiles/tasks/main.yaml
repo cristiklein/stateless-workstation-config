@@ -21,6 +21,7 @@
     - 'bashrc'
     - 'inputrc'
     - 'profile'
+    - 'selected_editor'
 
 - name: Remove unneeded dotfiles
   ansible.builtin.file:
