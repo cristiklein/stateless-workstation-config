@@ -23,6 +23,7 @@
     - cklein.default_apps
     - cklein.dictionaries
     - cklein.docker
+    - cklein.dotfiles
     - cklein.dotnet
     - cklein.dropbox
     - cklein.fonts
@@ -39,7 +40,6 @@
     - cklein.python
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
-    - cklein.shell
     - cklein.slack
     - cklein.spotify
     - cklein.terminator

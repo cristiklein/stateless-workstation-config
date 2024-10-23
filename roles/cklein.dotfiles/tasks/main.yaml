@@ -1,0 +1,31 @@
+---
+- name: Clone dotfiles
+  ansible.builtin.git:
+    repo: '{{ dotfiles_repo }}'
+    dest: ~/.config/dotfiles
+    depth: 1
+    update: false
+    version: main
+
+- name: Symlink dotfiles
+  ansible.builtin.file:
+    src: '~/.config/dotfiles/{{ item }}'
+    dest: '~/.{{ item }}'
+    state: link
+    mode: '0644'
+    force: true
+  with_list:
+    - 'bash_aliases'
+    - 'bash_completion'
+    - 'bash_logout'
+    - 'bashrc'
+    - 'inputrc'
+    - 'profile'
+
+- name: Remove unneeded dotfiles
+  ansible.builtin.file:
+    path: '~/.{{ item }}'
+    state: absent
+    mode: '0644'
+  with_list:
+    - bash_profile

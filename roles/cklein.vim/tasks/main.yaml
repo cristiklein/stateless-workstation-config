@@ -7,12 +7,6 @@
       - git
       - vim-gtk3
 
-- name: Configure default editor
-  ansible.builtin.template:
-    src: selected_editor.j2
-    dest: ~/.selected_editor
-    mode: '0644'
-
 - name: Clone vim configuration
   ansible.builtin.git:
     repo: '{{ repos.vimrc }}'

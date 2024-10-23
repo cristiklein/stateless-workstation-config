@@ -16,10 +16,10 @@ jobs:
           - ''
           - cklein.cloud_tools
           - cklein.cncf
+          - cklein.dotfiles
           - cklein.git
           - cklein.go
           - cklein.security
-          - cklein.shell
         ubuntu_version:
           - '24.04'
           - '24.10'
