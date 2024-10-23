@@ -2,20 +2,11 @@
 ---
 - name: Install binaries
   ansible.builtin.get_url:
-    url: '{{ item }}'
-    dest: '~/bin/{{ item | basename }}'
+    checksum: '{{ item.value.checksum }}'
+    dest: '~/bin/{{ item.key }}'
+    url: '{{ item.value.url }}'
     mode: '0755'
-  loop:
-    - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubectx_version }}/kubectx
-    - https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubens_version }}/kubens
-    - https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
-    - https://github.com/getsops/sops/releases/download/v{{ sops_version }}/sops-v{{ sops_version }}.linux.amd64
-
-- name: Setup symlink to sops
-  ansible.builtin.file:
-    src: sops-v{{ sops_version }}.linux.amd64
-    dest: ~/bin/sops
-    state: link
+  loop: '{{ cncf_execs | dict2items }}'
 
 - name: Install krew
   ansible.builtin.shell: |

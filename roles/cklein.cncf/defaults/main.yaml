@@ -1,13 +1,24 @@
+# yamllint disable rule:line-length
 ---
 helm_version: 3.8.0
 
-kubectl_version: 1.28.3
-kubectx_version: 0.9.5
-kubens_version: 0.9.5
 krew_version: 0.4.4
-sops_version: 3.8.1
 
 terraform_version: 1.1.4
+
+cncf_execs:
+  kubectl:
+    checksum: sha256:0c680c90892c43e5ce708e918821f92445d1d244f9b3d7513023bcae9a6246d1
+    url: https://storage.googleapis.com/kubernetes-release/release/v1.28.3/bin/linux/amd64/kubectl
+  kubectx:
+    checksum: sha256:e887e4e2b3dd4c94d0ecdb84270fb4fac2e65c4d5b0ee461e688fb8089fd4900
+    url: https://raw.githubusercontent.com/ahmetb/kubectx/v0.9.5/kubectx
+  kubens:
+    checksum: sha256:509c97c0882e688ae8fad8aa13524cc7c003e4883db447a905bdb47d64c13bdc
+    url: https://raw.githubusercontent.com/ahmetb/kubectx/v0.9.5/kubens
+  sops:
+    checksum: sha256:d6bf07fb61972127c9e0d622523124c2d81caf9f7971fb123228961021811697
+    url: https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
 
 krew_plugins:
   - name: oidc-login
