@@ -3,8 +3,11 @@
   ansible.builtin.setup:
     gather_subset:
       - "distribution"
+      - "user"
       - "!min"
-  when: ansible_distribution_release is not defined
+  when: >
+    ansible_distribution_release is not defined
+    or ansible_user_id is not defined
 
 - name: Add Docker apt-key
   become: true
