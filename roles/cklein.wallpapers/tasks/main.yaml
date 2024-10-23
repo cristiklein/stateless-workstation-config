@@ -1,4 +1,10 @@
 ---
+- name: Create wallpapers folder
+  ansible.builtin.file:
+    name: ~/Pictures/Wallpapers
+    state: directory
+    mode: '0755'
+
 - name: Copy wallpapers
   ansible.posix.synchronize:
     src: .
