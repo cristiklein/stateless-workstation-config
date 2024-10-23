@@ -1,0 +1,12 @@
+---
+- name: Download Obsidian
+  ansible.builtin.get_url:
+    url: '{{ obsidian_info[obsidian_version].url }}'
+    checksum: '{{ obsidian_info[obsidian_version].checksum }}'
+    dest: /tmp/obsidian.deb
+    mode: '0644'
+
+- name: Install Obsidian
+  become: true
+  ansible.builtin.apt:
+    deb: /tmp/obsidian.deb

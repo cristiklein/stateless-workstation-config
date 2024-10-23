@@ -1,0 +1,8 @@
+# yamllint disable rule:line-length
+---
+obsidian_version: v1.7.4
+
+obsidian_info:
+  v1.7.4:
+    checksum: sha256:79efb6b67f453bc1e9f95f6527f66da69ab0fa71ce758e8e1a51fba2bde63209
+    url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.7.4/obsidian_1.7.4_amd64.deb
