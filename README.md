@@ -37,3 +37,7 @@ To avoid putting credentials in this repo, this script currently doesn't configu
 - Wireless networks;
 - VPNs;
 - Printers.
+
+The following configuration is deemed to volatile, and is out-of-scope for this script:
+
+- Display configuration.
