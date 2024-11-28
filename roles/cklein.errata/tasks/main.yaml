@@ -7,14 +7,6 @@
     state: absent
     purge: true
 
-- name: Prefer pip only in virtual environments
-  become: true
-  ansible.builtin.apt:
-    name:
-      - python3-pip
-    state: absent
-    purge: true
-
 - name: Remove Skype
   become: true
   community.general.snap:
@@ -41,3 +33,8 @@
     - "/etc/apt/trusted.gpg.d/docker*"
     - "/etc/apt/trusted.gpg.d/google*"
     - "/etc/apt/trusted.gpg.d/microsoft*"
+
+- name: Remove Node Version Manager (nvm)
+  ansible.builtin.file:
+    path: ~/.nvm
+    state: absent

@@ -1,9 +1,9 @@
 ---
-- name: Install Node Version Manager (nvm)
-  ansible.builtin.git:
-    repo: 'https://github.com/nvm-sh/nvm'
-    dest: ~/.nvm
-    depth: 1
-    update: false
-    version: "v{{ nvm_version }}"
-    recursive: false  # avoid pulling in test fixtures
+- name: Install newer version of nodeenv
+  # It really sucks to break_system_packages. However, we don't really have a
+  # choice here. Ubuntu 24.04 ships a way too old version of nodeenv.
+  become: true
+  ansible.builtin.pip:
+    name: nodeenv
+    version: '>=1.9.1'
+    extra_args: '--break-system-packages'

@@ -4,4 +4,5 @@
   ansible.builtin.apt:
     name:
       - pylint
+      - python3-pip
       - python3-venv
