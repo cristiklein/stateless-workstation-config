@@ -40,7 +40,6 @@
     - cklein.python
     - cklein.remote_unlock_encrypted_volume
     - cklein.security
-    - cklein.slack
     - cklein.spotify
     - cklein.terminator
     - cklein.vscode
