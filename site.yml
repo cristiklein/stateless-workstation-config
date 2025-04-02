@@ -20,6 +20,7 @@
         profile_names:
           - elastisys
           - le-staging
+          - t
     - cklein.default_apps
     - cklein.dictionaries
     - cklein.docker
@@ -47,9 +48,18 @@
     - cklein.wallpapers
     - cklein.webcam_fix
     - cklein.tmp_on_tmpfs
-    - cklein.zoom
+    # - cklein.zoom
     # Best to run after all favorite apps are installed
-    - cklein.gnome_favorite_apps
+    - role: cklein.gnome_favorite_apps
+      vars:
+        gnome_favorite_apps:
+          - org.gnome.Nautilus.desktop
+          - terminator.desktop
+          - google-chrome.desktop
+          - chrome-elastisys.desktop
+          - chrome-t.desktop
+          - spotify_spotify.desktop
+          - org.keepassxc.KeePassXC.desktop
 
     # Leave as last for proper cleanup
     - cklein.zz_cleanup
