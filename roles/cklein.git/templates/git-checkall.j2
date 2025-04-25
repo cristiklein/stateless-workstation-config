@@ -14,6 +14,7 @@ NC=$(tput sgr0)
 find $HOME \
     -name .git \
     -not -path "$HOME/.cache/*" \
+    -not -path "$HOME/.cargo/*" \
     -not -path "$HOME/.local/*" \
     -print0 \
 | while read -r -d '' dot_git_folder; do
