@@ -8,8 +8,8 @@ terraform_version: 1.1.4
 
 cncf_execs:
   kubectl:
-    checksum: sha256:0c680c90892c43e5ce708e918821f92445d1d244f9b3d7513023bcae9a6246d1
-    url: https://storage.googleapis.com/kubernetes-release/release/v1.28.3/bin/linux/amd64/kubectl
+    checksum: sha256:33d0cdec6967817468f0a4a90f537dfef394dcf815d91966ca651cc118393eea
+    url: https://dl.k8s.io/release/v1.33.2/bin/linux/amd64/kubectl
   kubectx:
     checksum: sha256:e887e4e2b3dd4c94d0ecdb84270fb4fac2e65c4d5b0ee461e688fb8089fd4900
     url: https://raw.githubusercontent.com/ahmetb/kubectx/v0.9.5/kubectx
